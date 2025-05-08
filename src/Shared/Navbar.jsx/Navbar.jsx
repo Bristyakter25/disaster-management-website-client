@@ -1,7 +1,7 @@
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
-import logo from "../../assets/logo/disaster.png"
+import logo from "../../assets/logo/logo.jpg"
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -18,10 +18,10 @@ const Navbar = () => {
   return (
     <div className="w-full relative z-50">
       {/* Navbar always visible */}
-      <div className="navbar justify-between  lg:w-[1124px] w-[350px] mx-auto">
+      <div className="navbar justify-between  lg:w-full w-[350px] px-10">
         <div className="flex items-center">
-          <img className="w-[50px]" src={logo} alt="" />
-          <p className=" text-xl font-bold">ResQLink</p>
+          <img className="w-[40px]" src={logo} alt="" />
+          <p className=" text-xl ml-2 font-bold">ResQLink</p>
         </div>
         
         {/* Hamburger */}
