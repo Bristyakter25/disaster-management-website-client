@@ -43,12 +43,17 @@ const  AllAlertPanel = () => {
                 e.target.src = "https://via.placeholder.com/300x200";
               }}
             />
+            <div className="flex justify-between items-center mr-2">
             <h3 className="text-xl font-semibold">{alert.type}</h3>
-            <p><strong>Location:</strong> {alert.location}</p>
+            <button className="btn px-2 bg-gray-200 ">{alert.location}</button>
+            
+            
+            </div>
+            <p className="my-5 hover:underline text-xl font-bold ">{alert.details}</p>
             <p><strong>Severity:</strong> {alert.severity}</p>
             <p><strong>Year:</strong> {alert.year}</p>
             <p><strong>Time:</strong> {new Date(alert.timestamp).toLocaleString()}</p>
-            <p className="mt-2 text-sm text-gray-600">{alert.details}</p>
+            
           </div>
         ))}
       </div>

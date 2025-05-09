@@ -28,7 +28,7 @@ const  LiveAlerts = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Latest Disaster Alerts</h2>
+      <h2 className="text-2xl font-bold mb-4">Latest Headlines</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {alerts.map((alert) => (
           <div key={alert._id} className="border rounded-lg shadow-lg py-5 px-3"
@@ -49,7 +49,7 @@ const  LiveAlerts = () => {
             
             
             </div>
-            <p className="my-5 text-xl font-bold ">{alert.details}</p>
+            <p className="my-5 hover:underline text-xl font-bold ">{alert.details}</p>
             <p><strong>Severity:</strong> {alert.severity}</p>
             <p><strong>Year:</strong> {alert.year}</p>
             <p><strong>Time:</strong> {new Date(alert.timestamp).toLocaleString()}</p>
