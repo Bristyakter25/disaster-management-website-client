@@ -6,8 +6,9 @@ const AddAlertPanels = () => {
     e.preventDefault();
     const form = e.target;
     const newAlert = {
-      id: parseInt(form.id.value),
+      headline: form.headline.value,
       type: form.type.value,
+      description: form.description.value,
       location: form.location.value,
       severity: form.severity.value,
       timestamp: new Date(form.timestamp.value).toISOString(),
@@ -50,12 +51,16 @@ const AddAlertPanels = () => {
       <form onSubmit={handleSubmit} className="space-y-5">
         {[
           
-          { label: "Type", name: "type", type: "text" },
-          { label: "Location", name: "location", type: "text" },
-          { label: "Severity", name: "severity", type: "text" },
-          { label: "Timestamp", name: "timestamp", type: "datetime-local" },
-          { label: "Year", name: "year", type: "number" },
-          { label: "Image URL", name: "image", type: "text" },
+          
+            { label: "Headline", name: "headline", type: "text" }, // <-- new field
+            { label: "Type", name: "type", type: "text" },
+            { label: "Location", name: "location", type: "text" },
+            { label: "Severity", name: "severity", type: "text" },
+            { label: "Timestamp", name: "timestamp", type: "datetime-local" },
+            { label: "Year", name: "year", type: "number" },
+            { label: "Image URL", name: "image", type: "text" },
+          
+          
         ].map(({ label, name, type }) => (
           <div key={name}>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -81,6 +86,19 @@ const AddAlertPanels = () => {
             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
         </div>
+
+        <div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">
+    Description
+  </label>
+  <textarea
+    name="description"
+    required
+    rows={3}
+    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  ></textarea>
+</div>
+
 
         <button
           type="submit"

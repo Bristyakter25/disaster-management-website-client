@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const  LiveAlerts = () => {
+const  AllAlertPanel = () => {
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/latestAlerts")
+    fetch("http://localhost:5000/alertPanel")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -27,12 +27,13 @@ const  LiveAlerts = () => {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Latest Disaster Alerts</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="max-w-5xl mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">Live Disaster Alerts</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5"
+      >
         {alerts.map((alert) => (
-          <div key={alert._id} className="border rounded-lg shadow-lg py-5 px-3"
-          onClick={() => navigate(`/latestAlerts/${alert._id}`)}>
+          <div key={alert._id} className="border rounded-lg shadow-lg p-4"
+          onClick={() => navigate(`/alertPanel/${alert._id}`)}>
             <img
               src={alert.image}
               alt={alert.type}
@@ -42,18 +43,12 @@ const  LiveAlerts = () => {
                 e.target.src = "https://via.placeholder.com/300x200";
               }}
             />
-            
-            <div className="flex justify-between items-center mr-2">
             <h3 className="text-xl font-semibold">{alert.type}</h3>
-            <button className="btn px-2 bg-gray-200 ">{alert.location}</button>
-            
-            
-            </div>
-            <p className="my-5 text-xl font-bold ">{alert.details}</p>
+            <p><strong>Location:</strong> {alert.location}</p>
             <p><strong>Severity:</strong> {alert.severity}</p>
             <p><strong>Year:</strong> {alert.year}</p>
             <p><strong>Time:</strong> {new Date(alert.timestamp).toLocaleString()}</p>
-            
+            <p className="mt-2 text-sm text-gray-600">{alert.details}</p>
           </div>
         ))}
       </div>
@@ -61,4 +56,4 @@ const  LiveAlerts = () => {
   );
 };
 
-export default LiveAlerts;
+export default AllAlertPanel;

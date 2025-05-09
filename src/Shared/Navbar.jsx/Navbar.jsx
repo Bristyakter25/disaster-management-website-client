@@ -3,10 +3,10 @@ import { IoClose } from "react-icons/io5";
 import { useState } from "react";
 import logo from "../../assets/logo/logo.jpg";
 import { NavLink } from "react-router-dom";
-
+import { FaChevronDown } from "react-icons/fa";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
   const links = (
     <>
       <div className="lg:flex space-x-5 list-none">
@@ -16,9 +16,61 @@ const Navbar = () => {
         <li className="text-lg font-semibold">
           <NavLink>Live Updates</NavLink>
         </li>
-        <li className="text-lg font-semibold">
-          <NavLink to="/addAlertPanels">Include Alert Panels</NavLink>
+        <li className="text-lg font-semibold relative">
+  <div
+    tabIndex={0}
+    className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 rounded-md"
+    onClick={() => setIsOpen(!isOpen)}
+  >
+    Alert Panel
+    <FaChevronDown
+      className={`transform transition-transform duration-200 ${
+        isOpen ? "rotate-180" : "rotate-0"
+      }`}
+    />
+  </div>
+
+  {isOpen && (
+  <>
+    {/* Overlay */}
+    <div
+      className="fixed inset-0 bg-black/30 z-40"
+      onClick={() => setIsOpen(false)}
+    ></div>
+
+    {/* Dropdown positioned near top-center */}
+    <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50">
+      <ul
+        className="bg-base-100 rounded-lg shadow-lg w-64 py-4 space-y-2"
+        onClick={(e) => e.stopPropagation()} // prevent close on internal clicks
+      >
+        <li>
+          <NavLink
+            to="/addAlertPanels"
+            className="hover:bg-gray-100 px-4 py-2 rounded-md block hover:underline "
+            onClick={() => setIsOpen(false)}
+          >
+            Include Alert Panels
+          </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/allAlertPanel"
+            className="hover:bg-gray-100 px-4 py-2 hover:underline rounded-md block "
+            onClick={() => setIsOpen(false)}
+          >
+            All Alert Panels
+          </NavLink>
+        </li>
+      </ul>
+    </div>
+  </>
+)}
+
+</li>
+
+  
+
         <li className="text-lg font-semibold">
           <NavLink>Request Help</NavLink>
         </li>
