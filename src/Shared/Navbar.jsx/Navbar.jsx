@@ -13,9 +13,7 @@ const Navbar = () => {
         <li className="text-lg font-semibold">
           <NavLink to="/">Home</NavLink>
         </li>
-        <li className="text-lg font-semibold">
-          <NavLink>Live Updates</NavLink>
-        </li>
+        
         <li className="text-lg font-semibold relative">
   <div
     tabIndex={0}
@@ -76,6 +74,9 @@ const Navbar = () => {
         </li>
         <li className="text-lg font-semibold">
           <NavLink>Emergency Contacts</NavLink>
+        </li>
+        <li className="text-lg font-semibold">
+          <NavLink to ="/dashboard">Dashboard</NavLink>
         </li>
         <li className="text-lg font-semibold">
           <NavLink>Login</NavLink>

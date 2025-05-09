@@ -7,6 +7,7 @@ import AddAlertPanels from "../pages/AddAlertPanels";
 import AllAlertPanel from "../pages/AllAlertPanel";
 import LiveAlertDetails from "../Components/Home/LiveAlertDetails";
 import AllAlertPanelDetails from "../pages/AllAlertPanelDetails";
+import Dashboard from "../DashboardComponents/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: '/alertPanel/:id',
         element: <AllAlertPanelDetails></AllAlertPanelDetails>
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>
       }
      
     ]
