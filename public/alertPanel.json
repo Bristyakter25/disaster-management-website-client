@@ -1,0 +1,103 @@
+[
+    {
+      "id": 1,
+      "type": "Flood",
+      "location": "Sylhet, Bangladesh",
+      "severity": "High",
+      "timestamp": "2025-05-08T14:30:00Z",
+      "year": 2025,
+      "details": "River Surma overflowed after continuous rainfall. Evacuation in progress.",
+      "image": "https://i.ibb.co.com/N2m3V9F3/flood-in-sylhet.jpg"
+    },
+    {
+      "id": 2,
+      "type": "Cyclone",
+      "location": "Cox’s Bazar, Bangladesh",
+      "severity": "Moderate",
+      "timestamp": "2025-05-08T13:15:00Z",
+      "year": 2025,
+      "details": "Cyclone approaching southern coast. Landfall expected in 24 hours.",
+      "image": "https://i.ibb.co.com/CsKpxzfS/cyclone-in-cox-s-bazar.jpg"
+    },
+    {
+      "id": 3,
+      "type": "Earthquake",
+      "location": "Chattogram, Bangladesh",
+      "severity": "Severe",
+      "timestamp": "2024-12-12T21:05:00Z",
+      "year": 2024,
+      "details": "6.4 magnitude earthquake struck at 9:05 PM. Aftershocks expected.",
+      "image": "https://i.ibb.co.com/4yvYRV7/chattogram-earthquak.jpg"
+    },
+    {
+      "id": 4,
+      "type": "Landslide",
+      "location": "Rangamati, Bangladesh",
+      "severity": "High",
+      "timestamp": "2024-10-14T18:45:00Z",
+      "year": 2024,
+      "details": "Heavy rain triggered a landslide near hills. Rescue operations underway.",
+      "image": "https://i.ibb.co.com/QvSN5YmT/rangamati-landslide.jpg"
+    },
+    {
+      "id": 5,
+      "type": "Fire",
+      "location": "Dhaka, Bangladesh",
+      "severity": "Moderate",
+      "timestamp": "2023-08-21T23:30:00Z",
+      "year": 2023,
+      "details": "Warehouse fire reported in Tejgaon. Firefighters on scene.",
+      "image": "https://i.ibb.co.com/3GxfPQj/fire-in-dhaka.jpg"
+    },
+    {
+      "id": 6,
+      "type": "Drought",
+      "location": "Rajshahi, Bangladesh",
+      "severity": "Low",
+      "timestamp": "2023-07-11T10:00:00Z",
+      "year": 2023,
+      "details": "Extended dry period affecting crop yield. Water rationing in place.",
+      "image": "https://i.ibb.co.com/wZfngjVW/drought-in-rajshahi.jpg"
+    },
+    {
+      "id": 7,
+      "type": "Tornado",
+      "location": "Barisal, Bangladesh",
+      "severity": "Severe",
+      "timestamp": "2022-09-18T15:20:00Z",
+      "year": 2022,
+      "details": "Tornado caused destruction in rural areas. 50+ homes damaged.",
+      "image": "https://i.ibb.co.com/ymcHZDNm/tornado-in-barishal.jpg"
+    },
+    {
+      "id": 8,
+      "type": "Lightning Storm",
+      "location": "Mymensingh, Bangladesh",
+      "severity": "Moderate",
+      "timestamp": "2022-06-10T11:00:00Z",
+      "year": 2022,
+      "details": "Lightning strikes injured several and damaged power lines.",
+      "image": "https://i.ibb.co.com/hJGykLQk/Lightning-Storm-in-mymensingh.jpg"
+    },
+    {
+      "id": 9,
+      "type": "Heatwave",
+      "location": "Khulna, Bangladesh",
+      "severity": "High",
+      "timestamp": "2021-05-02T14:00:00Z",
+      "year": 2021,
+      "details": "Temperature exceeds 43°C. Health advisories issued.",
+      "image": "https://i.ibb.co.com/8ngVmWPR/Heatwave-in-khulna.jpg"
+    },
+    {
+      "id": 10,
+      "type": "Building Collapse",
+      "location": "Narayanganj, Bangladesh",
+      "severity": "Severe",
+      "timestamp": "2020-11-01T09:45:00Z",
+      "year": 2020,
+      "details": "Old commercial building collapsed. Rescue teams deployed.",
+      "image": "https://i.ibb.co.com/nM7SK4KY/Building-Collapse-in-Narayanganj.jpg"
+    }
+  ]
+  
