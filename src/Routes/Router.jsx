@@ -8,6 +8,9 @@ import AllAlertPanel from "../pages/AllAlertPanel";
 import LiveAlertDetails from "../Components/Home/LiveAlertDetails";
 import AllAlertPanelDetails from "../pages/AllAlertPanelDetails";
 import Dashboard from "../DashboardComponents/Dashboard";
+import Register from "../pages/Authentication/Register";
+import Login from "../pages/Authentication/Login";
+import Profile from "../DashboardComponents/RescueMember/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -36,8 +39,22 @@ export const router = createBrowserRouter([
         element: <AllAlertPanelDetails></AllAlertPanelDetails>
       },
       {
+        path: 'register',
+        element: <Register></Register>
+      },
+      {
+        path: "login",
+        element: <Login></Login>
+      },
+      {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>
+        element: <Dashboard></Dashboard>,
+        children: [
+          {
+            path: "rescuerProfile",
+            element: <Profile></Profile>
+          }
+        ]
       }
      
     ]
