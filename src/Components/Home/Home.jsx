@@ -5,11 +5,14 @@ import CurrentDisasterZones from './CurrentDisasterZones';
 
 const Home = () => {
     return (
-        <div className='lg:w-[1124px] w-[350px] mx-auto'>
-            <Banner></Banner>
+       <div>
+        <Banner></Banner>
+         <div className='lg:w-[1124px] w-[350px] mx-auto'>
+            
             <LiveAlerts></LiveAlerts>
             <CurrentDisasterZones></CurrentDisasterZones>
         </div>
+       </div>
     );
 };
 
