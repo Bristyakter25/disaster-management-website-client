@@ -24,7 +24,7 @@ const Banner = () => {
   <img src={pic1} className="w-full h-full object-cover" alt="Disaster Preview 1" />
   <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
     <div className="ml-10 lg:ml-20 max-w-2xl text-left space-y-4">
-      <h2 className="text-3xl lg:text-5xl font-bold text-blue-500">
+      <h2 className="text-3xl lg:text-5xl font-bold text-[#8DD8FF]">
         Disaster Management
       </h2>
       <p className="text-lg lg:text-xl">
@@ -58,39 +58,41 @@ const Banner = () => {
 
 {/* Fire Extinguisher - Slide 3 */}
 <div className="relative lg:h-[750px] h-[300px] w-full">
-  <img src={pic3} className="w-full h-full object-cover" alt="Fire Extinguisher Safety" />
+  <img src={pic3} className="w-full h-full" alt="Cyclone Emergency Response" />
   <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
     <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
-      <h2 className="text-3xl lg:text-5xl font-bold text-red-500">
-        Fire Prevention Begins Here
+      <h2 className="text-3xl lg:text-5xl font-bold text-cyan-400">
+        Battling the Storms
       </h2>
       <p className="text-lg lg:text-xl">
-        Proper use of fire extinguishers can prevent minor incidents from becoming major disasters.
+        Cyclone shelters, early warnings, and brave volunteers reduce loss of life.
       </p>
       <p className="text-base lg:text-lg">
-        Equip. Educate. Act—be the first responder in an emergency.
+        Coastal communities face the storm head-on with preparation and resilience.
       </p>
     </div>
   </div>
 </div>
 
+
 {/* Fire Rescue - Slide 4 */}
 <div className="relative lg:h-[750px] h-[300px] w-full">
-  <img src={pic4} className="w-full h-full object-cover" alt="Fire Rescue Operations" />
+  <img src={pic4} className="w-full h-full" alt="River Erosion Crisis in Bangladesh" />
   <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
     <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
-      <h2 className="text-3xl lg:text-5xl font-bold text-orange-400">
-        Courage in the Flames
+      <h2 className="text-3xl lg:text-5xl font-bold text-[#FFFA8D]">
+        Losing Land to the River
       </h2>
       <p className="text-lg lg:text-xl">
-        Trained rescue teams risk their lives to save others from burning structures.
+        Villages vanish overnight as mighty rivers erode banks relentlessly.
       </p>
       <p className="text-base lg:text-lg">
-        Swift evacuation, expert coordination, and community support make the difference.
+        Displaced families depend on rapid aid and long-term resettlement efforts.
       </p>
     </div>
   </div>
 </div>
+
 
 {/* Flood Response - Slide 5 */}
 <div className="relative lg:h-[750px] h-[300px] w-full">

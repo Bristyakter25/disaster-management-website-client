@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const  LiveAlerts = () => {
+const  LatestHeadlines = () => {
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -45,7 +45,7 @@ const  LiveAlerts = () => {
             
             <div className="flex justify-between items-center mr-2">
             <h3 className="text-xl font-semibold">{alert.type}</h3>
-            <button className="btn px-2 bg-gray-200 ">{alert.location}</button>
+            <button className="btn px-2 dark:bg-black bg-gray-200 ">{alert.location}</button>
             
             
             </div>
@@ -61,4 +61,4 @@ const  LiveAlerts = () => {
   );
 };
 
-export default LiveAlerts;
+export default LatestHeadlines;

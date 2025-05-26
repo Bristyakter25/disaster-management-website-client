@@ -5,12 +5,14 @@ import Home from "../Components/Home/Home";
 import ErrorPage from "../pages/ErrorPage";
 import AddAlertPanels from "../pages/AddAlertPanels";
 import AllAlertPanel from "../pages/AllAlertPanel";
-import LiveAlertDetails from "../Components/Home/LiveAlertDetails";
+
 import AllAlertPanelDetails from "../pages/AllAlertPanelDetails";
 import Dashboard from "../DashboardComponents/Dashboard";
 import Register from "../pages/Authentication/Register";
 import Login from "../pages/Authentication/Login";
 import Profile from "../DashboardComponents/RescueMember/Profile";
+import LatestHeadlineDetails from "../Components/Home/LatestHeadlineDetails";
+import LiveAlert from "../Components/LiveAlerts";
 
 export const router = createBrowserRouter([
     {
@@ -32,7 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path:"/latestAlerts/:id",
-        element:<LiveAlertDetails></LiveAlertDetails>
+        element:<LatestHeadlineDetails></LatestHeadlineDetails>
       },
       {
         path: '/alertPanel/:id',
@@ -45,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>
+      },
+      {
+        path: "liveAlerts",
+        element: <LiveAlert></LiveAlert>
       },
       {
         path: '/dashboard',

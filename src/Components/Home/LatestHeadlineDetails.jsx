@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const LiveAlertDetails = () => {
+const LatestHeadlineDetails = () => {
   const { id } = useParams();
   const [alert, setAlert] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -41,4 +41,4 @@ const LiveAlertDetails = () => {
   );
 };
 
-export default LiveAlertDetails;
+export default LatestHeadlineDetails;
