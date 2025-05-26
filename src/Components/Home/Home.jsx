@@ -1,7 +1,8 @@
-import React from 'react';
+
 import Banner from './Banner';
-import LiveAlerts from './LiveAlerts';
+
 import CurrentDisasterZones from './CurrentDisasterZones';
+import LatestHeadlines from './LatestHeadlines';
 
 const Home = () => {
     return (
@@ -9,7 +10,7 @@ const Home = () => {
         <Banner></Banner>
          <div className='lg:w-[1124px] w-[350px] mx-auto'>
             
-            <LiveAlerts></LiveAlerts>
+            <LatestHeadlines></LatestHeadlines>
             <CurrentDisasterZones></CurrentDisasterZones>
         </div>
        </div>
