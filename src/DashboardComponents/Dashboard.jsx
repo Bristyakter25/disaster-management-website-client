@@ -78,7 +78,7 @@ const Dashboard = () => {
               </h2>
               <li><NavLink>Overview Panel</NavLink></li>
               <li><NavLink>Incident Management</NavLink></li>
-              <li><NavLink>User Management</NavLink></li>
+              <li><NavLink to="/dashboard/manageUser">User Management</NavLink></li>
               <li><NavLink>Resource Allocation</NavLink></li>
               <li><NavLink>Analytics & Reports</NavLink></li>
             </>

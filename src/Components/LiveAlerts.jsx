@@ -25,9 +25,9 @@ const LiveAlert = () => {
 
 
   return (
-    <div className="p-4">
+    <div className="p-4 lg:w-[1024px] w-[350px] mx-auto">
       <h2 className="text-2xl font-bold mb-4 text-red-600">⚠️ Live Disaster Alerts</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
         {alerts.map((alert) => (
           <div key={alert._id} className="bg-white rounded-2xl shadow-md overflow-hidden border border-red-300">
             <img src={alert.image} alt={alert.type} className="w-full h-[250px] " />
@@ -41,6 +41,7 @@ const LiveAlert = () => {
               </div>
               <p className="text-sm text-gray-600 mt-1"><strong>Location:</strong> {alert.location}</p>
             </div>
+       
           </div>
         ))}
       </div>
