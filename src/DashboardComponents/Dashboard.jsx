@@ -5,15 +5,15 @@ import { GrHome } from "react-icons/gr";
 import { MdQueryStats } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import ThemeToggle from "../Components/themeToggle/ThemeToggle";
 
-// 🔧 Replace this with how you get the logged-in user email (auth context, etc.)
-// const loggedInUserEmail =  // hardcoded for now
+
 
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [role, setRole] = useState("");
 
-  const { user } = useContext(AuthContext); // ✅ Correct usage
+  const { user } = useContext(AuthContext); 
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -31,7 +31,7 @@ const Dashboard = () => {
     };
 
     fetchUserData();
-  }, [user?.email]); // Add dependency so it runs when user loads
+  }, [user?.email]); 
 
   return (
     <div className="flex w-full h-full">
@@ -76,8 +76,8 @@ const Dashboard = () => {
               <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">
                 Admin 
               </h2>
-              <li><NavLink>Overview Panel</NavLink></li>
-              <li><NavLink>Incident Management</NavLink></li>
+              <li><NavLink to="/dashboard/overviewPanel">Overview Panel</NavLink></li>
+              <li><NavLink to="/dashboard/incidentManagement">Incident Management</NavLink></li>
               <li><NavLink to="/dashboard/manageUser">User Management</NavLink></li>
               <li><NavLink>Resource Allocation</NavLink></li>
               <li><NavLink>Analytics & Reports</NavLink></li>
@@ -112,6 +112,12 @@ const Dashboard = () => {
       </div>
 
       <div className="flex-1 ml-5 lg:ml-0 p-4">
+     
+       <div className="flex justify-end mr-10">
+  <ThemeToggle />
+</div>
+
+    
         <Outlet />
       </div>
     </div>
@@ -119,3 +125,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
