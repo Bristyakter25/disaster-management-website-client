@@ -16,6 +16,7 @@ import LiveAlert from "../Components/LiveAlerts";
 import ManageUser from "../DashboardComponents/AdminRoutes/ManageUser";
 import IncidentManagement from "../DashboardComponents/AdminRoutes/IncidentManagement";
 import OverviewPanel from "../DashboardComponents/AdminRoutes/OverviewPanel";
+import EditIncidentData from "../DashboardComponents/AdminRoutes/EditIncidentData";
 
 export const router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
           {
             path: "incidentManagement",
             element: <IncidentManagement></IncidentManagement>
+          },
+          {
+            path: "edit-alert/:id",
+            element: <EditIncidentData></EditIncidentData>
           },
           {
             path: "overviewPanel",

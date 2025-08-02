@@ -71,7 +71,7 @@ const AddAlertPanels = () => {
           { label: "Type", name: "type", type: "text" },
           { label: "Location", name: "location", type: "text" },
          
-          { label: "Timestamp", name: "timestamp", type: "datetime-local" },
+          { label: "Timestamp", name: "timestamp", type: "date" },
           { label: "Year", name: "year", type: "number" },
           { label: "Image URL", name: "image", type: "text" },
           { label: "Number of People Affected", name: "affectedPopulation", type: "number" },
