@@ -102,7 +102,7 @@ const Profile = () => {
       <h2 className="text-2xl text-center font-semibold text-black capitalize dark:text-white">
         Rescue Member Profile
       </h2>
-      <section className="lg:w-[1124px] w-[350px] p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+      <section className="lg:w-[950px] w-[350px] p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
         {isSubmitted && (
           <p className="text-center text-green-600 font-medium mb-4">
             Profile already submitted.

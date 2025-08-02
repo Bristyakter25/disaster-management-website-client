@@ -131,7 +131,7 @@ const ManageUser = () => {
   <select
     value={user.role}
     onChange={(e) => handleUpdateRole(user._id, e.target.value)}
-    className="select select-sm select-bordered"
+    className="select bg-white text-[14px] dark:bg-black font-semibold text-black dark:text-white select-sm select-bordered"
   >
     <option value="Admin">Admin</option>
     <option value="Rescue Member">Rescue Member</option>
