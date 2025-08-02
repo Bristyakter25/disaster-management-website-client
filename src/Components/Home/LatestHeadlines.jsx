@@ -27,7 +27,7 @@ const  LatestHeadlines = () => {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="max-w-6xl mt-10 mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Latest Headlines</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {alerts.map((alert) => (
@@ -43,9 +43,9 @@ const  LatestHeadlines = () => {
               }}
             />
             
-            <div className="flex justify-between items-center mr-2">
-            <h3 className="text-xl font-semibold">{alert.type}</h3>
-            <button className="btn px-2 dark:bg-black bg-gray-200 ">{alert.location}</button>
+            <div className="flex  justify-between items-center mr-2">
+            <h3 className="text-xl font-semibold">type: {alert.type}</h3>
+            <button className="btn px-2 dark:bg-black  ">{alert.location}</button>
             
             
             </div>

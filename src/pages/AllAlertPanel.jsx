@@ -44,8 +44,8 @@ const  AllAlertPanel = () => {
               }}
             />
             <div className="flex justify-between items-center mr-2">
-            <h3 className="text-xl font-semibold">{alert.type}</h3>
-            <button className="btn px-2 bg-gray-200 ">{alert.location}</button>
+            <h3 className="text-xl font-bold">{alert.type}</h3>
+            <button className="btn px-2  bg-gray-200 dark:bg-black text-black dark:text-white">{alert.location}</button>
             
             
             </div>

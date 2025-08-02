@@ -1,0 +1,76 @@
+[
+  {
+    "id": "1",
+    "type": "supply",
+    "name": "Medical Kits",
+    "quantity": 120,
+    "status": "available",
+    "location": "Dhaka Central Warehouse",
+    "image":""
+  },
+  {
+    "id": "2",
+    "type": "supply",
+    "name": "Bottled Water",
+    "quantity": 3000,
+    "status": "available",
+    "location": "Chittagong Relief Depot",
+    "image":""
+  },
+  {
+    "id": "3",
+    "type": "vehicle",
+    "name": "Ambulance #12",
+    "capacity": 6,
+    "status": "available",
+    "location": "Dhaka General Hospital",
+    "image":""
+  },
+  {
+    "id": "4",
+    "type": "vehicle",
+    "name": "Relief Truck #7",
+    "capacity": "2 tons",
+    "status": "in-use",
+    "location": "En route to Sylhet",
+    "image":""
+  },
+  {
+    "id": "5",
+    "type": "team",
+    "name": "Medical Team A",
+    "members": 5,
+    "specialty": "Emergency First Aid",
+    "status": "available",
+    "location": "Barisal Field Base",
+    "image":""
+  },
+  {
+    "id": "6",
+    "type": "team",
+    "name": "Rescue Team Alpha",
+    "members": 8,
+    "specialty": "Search & Rescue",
+    "status": "dispatched",
+    "location": "Cox's Bazar",
+    "image":""
+  },
+  {
+    "id": "7",
+    "type": "supply",
+    "name": "Blankets",
+    "quantity": 500,
+    "status": "available",
+    "location": "Khulna Storage Unit",
+    "image":""
+  },
+  {
+    "id": "8",
+    "type": "vehicle",
+    "name": "Helicopter Z-1",
+    "capacity": "10 passengers",
+    "status": "maintenance",
+    "location": "Dhaka Airport",
+    "image":""
+  }
+]
