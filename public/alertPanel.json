@@ -1,0 +1,212 @@
+[
+  {
+    "_id": "681d15f27ab4c4532132acb0",
+    "type": "Tornado",
+    "location": "Barisal, Bangladesh",
+    "severity": "Severe",
+    "timestamp": "2022-09-18T15:20:00Z",
+    "year": 2022,
+    "details": "Tornado caused destruction in rural areas. 50+ homes damaged.",
+    "image": "https://i.ibb.co.com/ymcHZDNm/tornado-in-barishal.jpg",
+    "description": "Barisal’s rural heartland turned into a scene of chaos and destruction as a severe tornado swept through, leaving a trail of destruction. More than 50 homes have been damaged, with numerous families displaced. Emergency relief operations are ongoing, and local authorities are working to provide temporary shelter and food. Witnesses describe a terrifying sound followed by flying debris and collapsing structures. The community is now struggling to recover and rebuild amidst the devastation.\n\n",
+    "headline": "Devastating Tornado Wrecks Havoc in Barisal; Dozens of Homes Flattened",
+    "coordinates": {
+      "lat": 22.7010,
+      "lng": 90.3535
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acb1",
+    "type": "Lightning Storm",
+    "location": "Mymensingh, Bangladesh",
+    "severity": "Moderate",
+    "timestamp": "2022-06-10T11:00:00Z",
+    "year": 2022,
+    "details": "Lightning strikes injured several and damaged power lines.",
+    "image": "https://i.ibb.co.com/hJGykLQk/Lightning-Storm-in-mymensingh.jpg",
+    "description": "A sudden and intense lightning storm rocked Mymensingh in the late morning, leaving several people injured and causing widespread power outages. Local hospitals are treating burn victims, and power crews are racing to repair damaged lines. The Bangladesh Meteorological Department had issued storm warnings earlier, but the sheer force of the storm caught many by surprise. Climate experts point to rising storm frequencies in Bangladesh’s northern belt as a growing concern.",
+    "headline": "Lightning Storm Strikes Mymensingh, Injuring Several and Disrupting Power Supply",
+    "coordinates": {
+      "lat": 24.7493,
+      "lng": 90.4031
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acab",
+    "type": "Cyclone",
+    "location": "Cox’s Bazar, Bangladesh",
+    "severity": "Moderate",
+    "timestamp": "2025-05-08T13:15:00Z",
+    "year": 2025,
+    "details": "Cyclone approaching southern coast. Landfall expected in 24 hours.",
+    "image": "https://i.ibb.co.com/CsKpxzfS/cyclone-in-cox-s-bazar.jpg",
+    "description": "Residents along the southern coastline of Bangladesh are bracing for impact as a moderate cyclone steadily advances toward Cox’s Bazar. The Bangladesh Meteorological Department has issued warnings for potential storm surges and heavy rain, urging fishermen to return to shore and coastal communities to prepare for evacuation. Relief teams are on standby, and cyclone shelters are being prepared across the district. Local authorities emphasize that while the cyclone is classified as moderate, past storms have shown the unpredictable nature of such systems.",
+    "headline": "Coastal Alert Issued as Cyclone Approaches Cox’s Bazar; Landfall Expected Within 24 Hours",
+    "coordinates": {
+      "lat": 21.4272,
+      "lng": 92.0058
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acad",
+    "type": "Landslide",
+    "location": "Rangamati, Bangladesh",
+    "severity": "High",
+    "timestamp": "2024-10-14T18:45:00Z",
+    "year": 2024,
+    "details": "Heavy rain triggered a landslide near hills. Rescue operations underway.",
+    "image": "https://i.ibb.co.com/QvSN5YmT/rangamati-landslide.jpg",
+    "description": "A significant landslide struck Rangamati in southeastern Bangladesh after relentless downpours saturated the hilly region, displacing massive chunks of earth. Several homes have been buried, and rescue crews are racing against time to pull out survivors trapped beneath the debris. The Army and Fire Service have joined local teams in rescue efforts. The hilly districts have long been vulnerable to such disasters during the monsoon, and today’s tragedy is another grim reminder of the ongoing climate challenges faced by the region.\n\n",
+    "headline": "Deadly Landslide Hits Rangamati Hills Amid Heavy Rain; Rescue Ops in Full Swing",
+    "coordinates": {
+      "lat": 22.6330,
+      "lng": 92.2000
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acb2",
+    "type": "Heatwave",
+    "location": "Khulna, Bangladesh",
+    "severity": "High",
+    "timestamp": "2021-05-02T14:00:00Z",
+    "year": 2021,
+    "details": "Temperature exceeds 43°C. Health advisories issued.",
+    "image": "https://i.ibb.co.com/8ngVmWPR/Heatwave-in-khulna.jpg",
+    "description": "A brutal heatwave has descended upon Khulna, pushing temperatures beyond 43°C. Schools have been closed, outdoor labor is restricted, and hospitals are witnessing a rise in heatstroke cases. The elderly and children are being urged to remain indoors. Meteorologists indicate that the heatwave may persist for several more days. The government has initiated water distribution in the worst-affected areas and is working to provide cooling facilities in hospitals.\n\n",
+    "headline": "Scorching Temperatures in Khulna Cross 43°C; Authorities Issue Health Alerts",
+    "coordinates": {
+      "lat": 22.8456,
+      "lng": 89.5403
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acac",
+    "type": "Earthquake",
+    "location": "Chattogram, Bangladesh",
+    "severity": "Severe",
+    "timestamp": "2024-12-12T21:05:00Z",
+    "year": 2024,
+    "details": "6.4 magnitude earthquake struck at 9:05 PM. Aftershocks expected.",
+    "image": "https://i.ibb.co.com/4yvYRV7/chattogram-earthquak.jpg",
+    "description": "At exactly 9:05 PM on a winter evening, panic gripped the city of Chattogram as a 6.4 magnitude earthquake shook the region. Buildings trembled and power briefly flickered across neighborhoods. Though the full extent of the damage is yet to be assessed, early reports confirm several structural damages and injuries. Authorities have urged residents to remain outdoors and avoid high-rise buildings as aftershocks are anticipated in the coming hours. Emergency response teams have been mobilized, and rescue operations are ongoing in affected zones.",
+    "headline": "Powerful 6.4 Magnitude Earthquake Jolts Chattogram; Aftershocks Expected",
+    "coordinates": {
+      "lat": 22.3569,
+      "lng": 91.7832
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acae",
+    "type": "Fire",
+    "location": "Dhaka, Bangladesh",
+    "severity": "Moderate",
+    "timestamp": "2023-08-21T23:30:00Z",
+    "year": 2023,
+    "details": "Warehouse fire reported in Tejgaon. Firefighters on scene.",
+    "image": "https://i.ibb.co.com/3GxfPQj/fire-in-dhaka.jpg",
+    "description": "Late into the night, a raging fire engulfed a warehouse in the industrial zone of Tejgaon, Dhaka. Plumes of black smoke were visible from kilometers away as firefighters rushed to contain the flames. Initial investigations suggest electrical malfunction as a possible cause. Fortunately, the fire was contained before it could spread to nearby factories, though several tons of stored goods were destroyed. Authorities are investigating further while ensuring the safety of the nearby industrial belt.",
+    "headline": "Massive Warehouse Blaze Breaks Out in Dhaka’s Tejgaon Area",
+    "coordinates": {
+      "lat": 23.8103,
+      "lng": 90.4125
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acaa",
+    "type": "Flood",
+    "location": "Sylhet, Bangladesh",
+    "severity": "High",
+    "timestamp": "2025-05-08T14:30:00Z",
+    "year": 2025,
+    "details": "River Surma overflowed after continuous rainfall. Evacuation in progress.",
+    "image": "https://i.ibb.co.com/N2m3V9F3/flood-in-sylhet.jpg",
+    "description": "In an alarming turn of events, Sylhet, one of the major cities in northeastern Bangladesh, has been severely impacted by continuous rainfall, causing the Surma River to overflow its banks. Streets, homes, and marketplaces lie submerged as local authorities scramble to evacuate residents to higher ground. The district administration has declared a state of emergency, deploying rescue teams and coordinating shelter operations. With rainfall showing no sign of stopping, meteorologists warn that water levels may continue to rise, exacerbating the crisis.\n\n",
+    "headline": "Sylhet Under Water as River Surma Overflows; Mass Evacuation Underway",
+    "coordinates": {
+      "lat": 24.8949,
+      "lng": 91.8687
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acaf",
+    "type": "Drought",
+    "location": "Rajshahi, Bangladesh",
+    "severity": "Low",
+    "timestamp": "2023-07-11T10:00:00Z",
+    "year": 2023,
+    "details": "Extended dry period affecting crop yield. Water rationing in place.",
+    "image": "https://i.ibb.co.com/wZfngjVW/drought-in-rajshahi.jpg",
+    "description": "Rajshahi is witnessing one of its most prolonged dry spells in recent years. Fields lie parched, irrigation canals have dried up, and local farmers are struggling to save their crops. Authorities have begun implementing water rationing policies, and government aid is being rushed to affected villages. Experts warn that if the situation persists, the region may face food supply disruptions. Environmental groups cite the crisis as a symptom of worsening climate patterns.",
+    "headline": "Rajshahi Grapples with Prolonged Drought, Farmers Face Uncertain Future",
+    "coordinates": {
+      "lat": 24.3745,
+      "lng": 88.6042
+    }
+  },
+  {
+    "_id": "681d15f27ab4c4532132acb3",
+    "type": "Building Collapse",
+    "location": "Narayanganj, Bangladesh",
+    "severity": "Severe",
+    "timestamp": "2020-11-01T09:45:00Z",
+    "year": 2020,
+    "details": "Old commercial building collapsed. Rescue teams deployed.",
+    "image": "https://i.ibb.co.com/nM7SK4KY/Building-Collapse-in-Narayanganj.jpg",
+    "description": "A catastrophic building collapse in the industrial hub of Narayanganj has left the area in shock. An aging commercial structure crumbled suddenly during early business hours. Rescue workers, aided by local volunteers, are combing through the rubble for survivors. Preliminary findings suggest years of structural neglect may have contributed to the disaster. The incident reignites debates about urban safety and enforcement of construction regulations in fast-developing cities.",
+    "headline": "Tragedy Strikes as Old Building Collapses in Narayanganj; Rescue Teams Deployed",
+    "coordinates": {
+      "lat": 23.6167,
+      "lng": 90.5000
+    }
+  },
+  {
+    "_id": "681d1db3e48237083ffeac2c",
+
+    "type": "Flood",
+    "location": "Khulna, Bangladesh",
+    "severity": "Moderate",
+    "timestamp": "2024-08-21T21:09:00.000Z",
+    "year": 2024,
+    "details": "Heavy rains caused river water levels to rise in Khulna. Evacuation ongoing.",
+    "image": "https://i.ibb.co.com/sJRF2gw0/flood-in-khulna.jpg",
+    "description": "Following relentless rainfall, river levels in Khulna surged dramatically, causing significant flooding in low-lying areas. Entire communities are underwater, and schools and administrative buildings have been converted into emergency shelters. Boats are being used to distribute relief and ferry residents. Authorities warn that if rain continues, additional areas could be submerged. Efforts are being coordinated across governmental and non-governmental bodies to manage the crisis.",
+    "headline": "Khulna Faces Flood Emergency as Torrential Rains Swell Rivers Beyond Danger Marks",
+    "coordinates": {
+      "lat": 22.8456,
+      "lng": 89.5403
+    }
+  },
+  {
+    "_id": "681d1e19e48237083ffeac2d",
+    "headline": "Massive Fire Erupts in Chandpur Warehouse; Firefighters Battle Blaze Overnight",
+    "type": "Fire",
+ "description": "A major fire broke out at a warehouse facility in Chandpur just before midnight, sending shockwaves through the area. Residents reported hearing loud explosions before seeing flames shoot into the sky. Multiple firefighting units were dispatched and worked through the night to contain the blaze. Though no casualties have been reported so far, significant property damage has occurred. An investigation is underway to determine the cause, with early speculation pointing to flammable chemical storage.",
+ "location": "Chandpur, Bangladesh",
+ "severity": "Severe",
+    "timestamp": "2023-08-14T21:11:00.000Z",
+    "year": 2023,
+    "details": "Massive warehouse fire in Chandpur. Firefighters working to control the blaze.",
+    "image": "https://i.ibb.co.com/NdYbbyhR/fire-in-chandpur.jpg",
+    "coordinates": {
+      "lat": 23.2333,
+      "lng": 90.6667
+    }
+    
+  },
+  {
+    "_id": "681e12a1aab8b08bd818b033",
+    "headline": "tgrftr",
+    "type": "rtrtr",
+    "description": "tyryr",
+    "location": "Bangladesh Medical College, Dhaka, Bangladesh",
+    "severity": "Moderate",
+    "timestamp": "2025-05-02T14:35:00.000Z",
+    "year": 2023,
+    "details": "trryr",
+    "image": "https://i.ibb.co/jZJJPLM/crystal-dawn.jpg",
+    "coordinates": {
+      "lat": 23.8747993,
+      "lng": 90.396733
+    }
+  }
+]

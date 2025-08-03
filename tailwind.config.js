@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      tomorrow: ['Tomorrow', 'sans-serif'],
+    }
+    
   },
   plugins: [
     require('daisyui'),
