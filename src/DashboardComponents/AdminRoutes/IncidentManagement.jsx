@@ -83,12 +83,12 @@ const IncidentManagement = () => {
         <tbody>
           {alerts.map((alert, index) => (
             <tr key={alert._id} className="hover:bg-gray-50 dark:hover:bg-black">
-              <td className="border px-4 py-2 w-[30px]">{index + 1}</td>
-              <td className="border px-2 py-2 w-[300px]">{alert.headline}</td>
-              <td className="border px-2 py-2 ">{alert.location}</td>
-              <td className="border px-2 py-2">{alert.severity}</td>
-              <td className="border px-2 py-2">{alert.timestamp}</td>
-              <td className="border px-2 py-2">
+              <td className="border px-4 py-3 w-[30px]">{index + 1}</td>
+              <td className="border px-3 py-3 w-[300px]">{alert.headline}</td>
+              <td className="border px-3 py-3 ">{alert.location}</td>
+              <td className="border px-3 py-3">{alert.severity}</td>
+              <td className="border px-3 py-3">{alert.timestamp}</td>
+              <td className="border px-3 py-3 flex items-center">
                 <button
                   onClick={() => handleEdit(alert._id)}
                   className="bg-blue-500 text-white px-2 py-1 rounded mr-2 hover:bg-blue-600"
@@ -97,9 +97,9 @@ const IncidentManagement = () => {
                 </button>
                 <button
                   onClick={() => handleDelete(alert._id)}
-                  className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                  className="bg-red-500 text-white py-1 px-1  rounded hover:bg-red-600"
                 >
-                 <MdDeleteForever />
+                 <MdDeleteForever  className="text-2xl "/>
                 </button>
               </td>
             </tr>

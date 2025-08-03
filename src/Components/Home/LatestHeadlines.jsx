@@ -44,7 +44,7 @@ const  LatestHeadlines = () => {
             />
             
             <div className="flex  justify-between items-center mr-2">
-            <h3 className="text-xl font-semibold">type: {alert.type}</h3>
+            <h3 className="text-xl font-semibold">{alert.type}</h3>
             <button className="btn px-2 dark:bg-black  ">{alert.location}</button>
             
             
