@@ -43,14 +43,14 @@ const Dashboard = () => {
       </button>
 
       <div
-        className={`fixed lg:relative min-h-screen top-0 left-0 lg:w-72 w-[200px]  overflow-y-auto bg-[#F5EFFF] dark:bg-[#00072D] p-5 transition-transform duration-300 ${
+        className={`fixed lg:relative min-h-screen top-0 left-0 lg:w-60  w-[200px]  overflow-y-auto bg-[#F5EFFF] dark:bg-[#00072D] p-5 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
       >
          <h1 className="text-center my-5 font-bold text-2xl dark:text-[#A294F9] text-[#4635B1]">
               Dashboard
             </h1>
-        <ul className="menu">
+        <ul className="menu gap-y-3">
           <h2 className="text-center my-5 font-bold text-xl dark:text-[#A294F9] text-[#4635B1]">
             Menu
           </h2>
@@ -79,7 +79,7 @@ const Dashboard = () => {
               <li><NavLink to="/dashboard/overviewPanel">Overview Panel</NavLink></li>
               <li><NavLink to="/dashboard/incidentManagement">Incident Management</NavLink></li>
               <li><NavLink to="/dashboard/manageUser">User Management</NavLink></li>
-              <li><NavLink>Resource Allocation</NavLink></li>
+              <li><NavLink to="/dashboard/resourceAllocation">Resource Allocation</NavLink></li>
               <li><NavLink>Analytics & Reports</NavLink></li>
             </>
           )}

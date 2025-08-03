@@ -16,6 +16,7 @@ const Home = () => {
             
             <LatestHeadlines></LatestHeadlines>
             <CurrentDisasterZones></CurrentDisasterZones>
+            
         </div>
        </div>
     );
