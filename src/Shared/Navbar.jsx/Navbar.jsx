@@ -147,7 +147,7 @@ const Navbar = () => {
         </NavLink>
       </li>
 
-      {/* 🌙 Theme Toggle (Both Desktop & Mobile) */}
+     
       <li>
         <button
           onClick={() => setDarkMode(!darkMode)}
@@ -165,7 +165,7 @@ const Navbar = () => {
       {/* Main Navbar */}
       <div className="navbar justify-between items-center px-6 lg:px-10">
         <div className="flex items-center">
-          <img src={logo} alt="Logo" className="w-[40px]" />
+          <img src={logo} alt="Logo" className="w-[40px] bg-transparent rounded-full" />
           <p className="text-xl ml-2 font-bold">ResQLink</p>
         </div>
 
