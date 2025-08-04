@@ -27,7 +27,7 @@ const MarqueeAlert = () => {
 
   return (
     <div className="bg-gradient-to-r from-white to-red-200 shadow-md h-[80px] flex items-center rounded-md overflow-hidden">
-      {/* Left label */}
+    
       <div className="bg-red-600 h-full flex items-center px-5 text-white font-bold text-lg tracking-wide">
         <AlertTriangle className="mr-2" size={20} />
         Live Alerts
