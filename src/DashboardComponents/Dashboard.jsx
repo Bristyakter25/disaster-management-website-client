@@ -81,7 +81,7 @@ const Dashboard = () => {
               <li><NavLink to="/dashboard/reportIncident">Report an Incident</NavLink></li>
               <li><NavLink to="/dashboard/myReports">My Reports</NavLink></li>
               <li><NavLink to="/dashboard/liveUpdates">Live Updates</NavLink></li>
-              <li><NavLink>Safety & Guidelines</NavLink></li>
+              <li><NavLink to="/dashboard/safetyContents">Safety & Guidelines</NavLink></li>
             </>
           )}
         </ul>

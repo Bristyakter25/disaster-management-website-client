@@ -21,6 +21,7 @@ import ResourceAllocation from "../DashboardComponents/AdminRoutes/ResourceAlloc
 import ReportIncident from "../DashboardComponents/CitizenRoutes/ReportIncident";
 import MyReports from "../DashboardComponents/CitizenRoutes/MyReports";
 import LiveUpdates from "../DashboardComponents/CitizenRoutes/LiveUpdates";
+import SafetyContents from "../DashboardComponents/CitizenRoutes/SafetyContents";
 
 export const router = createBrowserRouter([
     {
@@ -99,6 +100,10 @@ export const router = createBrowserRouter([
           {
             path: "liveUpdates",
             element: <LiveUpdates></LiveUpdates>
+          },
+          {
+            path: "safetyContents",
+            element: <SafetyContents></SafetyContents>
           }
         ]
       }
