@@ -1,0 +1,150 @@
+[
+  {
+    "_id": "689127a6b56fe087f1c694df",
+    "type": "flood",
+    "title": "What to Do During a Flood",
+    "steps": [
+      "Move to higher ground immediately.",
+      "Avoid walking or driving through flood waters.",
+      "Disconnect electrical appliances if instructed.",
+      "Listen to authorities on radio or SMS alerts."
+    ],
+    "tags": [
+      "flood",
+      "water",
+      "emergency"
+    ]
+  },
+  {
+    "_id": "689127a6b56fe087f1c694e0",
+    "type": "earthquake",
+    "title": "Earthquake Safety Guidelines",
+    "steps": [
+      "Drop, Cover, and Hold On until shaking stops.",
+      "Stay away from windows and heavy furniture.",
+      "After shaking, evacuate the building calmly.",
+      "Avoid using elevators."
+    ],
+    "tags": [
+      "earthquake",
+      "tremor",
+      "emergency"
+    ]
+  },
+  {
+    "_id": "689127a6b56fe087f1c694e1",
+    "type": "cyclone",
+    "title": "Cyclone Preparedness Instructions",
+    "steps": [
+      "Secure doors, windows, and loose outdoor items.",
+      "Stay indoors and avoid going near water bodies.",
+      "Keep emergency lights and battery radios ready.",
+      "Follow official evacuation orders."
+    ],
+    "tags": [
+      "cyclone",
+      "storm",
+      "wind"
+    ]
+  },
+  {
+    "_id": "689127a6b56fe087f1c694e2",
+    "type": "fire",
+    "title": "Fire Emergency Guidelines",
+    "steps": [
+      "Use stairs, not elevators, to evacuate.",
+      "Cover your nose with a cloth to avoid smoke inhalation.",
+      "Stop, Drop, and Roll if clothes catch fire.",
+      "Call emergency services immediately."
+    ],
+    "tags": [
+      "fire",
+      "burn",
+      "smoke"
+    ]
+  },
+  {
+    "_id": "689127a6b56fe087f1c694e3",
+    "type": "heatwave",
+    "title": "Staying Safe During a Heatwave",
+    "steps": [
+      "Stay hydrated and avoid outdoor activities during peak hours.",
+      "Wear loose, light-colored clothing.",
+      "Use fans or cool showers to lower body temperature.",
+      "Check on elderly or ill family members."
+    ],
+    "tags": [
+      "heat",
+      "summer",
+      "weather"
+    ]
+  },
+  {
+    "_id": "689127a6b56fe087f1c694e4",
+    "type": "landslide",
+    "title": "Landslide Safety Tips",
+    "steps": [
+      "Move away from steep slopes during heavy rain.",
+      "Listen to local warnings or geological alerts.",
+      "Evacuate immediately if cracks or tilting trees are noticed.",
+      "Stay alert to sudden changes in water flow or noise."
+    ],
+    "tags": [
+      "landslide",
+      "slope",
+      "rain"
+    ]
+  },
+  {
+    "_id": "689127a6b56fe087f1c694e5",
+    "type": "emergency-kit",
+    "title": "Basic Emergency Kit Checklist",
+    "steps": [
+      "Drinking water (3 days supply)",
+      "Non-perishable food items",
+      "Flashlight with extra batteries",
+      "First-aid kit and essential medicines",
+      "Copies of important documents"
+    ],
+    "tags": [
+      "kit",
+      "emergency",
+      "prep"
+    ]
+  },
+  {
+    "_id": "689127a6b56fe087f1c694e6",
+    "type": "general",
+    "title": "General Emergency Hotlines",
+    "steps": [
+      "Fire Service: 199",
+      "Ambulance: 16263",
+      "Police: 999",
+      "National Disaster Hotline: 1090",
+      "Local Shelter Hotline: 1671"
+    ],
+    "tags": [
+      "hotline",
+      "help",
+      "contact"
+    ]
+  },
+  {
+  "_id": "689127a6b56fe087f1c694e7",
+  "type": "lightning",
+  "title": "Lightning Storm Safety Tips",
+  "steps": [
+    "Seek shelter indoors immediately.",
+    "Avoid using electrical appliances or wired phones.",
+    "Stay away from windows, doors, and anything metal.",
+    "Wait at least 30 minutes after the last thunder before going outside."
+  ],
+  "tags": [
+    "lightning",
+    "storm",
+    "thunder",
+    "weather"
+  ]
+}
+
+]
