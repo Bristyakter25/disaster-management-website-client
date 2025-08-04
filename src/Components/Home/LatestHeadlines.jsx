@@ -27,32 +27,32 @@ const  LatestHeadlines = () => {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="max-w-6xl mt-10 mx-auto p-4">
+    <div className="max-w-3xl mt-10  ">
       <h2 className="text-2xl font-bold mb-4">Latest Headlines</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1  lg:grid-cols-2 gap-5">
         {alerts.map((alert) => (
-          <div key={alert._id} className="border rounded-lg shadow-lg py-5 px-3"
+          <div key={alert._id} className=" rounded-lg shadow-lg "
           onClick={() => navigate(`/latestAlerts/${alert._id}`)}>
             <img
               src={alert.image}
               alt={alert.type}
-              className="w-full h-48 object-cover mb-3 rounded"
+              className="w-full h-60  mb-3 rounded"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = "https://via.placeholder.com/300x200";
               }}
             />
             
-            <div className="flex  justify-between items-center mr-2">
+            <div className="flex py-3 px-3 justify-between items-center mr-2">
             <h3 className="text-xl font-semibold">{alert.type}</h3>
             <button className="btn px-2 dark:bg-black  ">{alert.location}</button>
             
             
             </div>
-            <p className="my-5 hover:underline text-xl font-bold ">{alert.details}</p>
-            <p><strong>Severity:</strong> {alert.severity}</p>
-            <p><strong>Year:</strong> {alert.year}</p>
-            <p><strong>Time:</strong> {new Date(alert.timestamp).toLocaleString()}</p>
+            <p className="my-5 px-3 hover:underline text-xl font-bold ">{alert.details}</p>
+            <p className="mb-2 px-3"><strong>Severity:</strong> {alert.severity}</p>
+            <p className="mb-2 px-3"><strong>Year:</strong> {alert.year}</p>
+            <p className="mb-2 px-3"><strong>Time:</strong> {new Date(alert.timestamp).toLocaleString()}</p>
             
           </div>
         ))}

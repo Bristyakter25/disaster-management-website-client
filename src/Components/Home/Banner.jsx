@@ -10,7 +10,7 @@ import pic6 from '../../assets/bannerImages/banner-6.jpg';
 
 const Banner = () => {
     return (
-        <div className="mb-10  w-full ">
+        <div className="mb-5  w-full ">
           <Carousel
   autoPlay={true}
   infiniteLoop={true}
@@ -20,7 +20,7 @@ const Banner = () => {
   showStatus={false}       
   showArrows={true}        
 >
-<div className="relative lg:h-[750px] h-[300px] w-full">
+<div className="relative lg:h-[640px] h-[300px] w-full">
   <img src={pic1} className="w-full h-full object-cover" alt="Disaster Preview 1" />
   <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
     <div className="ml-10 lg:ml-20 max-w-2xl text-left space-y-4">
@@ -37,8 +37,8 @@ const Banner = () => {
   </div>
 </div>
 
-<div className="relative lg:h-[750px] h-[300px] w-full">
-  <div className="lg:h-[750px] h-[300px]">
+<div className="relative lg:h-[640px] h-[300px] w-full">
+  <div className="lg:h-[640px] h-[300px]">
     <img src={pic2} className="w-full h-full object-cover" alt="Disaster Preview 2" />
     <div className="absolute  inset-0 flex items-center text-white bg-black bg-opacity-50">
       <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
@@ -57,7 +57,7 @@ const Banner = () => {
 </div>
 
 {/* Fire Extinguisher - Slide 3 */}
-<div className="relative lg:h-[750px] h-[300px] w-full">
+<div className="relative lg:h-[640px] h-[300px] w-full">
   <img src={pic3} className="w-full h-full" alt="Cyclone Emergency Response" />
   <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
     <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
@@ -76,7 +76,7 @@ const Banner = () => {
 
 
 {/* Fire Rescue - Slide 4 */}
-<div className="relative lg:h-[750px] h-[300px] w-full">
+<div className="relative lg:h-[640px] h-[300px] w-full">
   <img src={pic4} className="w-full h-full" alt="River Erosion Crisis in Bangladesh" />
   <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
     <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
@@ -95,7 +95,7 @@ const Banner = () => {
 
 
 {/* Flood Response - Slide 5 */}
-<div className="relative lg:h-[750px] h-[300px] w-full">
+<div className="relative lg:h-[640px] h-[300px] w-full">
   <img src={pic5} className="w-full h-full object-cover" alt="Flood Emergency" />
   <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
     <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
@@ -113,7 +113,7 @@ const Banner = () => {
 </div>
 
 {/* Flood Aftermath - Slide 6 */}
-<div className="relative lg:h-[750px] h-[300px] w-full">
+<div className="relative lg:h-[640px] h-[300px] w-full">
   <img src={pic6} className="w-full h-full object-cover" alt="Flood Recovery" />
   <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
     <div className="ml-10 lg:ml-20 max-w-2xl text-left space-y-4">

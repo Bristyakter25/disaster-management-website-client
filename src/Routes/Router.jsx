@@ -19,6 +19,7 @@ import OverviewPanel from "../DashboardComponents/AdminRoutes/OverviewPanel";
 import EditIncidentData from "../DashboardComponents/AdminRoutes/EditIncidentData";
 import ResourceAllocation from "../DashboardComponents/AdminRoutes/ResourceAllocation";
 import ReportIncident from "../DashboardComponents/CitizenRoutes/ReportIncident";
+import MyReports from "../DashboardComponents/CitizenRoutes/MyReports";
 
 export const router = createBrowserRouter([
     {
@@ -89,6 +90,10 @@ export const router = createBrowserRouter([
           {
             path: "reportIncident",
             element: <ReportIncident></ReportIncident>
+          },
+          {
+            path: "myReports",
+            element: <MyReports></MyReports>
           }
         ]
       }

@@ -7,75 +7,56 @@ import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import ThemeToggle from "../Components/themeToggle/ThemeToggle";
 
-
-
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [role, setRole] = useState("");
-
-  const { user } = useContext(AuthContext); 
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      if (!user?.email) return; // guard clause
-
+      if (!user?.email) return;
       try {
         const res = await fetch(`http://localhost:5000/users/${user.email}`);
         const userData = await res.json();
-        if (userData?.role) {
-          setRole(userData.role);
-        }
+        if (userData?.role) setRole(userData.role);
       } catch (err) {
         console.error("Failed to fetch user role", err);
       }
     };
-
     fetchUserData();
-  }, [user?.email]); 
+  }, [user?.email]);
 
   return (
-    <div className="flex w-full h-full">
+    <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-900">
+
+      {/* Mobile Toggle Button */}
       <button
-        className="lg:hidden fixed top-4 left-4 z-40 p-2 bg-[#4635B1] text-white rounded-md"
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-[#4635B1] text-white rounded-md"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
       </button>
 
+      {/* Sidebar */}
       <div
-        className={`fixed lg:relative min-h-screen top-0 left-0 lg:w-60  w-[200px]  overflow-y-auto bg-[#F5EFFF] dark:bg-[#00072D] p-5 transition-transform duration-300 ${
+        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-[200px] lg:w-60 overflow-y-auto bg-[#F5EFFF] dark:bg-[#00072D] p-5 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
       >
-         <h1 className="text-center my-5 font-bold text-2xl dark:text-[#A294F9] text-[#4635B1]">
-              Dashboard
-            </h1>
+        <h1 className="text-center my-5 font-bold text-2xl dark:text-[#A294F9] text-[#4635B1]">
+          Dashboard
+        </h1>
         <ul className="menu gap-y-3">
           <h2 className="text-center my-5 font-bold text-xl dark:text-[#A294F9] text-[#4635B1]">
             Menu
           </h2>
-          <li>
-            <NavLink to="/dashboard/allChart">
-              <MdQueryStats /> Camp Fees Distribution
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/">
-              <GrHome /> Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/availableCamps">
-              <FaHouseMedicalFlag /> Available Camps
-            </NavLink>
-          </li>
+          <li><NavLink to="/dashboard/allChart"><MdQueryStats /> Camp Fees Distribution</NavLink></li>
+          <li><NavLink to="/"><GrHome /> Home</NavLink></li>
+          <li><NavLink to="/availableCamps"><FaHouseMedicalFlag /> Available Camps</NavLink></li>
 
-          {/* Role-based routes */}
           {role === "Admin" && (
             <>
-              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">
-                Admin 
-              </h2>
+              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Admin</h2>
               <li><NavLink to="/dashboard/overviewPanel">Overview Panel</NavLink></li>
               <li><NavLink to="/dashboard/incidentManagement">Incident Management</NavLink></li>
               <li><NavLink to="/dashboard/manageUser">User Management</NavLink></li>
@@ -86,9 +67,7 @@ const Dashboard = () => {
 
           {role === "Rescue Member" && (
             <>
-              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">
-                Rescue Member 
-              </h2>
+              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Rescue Member</h2>
               <li><NavLink>Assigned Missions</NavLink></li>
               <li><NavLink>Update Status</NavLink></li>
               <li><NavLink>Emergency Alerts</NavLink></li>
@@ -98,26 +77,22 @@ const Dashboard = () => {
 
           {role === "Citizen" && (
             <>
-              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">
-                Citizen 
-              </h2>
+              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Citizen</h2>
               <li><NavLink to="/dashboard/reportIncident">Report an Incident</NavLink></li>
-              <li><NavLink>My Reports</NavLink></li>
+              <li><NavLink to="/dashboard/myReports">My Reports</NavLink></li>
               <li><NavLink>Live Updates</NavLink></li>
               <li><NavLink>Safety & Guidelines</NavLink></li>
             </>
           )}
         </ul>
-        <div className="divider"></div>
+        <div className="divider" />
       </div>
 
-      <div className="flex-1 ml-5 lg:ml-0 p-4">
-     
-       <div className="flex justify-end mr-10">
-  <ThemeToggle />
-</div>
-
-    
+      {/* Main Content */}
+      <div className="flex-1 h-screen overflow-y-auto p-4 pt-6">
+        <div className="flex justify-end mb-4">
+          <ThemeToggle />
+        </div>
         <Outlet />
       </div>
     </div>
@@ -125,5 +100,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
