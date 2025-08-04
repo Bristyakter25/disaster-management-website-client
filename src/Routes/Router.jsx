@@ -18,6 +18,7 @@ import IncidentManagement from "../DashboardComponents/AdminRoutes/IncidentManag
 import OverviewPanel from "../DashboardComponents/AdminRoutes/OverviewPanel";
 import EditIncidentData from "../DashboardComponents/AdminRoutes/EditIncidentData";
 import ResourceAllocation from "../DashboardComponents/AdminRoutes/ResourceAllocation";
+import ReportIncident from "../DashboardComponents/CitizenRoutes/ReportIncident";
 
 export const router = createBrowserRouter([
     {
@@ -84,6 +85,10 @@ export const router = createBrowserRouter([
           {
             path: "overviewPanel",
             element: <OverviewPanel></OverviewPanel>
+          },
+          {
+            path: "reportIncident",
+            element: <ReportIncident></ReportIncident>
           }
         ]
       }

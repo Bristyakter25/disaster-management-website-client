@@ -88,7 +88,7 @@ const ResourceAllocation = () => {
       {/* Dispatch Section */}
       {/* Dispatch Section */}
 {item.status !== "dispatched" && (
-  <div className="mt-4 space-y-2">
+  <div className="mt-4 space-y-2 ">
     <select
       value={item.selectedLocation || ""}
       onChange={(e) => {
@@ -99,11 +99,11 @@ const ResourceAllocation = () => {
           )
         );
       }}
-      className="w-full px-3 py-1 rounded border dark:border-zinc-600 dark:bg-zinc-700"
+      className="w-full px-3 py-1 rounded border bg-white dark:border-zinc-600 dark:bg-zinc-700"
     >
-      <option value="" disabled>Select Location</option>
+      <option className="bg-white dark:bg-black text-black dark:text-white" value="" disabled>Select Location</option>
       {locations.map((loc) => (
-        <option key={loc} value={loc}>{loc}</option>
+        <option className="bg-white dark:bg-black text-black dark:text-white" key={loc} value={loc}>{loc}</option>
       ))}
     </select>
 

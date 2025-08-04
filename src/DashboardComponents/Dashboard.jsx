@@ -101,7 +101,7 @@ const Dashboard = () => {
               <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">
                 Citizen 
               </h2>
-              <li><NavLink>Report an Incident</NavLink></li>
+              <li><NavLink to="/dashboard/reportIncident">Report an Incident</NavLink></li>
               <li><NavLink>My Reports</NavLink></li>
               <li><NavLink>Live Updates</NavLink></li>
               <li><NavLink>Safety & Guidelines</NavLink></li>
