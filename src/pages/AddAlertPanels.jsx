@@ -63,8 +63,8 @@ const AddAlertPanels = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-xl mt-10">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Add New Alert Panel</h2>
+    <div className="max-w-3xl mx-auto p-6 bg-white dark:bg-slate-800 shadow-md rounded-xl mt-10">
+      <h2 className="text-2xl text-center font-bold mb-6 dark:text-white text-gray-800">Add New Alert Panel</h2>
       <form onSubmit={handleSubmit} className="space-y-5 mb-8">
         {[
           { label: "Headline", name: "headline", type: "text" },
@@ -79,22 +79,22 @@ const AddAlertPanels = () => {
          
         ].map(({ label, name, type }) => (
           <div key={name}>
-            <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+            <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1">{label}</label>
             <input
               type={type}
               name={name}
               required
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-white dark:bg-black border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         ))}
 
         <div>
-  <label className="block text-sm font-medium text-gray-700 mb-1">Severity</label>
+  <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1">Severity</label>
   <select
     name="severity"
     required
-    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    className="w-full border dark:bg-black bg-white border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
   >
     <option value="">-- Select Severity --</option>
     <option value="Low">Low</option>
@@ -106,30 +106,30 @@ const AddAlertPanels = () => {
 
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Details</label>
+          <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1">Details</label>
           <textarea
             name="details"
             required
             rows={3}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border dark:bg-black bg-white border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1">Description</label>
           <textarea
             name="description"
             required
             rows={2}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border dark:bg-black bg-white border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
         </div>
 <div>
-  <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+  <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1">Status</label>
   <select
     name="status"
     required
-    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    className="w-full border dark:bg-black bg-white border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
   >
     <option value="">-- Select Status --</option>
     <option value="Active">Active</option>
@@ -140,7 +140,7 @@ const AddAlertPanels = () => {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200"
+          className="w-full bg-blue-600 dark:text-white text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200"
         >
           Add Alert
         </button>
