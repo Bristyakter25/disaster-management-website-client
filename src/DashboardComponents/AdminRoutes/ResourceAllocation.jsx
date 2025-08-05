@@ -10,7 +10,7 @@ const ResourceAllocation = () => {
   const [dispatching, setDispatching] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/resources")
+    fetch("https://disaster-management-website-server.onrender.com/resources")
       .then((res) => res.json())
       .then((rawData) => {
         setData(rawData);
@@ -38,7 +38,7 @@ const ResourceAllocation = () => {
   const handleDispatch = async (id, newLocation) => {
   setDispatching(id);
   try {
-    await fetch(`http://localhost:5000/resources/${id}`, {
+    await fetch(`https://disaster-management-website-server.onrender.com/resources/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: "dispatched", location: newLocation }),

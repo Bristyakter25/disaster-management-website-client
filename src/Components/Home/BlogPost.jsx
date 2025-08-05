@@ -2,46 +2,43 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BlogPost = () => {
-  const [articles, setArticles] = useState([]);
+  const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/blogPosts")
-      .then(res => res.json())
-      .then(data => setArticles(data.articles || []))
-      .catch(err => console.error(err));
+    fetch("https://disaster-management-website-server.onrender.com/blogPosts")
+      .then((res) => res.json())
+      .then((data) => setBlogs(data))
+      .catch((err) => console.error("Error fetching blogs:", err));
   }, []);
 
-  const handleClick = (article) => {
-    navigate(`/blog/${encodeURIComponent(article.title)}`, { state: { article } });
-  };
-
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-10 py-10">
       <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
-        Latest News & Blogs
+       News & Blogs
       </h2>
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {articles.map((post, index) => (
+
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {blogs.map((post) => (
           <div
-            key={index}
-            onClick={() => handleClick(post)}
-            className="cursor-pointer bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300"
+            key={post._id}
+            className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
           >
-            {post.urlToImage && (
-              <img
-                src={post.urlToImage}
-                alt={post.title}
-                className="w-full h-48 object-cover rounded-t-md"
-              />
-            )}
-            <div className="p-5">
-              <h3 className="text-lg font-bold text-gray-800 dark:text-white line-clamp-2">
+            <img
+              src={post.Image}
+              alt={post.title}
+              className="w-full h-32 object-cover"
+            />
+            <div className="px-4 py-2">
+              <h3
+                onClick={() => navigate(`/blogPosts/${post._id}`)}
+                className="text-lg font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
+              >
                 {post.title}
               </h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300 line-clamp-3">
-                {post.description || "No description available."}
-              </p>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+         | By {post.author}
+      </p>
             </div>
           </div>
         ))}

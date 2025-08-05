@@ -36,7 +36,7 @@ const SafetyContents = () => {
   const [result, setResult] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/safetyContents")
+    fetch("https://disaster-management-website-server.onrender.com/safetyContents")
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.error("Error fetching data:", err));

@@ -1,73 +1,75 @@
 [
   {
+    "title": "Lightning Strikes Kill 12 During Monsoon Storm",
+    "description": "A violent monsoon thunderstorm swept through Bangladesh, claiming the lives of 12 people across five districts in a single evening due to lightning strikes. Most of the victims were agricultural workers and rural residents who were caught off guard while working in open fields or near water sources. \n\nAmong the dead were three teenage boys returning from madrasa and several farmers harvesting jute. Such lightning-related fatalities have become increasingly common in recent years, especially during the pre-monsoon and monsoon seasons. According to the Bangladesh Meteorological Department, over 200 people die annually from lightning strikes, making it a rising yet often overlooked natural hazard. \n\nExperts attribute the surge in lightning incidents to climate change, increased atmospheric moisture, and poor awareness in rural communities. Authorities are urging citizens to take shelter during storms, avoid using mobile phones outdoors, and stay away from large open areas, water bodies, and tall trees. \n\nIn addition, disaster management officials are emphasizing the urgent need to install lightning alert systems at the village level and to introduce safety education programs in schools and farming communities. The tragedy once again highlights the importance of investing in climate-resilient disaster preparedness.",
+    "content": "Bangladesh faced a deadly thunderstorm last night, resulting in multiple lightning strikes that killed 12 people, including farmers working in the fields. Lightning-related deaths have been on the rise in recent years. The Meteorological Department urges people to avoid open fields during storms and implement early-warning systems in rural areas.",
+
+    "Image": "https://i.ibb.co.com/sT9bqkx/thunderstorm-7558323-1280.jpg",
+    "author": "Shahidul Alam",
+    "publishedAt": "2025-07-28T20:30:00Z"
+  },
+   {
+    "title": "Heatwave Scorches Western Bangladesh: Power Grid Strained",
+    "description": "Western Bangladesh, particularly the Rajshahi and Kushtia regions, is facing one of its most intense heatwaves in recent history. Temperatures have crossed 44°C, making daily life unbearable and straining the country’s fragile power grid. \n\nHospitals are reporting a spike in heatstroke and dehydration cases, especially among children and the elderly. Power outages have worsened the situation, cutting off fans and water pumps in both rural and urban areas. The government has closed schools in several districts and advised citizens to avoid outdoor activities. \n\nExperts blame rapid urbanization, deforestation, and climate change for the worsening heatwaves. They’re urging urban planners to adopt heat-mitigating infrastructure like green roofs, water fountains, and shaded public spaces. In the meantime, emergency services have started distributing drinking water and operating mobile medical units to support the affected communities.",
+    "content": "Western districts like Rajshahi and Kushtia are experiencing extreme heat with temperatures soaring to 44°C. Hospitals report increased cases of heatstroke, and power consumption has reached record highs, causing rolling blackouts. The government has issued guidelines urging people to stay indoors and stay hydrated. Schools have been temporarily closed in several districts.",
+
+    "Image": "https://i.ibb.co.com/cKhxjTTz/heatwave.jpg",
+    "author": "Nadia Hasan",
+    "publishedAt": "2025-07-30T11:15:00Z"
+  },
+  {
     "title": "Cyclone Remal Devastates Coastal Bangladesh",
-    "description": "Cyclone Remal struck the southern coast with winds up to 120 km/h, displacing thousands and destroying homes.",
+    "description": "Cyclone Remal made landfall with wind speeds exceeding 120 km/h, battering the southern coast of Bangladesh with heavy rain and violent gusts. Within hours, storm surges flooded entire villages, and thousands of homes—mostly built from tin and mud—were completely destroyed. Infrastructural damage was widespread, with fallen electric poles, uprooted trees, and washed-out roads cutting off critical supply routes. \n\nOver 500,000 people were evacuated to temporary cyclone shelters, but the sheer intensity of the storm left many stranded without food, clean water, or medical help. Rescue workers faced immense challenges in reaching remote coastal communities due to blocked access and poor visibility. \n\nGovernment agencies, in coordination with NGOs, have begun distributing emergency aid, but logistical bottlenecks persist. Experts warn that with the frequency and strength of cyclones increasing due to climate change, long-term coastal resilience planning and infrastructure upgrades are urgently needed.",
     "content": "In the early hours of Monday, Cyclone Remal made landfall in the coastal regions of Bangladesh. The cyclone, with wind speeds exceeding 120 km/h, caused massive destruction across villages, flooded thousands of acres of farmland, and disrupted power lines. Relief efforts are underway as emergency teams distribute food and water to affected families. Experts say it may take weeks to restore basic infrastructure.",
   
-    "Image": "https://i.imgur.com/Remal.jpg",
+    "Image": "https://i.ibb.co.com/93qpTwdD/pexels-suzyhazelwood-5870919.jpg",
     "author": "Anika Chowdhury",
     "publishedAt": "2025-08-03T09:30:00Z"
   },
   {
     "title": "Flash Floods Hit Northern Sylhet, 50,000 Displaced",
-    "description": "Sudden flash floods caused by continuous rain have submerged low-lying areas in Sylhet, displacing more than 50,000 people.",
+    "description": "Unrelenting rainfall over several days caused rivers in the Sylhet region to overflow, inundating low-lying districts within hours. The Surma and Kushiyara rivers swelled beyond danger levels, breaching embankments and sweeping away homes, crops, and livestock. \n\nAt least 50,000 people have been displaced, with many forced to flee in the middle of the night. Temporary shelters have been set up in school buildings and community centers, but overcrowding and lack of sanitation are becoming serious issues. \n\nRelief efforts are underway, but many remote areas remain inaccessible due to submerged roads and broken bridges. Health officials have warned about the high risk of waterborne diseases such as cholera, dysentery, and skin infections. Aid organizations are calling for immediate support in the form of clean water, food, and medical assistance.",
     "content":"Continuous rainfall over the past 72 hours led to flash floods in the Sylhet region. The Surma and Kushiyara rivers overflowed, inundating major districts. Emergency shelters have been opened in public schools. Authorities warn that if rain continues, the situation may worsen. Aid agencies are requesting urgent support for drinking water and medical supplies.",
 
-    "Image": "https://i.imgur.com/SylhetFlood.jpg",
+    "Image": "https://i.ibb.co.com/MyQTKYj1/pexels-rafael-titoneli-1467386-33261303.jpg",
     "author": "Mizan Rahman",
     "publishedAt": "2025-08-02T14:45:00Z"
   },
   {
     "title": "Earthquake in Chattogram Shakes Residents Awake",
-    "description": "A 5.6 magnitude earthquake jolted Chattogram early Sunday, sparking panic but causing no major damage.",
+    "description": "In the early hours of the morning, a powerful 5.8 magnitude earthquake struck the Chattogram region, rattling buildings and terrifying residents. The tremors were felt across several districts and even across the border in parts of India. Although the epicenter was located offshore, the quake caused visible damage in the hilly areas, including cracked buildings and minor landslides. \n\nRescue teams were dispatched immediately to assess structural damage and assist residents in affected zones. At least 300 people sustained injuries, primarily due to falling debris or stampedes during the evacuation. Several historical and religious landmarks suffered damage, raising concerns about the vulnerability of heritage sites. \n\nGeologists emphasize the need for stricter earthquake-resistant construction practices, especially in seismic hotspots like the Himalayan belt. The incident has reignited the discussion around preparedness and urban safety in growing cities like Chattogram.",
     "content": "Residents of Chattogram felt strong tremors around 3:40 AM Sunday. The Bangladesh Meteorological Department confirmed the quake originated in the Bay of Bengal, about 100 km from the coast. While no casualties have been reported, cracks were seen in several buildings. Authorities have urged people to be cautious and avoid unsafe structures.",
 
-    "Image": "https://i.imgur.com/ChattogramQuake.jpg",
+    "Image": "https://i.ibb.co.com/6R7KZrWT/earthquake-1665887-1280.jpg",
     "author": "Rezaul Karim",
     "publishedAt": "2025-08-01T03:40:00Z"
   },
   {
     "title": "Landslide in Bandarban Buries Homes, Rescue Underway",
-    "description": "Heavy rains triggered a massive landslide in Bandarban, burying at least 12 homes and trapping dozens.",
+    "description": "A deadly landslide struck the Bandarban Hill Tracts following three days of uninterrupted rain. Tons of mud and debris came crashing down a hillside late at night, burying at least a dozen homes and leaving entire families missing beneath the rubble. \n\nRescue operations were delayed due to dangerous terrain and ongoing rain. Local volunteers and rescue teams managed to pull out survivors, but the death toll is expected to rise as search efforts continue. Roads leading to the site were blocked, forcing rescuers to carry equipment on foot. \n\nEnvironmentalists have long warned that deforestation and unplanned hillside construction in the Chittagong Hill Tracts have made such tragedies more common. Authorities are urging residents in high-risk zones to relocate and are working on setting up temporary shelters for displaced families.",
     "content": "On Wednesday night, torrential rains caused a deadly landslide in the remote hills of Bandarban. Local police and rescue teams rushed to the site, pulling survivors from the rubble. Initial reports indicate that five people have been confirmed dead, while at least 30 remain missing. Emergency shelters have been activated and army personnel have joined the search operation.",
 
-    "Image": "https://i.imgur.com/BandarbanSlide.jpg",
+    "Image": "https://i.ibb.co.com/qYj4TVMr/rocks-1648115-1280.jpg",
     "author": "Farhana Islam",
     "publishedAt": "2025-07-31T21:00:00Z"
   },
+ 
   {
-    "title": "Heatwave Scorches Western Bangladesh: Power Grid Strained",
-    "description": "Temperatures hit 44°C in Rajshahi as a prolonged heatwave stresses the healthcare and power systems.",
-    "content": "Western districts like Rajshahi and Kushtia are experiencing extreme heat with temperatures soaring to 44°C. Hospitals report increased cases of heatstroke, and power consumption has reached record highs, causing rolling blackouts. The government has issued guidelines urging people to stay indoors and stay hydrated. Schools have been temporarily closed in several districts.",
+  "title": "Floods in Kurigram Damage 60% of Paddy Crops",
+  "description": "Kurigram district in northern Bangladesh is grappling with one of its most devastating flood seasons in recent memory. Continuous heavy rainfall upstream in India has caused rivers such as the Brahmaputra and Dharla to overflow, submerging vast stretches of agricultural land. Local agricultural officials estimate that more than 60% of the standing Aman paddy crops—a crucial harvest for food supply—are now underwater.\n\nFor thousands of farming families who rely solely on rice cultivation for survival, the damage is catastrophic. Fields that once promised food and income have turned into shallow lakes. Local residents are appealing for urgent government assistance, including crop compensation, food aid, and agricultural rehabilitation programs. The flood has also impacted livestock and damaged seed beds, potentially affecting the next planting cycle.\n\nIn response, the local administration has started building temporary embankments to protect remaining farmland and is distributing relief materials, but with infrastructure already strained, the response has been slow. Experts warn that frequent and intensified flooding due to climate change will continue to threaten food security in vulnerable regions like Kurigram unless sustainable flood control measures are prioritized.",
+  "content": "Kurigram district is witnessing severe flooding due to heavy upstream rainfall in India. Agricultural officials estimate over 60% of the standing paddy crops are underwater. Farmers are calling for compensation and immediate government aid. Local authorities are prioritizing food distribution and building embankments to protect remaining land.",
+  "Image": "https://i.ibb.co.com/DDFmLkH6/flood-123222-1280.jpg",
+  "author": "Abul Kalam",
+  "publishedAt": "2025-07-29T18:00:00Z"
+},
 
-    "Image": "https://i.imgur.com/Heatwave.jpg",
-    "author": "Nadia Hasan",
-    "publishedAt": "2025-07-30T11:15:00Z"
-  },
-  {
-    "title": "Floods in Kurigram Damage 60% of Paddy Crops",
-    "description": "Seasonal floods in Kurigram have submerged vast tracts of farmland, threatening food security in the region.",
-    "content": "Kurigram district is witnessing severe flooding due to heavy upstream rainfall in India. Agricultural officials estimate over 60% of the standing paddy crops are underwater. Farmers are calling for compensation and immediate government aid. Local authorities are prioritizing food distribution and building embankments to protect remaining land.",
-
-    "Image": "https://i.imgur.com/KurigramFlood.jpg",
-    "author": "Abul Kalam",
-    "publishedAt": "2025-07-29T18:00:00Z"
-  },
-  {
-    "title": "Lightning Strikes Kill 12 During Monsoon Storm",
-    "description": "Multiple lightning strikes during a monsoon thunderstorm killed 12 people across five districts in a single day.",
-    "content": "Bangladesh faced a deadly thunderstorm last night, resulting in multiple lightning strikes that killed 12 people, including farmers working in the fields. Lightning-related deaths have been on the rise in recent years. The Meteorological Department urges people to avoid open fields during storms and implement early-warning systems in rural areas.",
-
-    "Image": "https://i.imgur.com/LightningBangladesh.jpg",
-    "author": "Shahidul Alam",
-    "publishedAt": "2025-07-28T20:30:00Z"
-  },
+  
   {
     "title": "Riverbank Erosion Displaces Families in Gaibandha",
-    "description": "Hundreds of families are being forced to relocate as riverbank erosion continues along the Jamuna River.",
+    "description": "In Gaibandha district, slow-moving devastation is unfolding as riverbank erosion continues to consume entire villages along the banks of the Jamuna River. Over the past month, more than 300 families have lost their homes, belongings, and farmlands to the relentless advance of the river. \n\nWhat makes erosion uniquely devastating is that it occurs gradually but with permanent consequences. As the river carves into the land, schools, mosques, and homes are collapsing into the waters, leaving behind barren, crumbling soil and displaced families. Many victims have taken refuge on nearby highways, embankments, or makeshift shelters, struggling with food shortages, lack of sanitation, and the absence of basic services. \n\nLocal authorities have declared the area high-risk and have requested emergency funds to construct protective embankments and implement geo-bagging solutions, but long-term planning and investment are still lacking. Activists and climate researchers argue that unplanned development, deforestation along riverbanks, and inadequate disaster preparedness have intensified the impact of river erosion. \n\nUnless durable infrastructure is developed and relocation programs are prioritized, thousands more could face homelessness in the coming monsoon cycles. Riverbank erosion, often overshadowed by sudden disasters, is silently becoming one of the greatest threats to rural stability in Bangladesh.",
     "content": "Severe erosion along the Jamuna River in Gaibandha district is swallowing entire villages. Over the past month, more than 300 families have lost their homes. Locals are demanding government intervention to construct embankments. Makeshift camps are being set up along nearby roads and highlands.",
   
-    "Image": "https://i.imgur.com/GaibandhaErosion.jpg",
+    "Image": "https://i.ibb.co.com/m5N947X2/riverbank-erosion.jpg",
     "author": "Tania Akter",
     "publishedAt": "2025-07-27T16:00:00Z"
   }

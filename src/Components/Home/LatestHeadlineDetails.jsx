@@ -8,7 +8,7 @@ const LatestHeadlineDetails = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/latestAlerts/${id}`)
+    fetch(`https://disaster-management-website-server.onrender.com/latestAlerts/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch alert details");
         return res.json();

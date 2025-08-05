@@ -9,7 +9,7 @@ const MarqueeAlert = () => {
   useEffect(() => {
     const fetchAlerts = async () => {
       try {
-        const response = await fetch("http://localhost:5000/alertPanel");
+        const response = await fetch("https://disaster-management-website-server.onrender.com/alertPanel");
         if (!response.ok) throw new Error("Network response was not ok");
 
         const data = await response.json();

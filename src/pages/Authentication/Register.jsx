@@ -36,7 +36,7 @@ const Register = () => {
               role
             };
 
-            fetch('http://localhost:5000/users', {
+            fetch('https://disaster-management-website-server.onrender.com/users', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'

@@ -7,7 +7,7 @@ const  AllAlertPanel = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/alertPanel")
+    fetch("https://disaster-management-website-server.onrender.com/alertPanel")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();

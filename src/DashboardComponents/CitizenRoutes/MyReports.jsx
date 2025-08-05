@@ -7,7 +7,7 @@ const MyReports = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/alertPanel?email=${user.email}`)
+      fetch(`https://disaster-management-website-server.onrender.com/alertPanel?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setDisasters(data));
     }

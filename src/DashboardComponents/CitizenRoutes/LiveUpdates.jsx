@@ -18,7 +18,7 @@ const LiveUpdates = () => {
   const [severityFilter, setSeverityFilter] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/alertPanel")
+    fetch("https://disaster-management-website-server.onrender.com/alertPanel")
       .then((res) => res.json())
       .then((alerts) => {
         setData(alerts);
