@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Cyclone Remal Devastates Coastal Bangladesh",
+    "description": "Cyclone Remal struck the southern coast with winds up to 120 km/h, displacing thousands and destroying homes.",
+    "content": "In the early hours of Monday, Cyclone Remal made landfall in the coastal regions of Bangladesh. The cyclone, with wind speeds exceeding 120 km/h, caused massive destruction across villages, flooded thousands of acres of farmland, and disrupted power lines. Relief efforts are underway as emergency teams distribute food and water to affected families. Experts say it may take weeks to restore basic infrastructure.",
+  
+    "Image": "https://i.imgur.com/Remal.jpg",
+    "author": "Anika Chowdhury",
+    "publishedAt": "2025-08-03T09:30:00Z"
+  },
+  {
+    "title": "Flash Floods Hit Northern Sylhet, 50,000 Displaced",
+    "description": "Sudden flash floods caused by continuous rain have submerged low-lying areas in Sylhet, displacing more than 50,000 people.",
+    "content":"Continuous rainfall over the past 72 hours led to flash floods in the Sylhet region. The Surma and Kushiyara rivers overflowed, inundating major districts. Emergency shelters have been opened in public schools. Authorities warn that if rain continues, the situation may worsen. Aid agencies are requesting urgent support for drinking water and medical supplies.",
+
+    "Image": "https://i.imgur.com/SylhetFlood.jpg",
+    "author": "Mizan Rahman",
+    "publishedAt": "2025-08-02T14:45:00Z"
+  },
+  {
+    "title": "Earthquake in Chattogram Shakes Residents Awake",
+    "description": "A 5.6 magnitude earthquake jolted Chattogram early Sunday, sparking panic but causing no major damage.",
+    "content": "Residents of Chattogram felt strong tremors around 3:40 AM Sunday. The Bangladesh Meteorological Department confirmed the quake originated in the Bay of Bengal, about 100 km from the coast. While no casualties have been reported, cracks were seen in several buildings. Authorities have urged people to be cautious and avoid unsafe structures.",
+
+    "Image": "https://i.imgur.com/ChattogramQuake.jpg",
+    "author": "Rezaul Karim",
+    "publishedAt": "2025-08-01T03:40:00Z"
+  },
+  {
+    "title": "Landslide in Bandarban Buries Homes, Rescue Underway",
+    "description": "Heavy rains triggered a massive landslide in Bandarban, burying at least 12 homes and trapping dozens.",
+    "content": "On Wednesday night, torrential rains caused a deadly landslide in the remote hills of Bandarban. Local police and rescue teams rushed to the site, pulling survivors from the rubble. Initial reports indicate that five people have been confirmed dead, while at least 30 remain missing. Emergency shelters have been activated and army personnel have joined the search operation.",
+
+    "Image": "https://i.imgur.com/BandarbanSlide.jpg",
+    "author": "Farhana Islam",
+    "publishedAt": "2025-07-31T21:00:00Z"
+  },
+  {
+    "title": "Heatwave Scorches Western Bangladesh: Power Grid Strained",
+    "description": "Temperatures hit 44°C in Rajshahi as a prolonged heatwave stresses the healthcare and power systems.",
+    "content": "Western districts like Rajshahi and Kushtia are experiencing extreme heat with temperatures soaring to 44°C. Hospitals report increased cases of heatstroke, and power consumption has reached record highs, causing rolling blackouts. The government has issued guidelines urging people to stay indoors and stay hydrated. Schools have been temporarily closed in several districts.",
+
+    "Image": "https://i.imgur.com/Heatwave.jpg",
+    "author": "Nadia Hasan",
+    "publishedAt": "2025-07-30T11:15:00Z"
+  },
+  {
+    "title": "Floods in Kurigram Damage 60% of Paddy Crops",
+    "description": "Seasonal floods in Kurigram have submerged vast tracts of farmland, threatening food security in the region.",
+    "content": "Kurigram district is witnessing severe flooding due to heavy upstream rainfall in India. Agricultural officials estimate over 60% of the standing paddy crops are underwater. Farmers are calling for compensation and immediate government aid. Local authorities are prioritizing food distribution and building embankments to protect remaining land.",
+
+    "Image": "https://i.imgur.com/KurigramFlood.jpg",
+    "author": "Abul Kalam",
+    "publishedAt": "2025-07-29T18:00:00Z"
+  },
+  {
+    "title": "Lightning Strikes Kill 12 During Monsoon Storm",
+    "description": "Multiple lightning strikes during a monsoon thunderstorm killed 12 people across five districts in a single day.",
+    "content": "Bangladesh faced a deadly thunderstorm last night, resulting in multiple lightning strikes that killed 12 people, including farmers working in the fields. Lightning-related deaths have been on the rise in recent years. The Meteorological Department urges people to avoid open fields during storms and implement early-warning systems in rural areas.",
+
+    "Image": "https://i.imgur.com/LightningBangladesh.jpg",
+    "author": "Shahidul Alam",
+    "publishedAt": "2025-07-28T20:30:00Z"
+  },
+  {
+    "title": "Riverbank Erosion Displaces Families in Gaibandha",
+    "description": "Hundreds of families are being forced to relocate as riverbank erosion continues along the Jamuna River.",
+    "content": "Severe erosion along the Jamuna River in Gaibandha district is swallowing entire villages. Over the past month, more than 300 families have lost their homes. Locals are demanding government intervention to construct embankments. Makeshift camps are being set up along nearby roads and highlands.",
+  
+    "Image": "https://i.imgur.com/GaibandhaErosion.jpg",
+    "author": "Tania Akter",
+    "publishedAt": "2025-07-27T16:00:00Z"
+  }
+]

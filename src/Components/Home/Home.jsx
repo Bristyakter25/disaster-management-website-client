@@ -1,5 +1,6 @@
 
 import Banner from './Banner';
+import BlogPost from './BlogPost';
 
 import CurrentDisasterZones from './CurrentDisasterZones';
 import LatestHeadlines from './LatestHeadlines';
@@ -18,6 +19,7 @@ const Home = () => {
             <CurrentDisasterZones></CurrentDisasterZones>
             
         </div>
+        <BlogPost></BlogPost>
        </div>
     );
 };

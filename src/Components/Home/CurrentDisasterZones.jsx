@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -48,6 +48,8 @@ const getSeverityIcon = (severity) => {
 const CurrentDisasterZones = () => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState({ type: '', severity: '', date: '' });
+  const [zoomLevel, setZoomLevel] = useState(7); // default zoom
+  const mapRef = useRef(null);
 
   useEffect(() => {
     fetch('http://localhost:5000/alertPanel')
@@ -58,14 +60,32 @@ const CurrentDisasterZones = () => {
 
   const filteredData = data.filter(item => {
     const itemDate = new Date(item.timestamp).toISOString().split('T')[0];
-    const filterDate = filters.date ? filters.date : null;
-
-    const matchType = filters.type ? item.type === filters.type : true;
-    const matchSeverity = filters.severity ? item.severity === filters.severity : true;
-    const matchDate = filterDate ? itemDate === filterDate : true;
-
-    return matchType && matchSeverity && matchDate;
+    const filterDate = filters.date || null;
+    return (
+      (!filters.type || item.type === filters.type) &&
+      (!filters.severity || item.severity === filters.severity) &&
+      (!filterDate || itemDate === filterDate)
+    );
   });
+
+  // Custom zoom handlers
+  const handleZoomIn = () => {
+    const map = mapRef.current;
+    if (map) {
+      const newZoom = map.getZoom() + 1;
+      map.setZoom(newZoom);
+      setZoomLevel(newZoom);
+    }
+  };
+
+  const handleZoomOut = () => {
+    const map = mapRef.current;
+    if (map) {
+      const newZoom = map.getZoom() - 1;
+      map.setZoom(newZoom);
+      setZoomLevel(newZoom);
+    }
+  };
 
   return (
     <div className="px-4 my-10 py-6">
@@ -101,8 +121,22 @@ const CurrentDisasterZones = () => {
         />
       </div>
 
-      {/* Map Display */}
-      <MapContainer center={[23.8103, 90.4125]} zoom={7} style={{ height: '600px', width: '100%' }}>
+      {/* Zoom Controls */}
+      {/* <div className="flex justify-end gap-2 mb-4">
+        <button onClick={handleZoomIn} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">+</button>
+        <button onClick={handleZoomOut} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">−</button>
+      </div> */}
+
+      {/* Map */}
+      <MapContainer
+        center={[23.8103, 90.4125]}
+        zoom={zoomLevel}
+        style={{ height: '600px', width: '100%' }}
+        scrollWheelZoom={false}
+        whenCreated={(mapInstance) => {
+          mapRef.current = mapInstance;
+        }}
+      >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {filteredData.map((item, idx) => (
           item.coordinates?.lat && item.coordinates?.lng && (
@@ -113,7 +147,7 @@ const CurrentDisasterZones = () => {
             >
               <Popup>
                 <div>
-                  <strong>{item.type}</strong> <br />
+                  <strong>{item.type}</strong><br />
                   {item.headline && <p className="font-semibold">{item.headline}</p>}
                   <p>Severity: {item.severity}</p>
                   <p>Location: {item.location}</p>

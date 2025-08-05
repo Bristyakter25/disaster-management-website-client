@@ -22,6 +22,7 @@ import ReportIncident from "../DashboardComponents/CitizenRoutes/ReportIncident"
 import MyReports from "../DashboardComponents/CitizenRoutes/MyReports";
 import LiveUpdates from "../DashboardComponents/CitizenRoutes/LiveUpdates";
 import SafetyContents from "../DashboardComponents/CitizenRoutes/SafetyContents";
+import BlogDetails from "../Components/Home/BlogDetails";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: '/alertPanel/:id',
         element: <AllAlertPanelDetails></AllAlertPanelDetails>
+      },
+      {
+        path: '/blogPosts/:id',
+        element: <BlogDetails></BlogDetails>
       },
       {
         path: 'register',
