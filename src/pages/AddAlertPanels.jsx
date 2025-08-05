@@ -43,7 +43,7 @@ const AddAlertPanels = () => {
       status: form.status.value,
     };
 
-    fetch("http://localhost:5000/alertPanel", {
+    fetch("https://disaster-management-website-server.onrender.com/alertPanel", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,46 +1,54 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const BlogDetails = () => {
-  const { state } = useLocation();
-  const navigate = useNavigate();
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!state || !state.article) {
-    return (
-      <div className="text-center py-20">
-        <p className="text-gray-600">No article data available.</p>
-        <button onClick={() => navigate(-1)} className="mt-4 px-4 py-2 bg-blue-600 text-white rounded">
-          Go Back
-        </button>
-      </div>
-    );
-  }
+  useEffect(() => {
+    fetch(`http://localhost:5000/blogPosts/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBlog(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching blog:", err);
+        setLoading(false);
+      });
+  }, [id]);
 
-  const { article } = state;
+  if (loading) return <p className="text-center text-gray-500">Loading...</p>;
+  if (!blog) return <p className="text-center text-red-500">Blog not found.</p>;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
-      <button onClick={() => navigate(-1)} className="mb-6 text-blue-600 hover:underline">
-        ← Back to Articles
-      </button>
+      <img
+        src={blog.Image}
+        alt={blog.title}
+        className="w-full rounded-lg mb-6"
+      />
+      <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
+        {blog.title}
+      </h1>
+      
+     
 
-      <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">{article.title}</h1>
-      <p className="text-sm text-gray-500 mb-6">
-        {new Date(article.publishedAt).toLocaleString()} | {article.author || 'Unknown Author'}
+      <p className="text-gray-600 dark:text-gray-300 mb-4">
+        {blog.date} | By {blog.author}
       </p>
-      {article.urlToImage && (
-        <img src={article.urlToImage} alt={article.title} className="w-full h-96 object-cover rounded mb-6" />
-      )}
-      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-        {article.content || article.description || 'No content available.'}
-      </p>
-      <a
-        href={article.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block mt-6 text-blue-500 hover:underline font-medium"
-      >
-        Read full article →
-      </a>
+      <div className="text-lg leading-relaxed text-gray-700 dark:text-gray-200">
+  {blog.description?.split('\n').map((para, idx) => (
+    <p key={idx} className="mb-4">{para}</p>
+  ))}
+</div>
+
+      <div className="text-lg leading-relaxed text-gray-700 dark:text-gray-200">
+  {blog.content?.split('\n').map((para, idx) => (
+    <p key={idx} className="mb-4">{para}</p>
+  ))}
+</div>
     </div>
   );
 };

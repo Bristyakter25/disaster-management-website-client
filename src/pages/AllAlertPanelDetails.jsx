@@ -8,7 +8,7 @@ const AllAlertPanelDetails = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/alertPanel/${id}`)
+    fetch(`https://disaster-management-website-server.onrender.com/alertPanel/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch alert details");
         return res.json();

@@ -7,7 +7,7 @@ const  LatestHeadlines = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/latestAlerts")
+    fetch("https://disaster-management-website-server.onrender.com/latestAlerts")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
