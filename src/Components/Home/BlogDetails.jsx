@@ -7,7 +7,7 @@ const BlogDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogPosts/${id}`)
+    fetch(`https://disaster-management-website-server.onrender.com/blogPosts/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
