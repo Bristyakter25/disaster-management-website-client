@@ -77,42 +77,38 @@ const Register = () => {
     });
 };
 
-  return (
-   <div>
-     <div className="text-center dark:text-white py-32 bg-gradient-to-r from-white to-sky-200 dark:from-[#00072D] dark:to-[#001F54]">
-        <h2 className="text-5xl dark:text-white font-bold mb-5">Register Here! </h2>
+ return (
+  <div>
+    {/* Top Section (Hero) */}
+    <div className="text-center dark:text-white py-24 px-4 bg-gradient-to-r from-white to-sky-200 dark:from-[#00072D] dark:to-[#001F54]">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4">Register Here!</h2>
+      <div className="flex items-center justify-center gap-x-2 text-center text-base md:text-lg">
+        <Link to="/" className="hover:text-blue-500">Home</Link>
+        <FaLongArrowAltRight />
+        <p>Register</p>
+      </div>
+    </div>
 
-        <div className="flex dark:text-white items-center justify-center gap-x-3 text-center ">
-          <Link
-           to="/" className="text-lg hover:text-blue-500">
-            Home
-          </Link>
-          <p className="mt-2 ">
-            {" "}
-            <FaLongArrowAltRight />
-          </p>
-          <p className="text-lg "> Register</p>
-        </div>
-     </div>
-     <div className="flex-row dark:bg-transparent dark:text-white md:flex lg:w-[1040px] w-[350px] mx-auto min-h-screen overflow-hidden">
+    {/* Registration Content */}
+    <div className="flex flex-col-reverse md:flex-row items-center dark:bg-transparent dark:text-white mx-auto px-4 py-12 max-w-6xl">
 
-      {/* Left Side Image */}
-      <div className="w-[250px] md:w-1/2 lg:flex items-center justify-center">
-        <Lottie animationData={registerAnimation} loop={true} className="w-[400px] h-full" />
+      {/* Left Side Animation */}
+      <div className="w-full md:w-1/2 flex justify-center items-center mb-10 md:mb-0">
+        <Lottie animationData={registerAnimation} loop={true} className="w-full max-w-md" />
       </div>
 
-      {/* Right Side Registration Form */}
+      {/* Right Side Form */}
       <motion.div
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full md:w-1/2 p-10 md:p-16 space-y-6 flex flex-col justify-center"
+        className="w-full md:w-1/2 px-4 md:px-8 lg:px-12 space-y-6"
       >
-        <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
           Register to ResQlink
         </h2>
 
-        <form onSubmit={handleRegister} className="space-y-6">
+        <form onSubmit={handleRegister} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">Name</label>
             <input type="text" name="name" placeholder="Name" required
@@ -159,25 +155,23 @@ const Register = () => {
           </button>
         </form>
 
-        <div className="flex items-center justify-between mt-4">
+        <div className="flex items-center justify-between mt-6">
           <hr className="w-1/3 border-gray-300" />
           <span className="text-gray-400">or</span>
           <hr className="w-1/3 border-gray-300" />
         </div>
 
-        <p className="text-sm text-center dark:text-white text-gray-600">
+        <p className="text-sm text-center text-gray-600 dark:text-gray-300">
           Already have an account?{' '}
-          <Link
-            to="/login"
-            className="text-sky-600 text-lg font-semibold hover:underline"
-          >
+          <Link to="/login" className="text-sky-600 text-lg font-semibold hover:underline">
             Login
           </Link>
         </p>
       </motion.div>
     </div>
-   </div>
-  );
+  </div>
+);
+
 };
 
 export default Register;
