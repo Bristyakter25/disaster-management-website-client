@@ -13,7 +13,7 @@ const Home = () => {
        <div className='mx-8'>
          <MarqueeAlert></MarqueeAlert>
        </div>
-         <div className='mx-8 lg:flex gap-x-5'>
+         <div className='mx-8 '>
             
             <LatestHeadlines></LatestHeadlines>
             <CurrentDisasterZones></CurrentDisasterZones>
