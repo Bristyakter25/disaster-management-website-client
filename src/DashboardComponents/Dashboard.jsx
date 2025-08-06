@@ -61,6 +61,7 @@ const Dashboard = () => {
               <li><NavLink to="/dashboard/incidentManagement">Incident Management</NavLink></li>
               <li><NavLink to="/dashboard/manageUser">User Management</NavLink></li>
               <li><NavLink to="/dashboard/resourceAllocation">Resource Allocation</NavLink></li>
+              <li><NavLink to="/dashboard/assignMissions">Assign Missions</NavLink></li>
               <li><NavLink>Analytics & Reports</NavLink></li>
             </>
           )}
