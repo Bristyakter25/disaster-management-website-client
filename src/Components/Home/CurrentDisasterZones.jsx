@@ -4,7 +4,6 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { format } from 'date-fns';
 
-// Custom icons for different severity levels
 const redIcon = new L.Icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
@@ -48,7 +47,7 @@ const getSeverityIcon = (severity) => {
 const CurrentDisasterZones = () => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState({ type: '', severity: '', date: '' });
-  const [zoomLevel, setZoomLevel] = useState(7); // default zoom
+  const [zoomLevel, setZoomLevel] = useState(7);
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -68,97 +67,103 @@ const CurrentDisasterZones = () => {
     );
   });
 
-  // Custom zoom handlers
-  const handleZoomIn = () => {
-    const map = mapRef.current;
-    if (map) {
-      const newZoom = map.getZoom() + 1;
-      map.setZoom(newZoom);
-      setZoomLevel(newZoom);
-    }
-  };
-
-  const handleZoomOut = () => {
-    const map = mapRef.current;
-    if (map) {
-      const newZoom = map.getZoom() - 1;
-      map.setZoom(newZoom);
-      setZoomLevel(newZoom);
-    }
-  };
-
   return (
-    <div className="px-4 my-10 py-6">
-      <h2 className="text-2xl font-bold mb-4">Interactive Disaster Map</h2>
+    <div>
+       <h2 className="text-3xl text-center mt-28 font-bold text-gray-800 dark:text-white mb-2">Interactive Disaster Map</h2>
+      <div className="flex flex-col  xl:flex-row gap-6 px-6 py-8 dark:bg-slate-900 bg-gray-100 min-h-screen">
+      
+      {/* Details Panel */}
+      <div className="xl:w-1/3 w-full space-y-6">
+       
 
-      {/* Filters */}
-      <div className="flex flex-wrap gap-4 mb-6">
-        <select onChange={e => setFilters(prev => ({ ...prev, type: e.target.value }))} className="border p-2 rounded">
-          <option value="">All Types</option>
-          <option value="Flood">Flood</option>
-          <option value="Cyclone">Cyclone</option>
-          <option value="Earthquake">Earthquake</option>
-          <option value="Fire">Fire</option>
-          <option value="Drought">Drought</option>
-          <option value="Building Collapse">Building Collapse</option>
-          <option value="Heatwave">Heatwave</option>
-          <option value="Landslide">Landslide</option>
-          <option value="Lightning Storm">Lightning Storm</option>
-          <option value="Tornado">Tornado</option>
-        </select>
+        {/* Filters Section */}
+        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-md space-y-3">
+          <h3 className="text-lg font-semibold text-gray-700 dark:text-white">Filter Alerts</h3>
+          <select onChange={e => setFilters(prev => ({ ...prev, type: e.target.value }))} className="w-full border bg-white dark:bg-slate-900 p-2 rounded text-sm">
+            <option value="">All Types</option>
+            <option value="Flood">Flood</option>
+            <option value="Cyclone">Cyclone</option>
+            <option value="Earthquake">Earthquake</option>
+            <option value="Drought">Drought</option>
+            <option value="Heatwave">Heatwave</option>
+            <option value="Landslide">Landslide</option>
+            <option value="Lightning Storm">Lightning Storm</option>
+          </select>
+          <select onChange={e => setFilters(prev => ({ ...prev, severity: e.target.value }))} className="w-full border bg-white dark:bg-slate-900 p-2 rounded text-sm">
+            <option value="">All Severities</option>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+            <option value="Severe">Severe</option>
+          </select>
+          <input
+            type="date"
+            onChange={e => setFilters(prev => ({ ...prev, date: e.target.value }))}
+            className="w-full border p-2 bg-white dark:bg-slate-900 rounded text-sm"
+          />
+        </div>
 
-        <select onChange={e => setFilters(prev => ({ ...prev, severity: e.target.value }))} className="border p-2 rounded">
-          <option value="">All Severities</option>
-          <option value="Severe">Severe</option>
-          <option value="Moderate">Moderate</option>
-          <option value="High">High</option>
-        </select>
-
-        <input
-          type="date"
-          onChange={e => setFilters(prev => ({ ...prev, date: e.target.value }))}
-          className="border p-2 rounded"
-        />
+        {/* Alerts List */}
+        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-md max-h-[460px] overflow-y-auto space-y-3">
+          <h3 className="text-lg font-semibold dark:text-white text-gray-700 mb-2">Recent Alerts</h3>
+          {filteredData.length === 0 ? (
+            <p className="text-sm text-gray-500 dark:text-white">No alerts found with current filters.</p>
+          ) : (
+            filteredData.slice(0, 8).map((item, idx) => (
+              <div
+                key={idx}
+                className={`border-l-4 p-3 rounded-md shadow-sm bg-gray-50 hover:bg-white transition
+                  ${item.severity === 'Severe' ? 'border-red-500' : item.severity === 'Moderate' ? 'border-orange-400' : 'border-blue-400'}`}
+              >
+                <h4 className="text-sm font-semibold text-gray-800">{item.type}</h4>
+                <p className="text-xs text-gray-500">{format(new Date(item.timestamp), 'PPPpp')}</p>
+                <p className="text-sm text-gray-600">{item.location}</p>
+                {item.headline && <p className="text-xs italic text-gray-500 mt-1">{item.headline}</p>}
+              </div>
+            ))
+          )}
+        </div>
       </div>
 
-      {/* Zoom Controls */}
-      {/* <div className="flex justify-end gap-2 mb-4">
-        <button onClick={handleZoomIn} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">+</button>
-        <button onClick={handleZoomOut} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">−</button>
-      </div> */}
+      {/* Map Panel */}
+      <div className="xl:w-2/3 mt-12 w-full">
+        {/* <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Disaster Map</h2> */}
+        <div className="w-full h-[650px] rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <MapContainer
+  center={[23.8103, 90.4125]}
+  zoom={zoomLevel}
+  style={{ height: '100%', width: '100%' }}
+  scrollWheelZoom={false} 
+  whenCreated={(mapInstance) => {
+    mapRef.current = mapInstance;
+  }}
+>
 
-      {/* Map */}
-      <MapContainer
-        center={[23.8103, 90.4125]}
-        zoom={zoomLevel}
-        style={{ height: '600px', width: '100%' }}
-        scrollWheelZoom={false}
-        whenCreated={(mapInstance) => {
-          mapRef.current = mapInstance;
-        }}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {filteredData.map((item, idx) => (
-          item.coordinates?.lat && item.coordinates?.lng && (
-            <Marker
-              key={item._id || idx}
-              position={[item.coordinates.lat, item.coordinates.lng]}
-              icon={getSeverityIcon(item.severity)}
-            >
-              <Popup>
-                <div>
-                  <strong>{item.type}</strong><br />
-                  {item.headline && <p className="font-semibold">{item.headline}</p>}
-                  <p>Severity: {item.severity}</p>
-                  <p>Location: {item.location}</p>
-                  <p>Date: {format(new Date(item.timestamp), 'PPPpp')}</p>
-                  {item.details && <p className="text-sm mt-1">{item.details}</p>}
-                </div>
-              </Popup>
-            </Marker>
-          )
-        ))}
-      </MapContainer>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {filteredData.map((item, idx) => (
+              item.coordinates?.lat && item.coordinates?.lng && (
+                <Marker
+                  key={item._id || idx}
+                  position={[item.coordinates.lat, item.coordinates.lng]}
+                  icon={getSeverityIcon(item.severity)}
+                >
+                  <Popup>
+                    <div>
+                      <strong>{item.type}</strong><br />
+                      {item.headline && <p className="font-semibold">{item.headline}</p>}
+                      <p>Severity: {item.severity}</p>
+                      <p>Location: {item.location}</p>
+                      <p>Date: {format(new Date(item.timestamp), 'PPPpp')}</p>
+                      {item.details && <p className="text-sm mt-1">{item.details}</p>}
+                    </div>
+                  </Popup>
+                </Marker>
+              )
+            ))}
+          </MapContainer>
+        </div>
+      </div>
+    </div>
     </div>
   );
 };
