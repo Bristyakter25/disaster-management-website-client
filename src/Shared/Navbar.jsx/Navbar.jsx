@@ -11,6 +11,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
+  
 
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -49,34 +50,27 @@ const Navbar = () => {
     >
       <li><NavLink to="/" className="font-semibold text-lg">Home</NavLink></li>
 
-      <li className="relative group">
-        <button
-          className="flex items-center gap-2 font-semibold text-lg hover:text-blue-600"
-          onClick={() => isMobile && setIsOpen(!isOpen)}
-        >
-          Alert Panel
-          <FaChevronDown
-            className={`transition-transform duration-300 ${
-              isOpen ? "rotate-180" : "rotate-0"
-            }`}
-          />
-        </button>
+      <li className="relative">
+      <button
+        className="flex items-center gap-2 dark:text-white font-semibold text-lg text-gray-900 hover:text-blue-600"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+      >
+        Alert Panel
+        <FaChevronDown
+          className={`transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
+        />
+      </button>
 
-        {/* Dropdown */}
-        <ul
-          className={`absolute z-40 bg-white dark:bg-gray-800 mt-2 shadow-lg rounded-md overflow-hidden ${
-            isMobile
-              ? isOpen
-                ? "block"
-                : "hidden"
-              : "hidden group-hover:block"
-          }`}
-        >
+      {/* Dropdown */}
+      {isOpen && (
+        <ul className="absolute z-40 bg-white dark:bg-gray-800 mt-2 shadow-lg rounded-md overflow-hidden w-48">
           <li>
             <NavLink
               to="/addAlertPanels"
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen(false)} // close on link click
             >
               Include Alert Panels
             </NavLink>
@@ -85,13 +79,14 @@ const Navbar = () => {
             <NavLink
               to="/allAlertPanel"
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen(false)} // close on link click
             >
               All Alert Panels
             </NavLink>
           </li>
         </ul>
-      </li>
+      )}
+    </li>
 
       <li><NavLink to="/request-help" className="font-semibold text-lg">Request Help</NavLink></li>
       <li><NavLink to="/dashboard" className="font-semibold text-lg">Dashboard</NavLink></li>
@@ -123,15 +118,17 @@ const Navbar = () => {
       )}
 
       <li>
-        <NavLink to="/liveAlerts">
-          <button className="bg-white text-red-600 border border-red-600 px-4 py-2 rounded-full shadow hover:bg-red-600 hover:text-white transition">
-            <span className="relative flex h-3 w-3 mr-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
-            </span>
-            Live Alerts
-          </button>
-        </NavLink>
+        <NavLink
+  to="/liveAlerts"
+  className="inline-flex items-center bg-white text-red-600 border border-red-600 px-3 py-2 rounded-full shadow hover:bg-red-600 hover:text-white transition"
+>
+  <span className="relative flex h-3 w-5 ">
+    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 hover:bg-white opacity-75"></span>
+    <span className="relative flex rounded-full h-3 w-3 bg-red-600"></span>
+  </span>
+  Live Alerts
+</NavLink>
+
       </li>
 
       <li>
