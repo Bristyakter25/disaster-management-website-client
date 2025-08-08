@@ -45,7 +45,7 @@ const  LatestHeadlines = () => {
             
             <div className="flex py-3 px-3 justify-between items-center mr-2">
             <h3 className="text-xl font-semibold">{alert.type}</h3>
-            <button className="btn px-2 dark:bg-black  ">{alert.location}</button>
+            <button className="btn px-2 bg-white dark:bg-black text-black dark:text-white  ">{alert.location}</button>
             
             
             </div>
