@@ -17,6 +17,13 @@ import ManageUser from "../DashboardComponents/AdminRoutes/ManageUser";
 import IncidentManagement from "../DashboardComponents/AdminRoutes/IncidentManagement";
 import OverviewPanel from "../DashboardComponents/AdminRoutes/OverviewPanel";
 import EditIncidentData from "../DashboardComponents/AdminRoutes/EditIncidentData";
+import ResourceAllocation from "../DashboardComponents/AdminRoutes/ResourceAllocation";
+import ReportIncident from "../DashboardComponents/CitizenRoutes/ReportIncident";
+import MyReports from "../DashboardComponents/CitizenRoutes/MyReports";
+import LiveUpdates from "../DashboardComponents/CitizenRoutes/LiveUpdates";
+import SafetyContents from "../DashboardComponents/CitizenRoutes/SafetyContents";
+import BlogDetails from "../Components/Home/BlogDetails";
+import AssignMissions from "../DashboardComponents/AdminRoutes/AssignMissions";
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: '/alertPanel/:id',
         element: <AllAlertPanelDetails></AllAlertPanelDetails>
+      },
+      {
+        path: '/blogPosts/:id',
+        element: <BlogDetails></BlogDetails>
       },
       {
         path: 'register',
@@ -73,12 +84,36 @@ export const router = createBrowserRouter([
             element: <IncidentManagement></IncidentManagement>
           },
           {
+            path: "resourceAllocation",
+            element: <ResourceAllocation></ResourceAllocation>
+          },
+          {
             path: "edit-alert/:id",
             element: <EditIncidentData></EditIncidentData>
           },
           {
             path: "overviewPanel",
             element: <OverviewPanel></OverviewPanel>
+          },
+          {
+            path: "reportIncident",
+            element: <ReportIncident></ReportIncident>
+          },
+          {
+            path: "myReports",
+            element: <MyReports></MyReports>
+          },
+          {
+            path: "liveUpdates",
+            element: <LiveUpdates></LiveUpdates>
+          },
+          {
+            path: "assignMissions",
+            element: <AssignMissions></AssignMissions>
+          },
+          {
+            path: "safetyContents",
+            element: <SafetyContents></SafetyContents>
           }
         ]
       }

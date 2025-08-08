@@ -30,7 +30,7 @@ const Profile = () => {
     const fetchData = async () => {
       if (user && user.email) {
         try {
-            const res = await fetch(`http://localhost:5000/rescuerProfile/${user.email}`);
+            const res = await fetch(`https://disaster-management-website-server.onrender.com/rescuerProfile/${user.email}`);
           const data = await res.json();
 
           if (data && data.email === user.email) {
@@ -70,7 +70,7 @@ const Profile = () => {
     if (isSubmitted) return;
 
     try {
-      const response = await fetch("http://localhost:5000/rescuerProfile", {
+      const response = await fetch("https://disaster-management-website-server.onrender.com/rescuerProfile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

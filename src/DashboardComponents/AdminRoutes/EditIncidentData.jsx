@@ -9,7 +9,7 @@ const EditIncidentData = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/alertPanel/${id}`)
+    fetch(`https://disaster-management-website-server.onrender.com/alertPanel/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setAlertData(data);
@@ -33,7 +33,7 @@ const EditIncidentData = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/alertPanel/${id}`, {
+    fetch(`https://disaster-management-website-server.onrender.com/alertPanel/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

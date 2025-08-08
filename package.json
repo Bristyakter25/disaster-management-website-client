@@ -16,6 +16,7 @@
     "leaflet": "^1.9.4",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.1",
+    "lucide-react": "^0.536.0",
     "match-sorter": "^8.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,4 +1,6 @@
- import Banner from './Banner';
+
+import Banner from './Banner';
+import BlogPost from './BlogPost';
 
 import CurrentDisasterZones from './CurrentDisasterZones';
 import LatestHeadlines from './LatestHeadlines';
@@ -8,14 +10,16 @@ const Home = () => {
     return (
        <div>
         <Banner></Banner>
-       <div className='mx-12'>
+       <div className='mx-8'>
          <MarqueeAlert></MarqueeAlert>
        </div>
-         <div className='lg:w-[1124px] w-[350px] mx-auto'>
+         <div className='mx-8 '>
             
             <LatestHeadlines></LatestHeadlines>
             <CurrentDisasterZones></CurrentDisasterZones>
+            
         </div>
+        <BlogPost></BlogPost>
        </div>
     );
 };
