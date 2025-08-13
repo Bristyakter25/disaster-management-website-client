@@ -24,6 +24,7 @@ import LiveUpdates from "../DashboardComponents/CitizenRoutes/LiveUpdates";
 import SafetyContents from "../DashboardComponents/CitizenRoutes/SafetyContents";
 import BlogDetails from "../Components/Home/BlogDetails";
 import AssignMissions from "../DashboardComponents/AdminRoutes/AssignMissions";
+import PaymentPage from "../Components/Payment/PayementPage";
 
 export const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "liveAlerts",
         element: <LiveAlert></LiveAlert>
+      },
+      {
+        path: "payment",
+        element: <PaymentPage></PaymentPage>
       },
       {
         path: '/dashboard',

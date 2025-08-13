@@ -13,7 +13,7 @@ const BlogPost = () => {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-10 py-10">
+    <div className="max-w-7xl mx-auto px-10 py-10">
       <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
        News & Blogs
       </h2>
@@ -27,7 +27,7 @@ const BlogPost = () => {
             <img
               src={post.Image}
               alt={post.title}
-              className="w-full h-32 object-cover"
+              className="w-full h-48 object-cover"
             />
             <div className="px-4 py-2">
               <h3

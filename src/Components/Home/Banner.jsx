@@ -131,6 +131,7 @@ const Banner = () => {
 </div>
 
 
+ 
 </Carousel>
 
         </div>

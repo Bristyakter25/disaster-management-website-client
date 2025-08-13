@@ -45,9 +45,9 @@ const SafetyContents = () => {
   const handleQuizSubmit = (e) => {
     e.preventDefault();
     if (quizAnswer === quizzes[quizIndex].correctAnswer) {
-      setResult("✅ Correct!");
+      setResult("🎉 Awesome! You nailed it!");
     } else {
-      setResult("❌ Incorrect. Try again!");
+      setResult("❌ Close! Think carefully and retry!");
     }
   };
 
