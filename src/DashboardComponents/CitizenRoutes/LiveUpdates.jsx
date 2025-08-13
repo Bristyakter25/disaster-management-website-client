@@ -17,6 +17,7 @@ const LiveUpdates = () => {
   const [locationFilter, setLocationFilter] = useState("");
   const [severityFilter, setSeverityFilter] = useState("");
 
+  // Fetch alerts from backend
   useEffect(() => {
     fetch("https://disaster-management-website-server.onrender.com/alertPanel")
       .then((res) => res.json())
@@ -27,6 +28,7 @@ const LiveUpdates = () => {
       .catch((err) => console.error("Error fetching data:", err));
   }, []);
 
+  // Filter alerts based on location/severity
   useEffect(() => {
     let result = [...data];
     if (locationFilter) {
@@ -39,6 +41,9 @@ const LiveUpdates = () => {
     }
     setFiltered(result);
   }, [locationFilter, severityFilter, data]);
+
+  // Only alerts with valid coordinates for map
+  const alertsWithCoords = filtered.filter(alert => alert.coordinates && alert.coordinates.lat && alert.coordinates.lng);
 
   return (
     <div className="p-4">
@@ -54,7 +59,7 @@ const LiveUpdates = () => {
           onChange={(e) => setLocationFilter(e.target.value)}
         />
         <select
-          className="select bg-white dark:bg-black text-black dark:text-white select-bordered"
+          className=" bg-white  dark:bg-black text-black dark:text-white select-bordered px-20  "
           value={severityFilter}
           onChange={(e) => setSeverityFilter(e.target.value)}
         >
@@ -73,7 +78,7 @@ const LiveUpdates = () => {
           <MapContainer
             center={[23.685, 90.3563]}
             zoom={6.5}
-            scrollWheelZoom={true}
+            scrollWheelZoom={false}
             className="h-full w-full z-10"
           >
             <TileLayer
@@ -81,7 +86,7 @@ const LiveUpdates = () => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {filtered.map((alert) => (
+            {alertsWithCoords.map((alert) => (
               <Marker
                 key={alert._id}
                 position={[alert.coordinates.lat, alert.coordinates.lng]}

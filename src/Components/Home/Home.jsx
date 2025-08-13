@@ -1,5 +1,6 @@
 
 import { NeobrutalismFaq } from '../../../components/nurui/neobrutalism-faq';
+import PaymentPage from '../Payment/PayementPage';
 import Banner from './Banner';
 import BlogPost from './BlogPost';
 
@@ -23,7 +24,7 @@ const Home = () => {
         </div>
         <BlogPost></BlogPost>
         <NeobrutalismFaq></NeobrutalismFaq>
-        <FAQ></FAQ>
+        <PaymentPage></PaymentPage>
        </div>
     );
 };

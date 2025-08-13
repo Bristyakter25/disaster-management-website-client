@@ -27,7 +27,7 @@ const BlogDetails = () => {
       <img
         src={blog.Image}
         alt={blog.title}
-        className="w-full rounded-lg mb-6"
+        className="w-full object-cover h-[600px] rounded-lg mb-6"
       />
       <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">
         {blog.title}
