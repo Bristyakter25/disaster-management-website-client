@@ -73,7 +73,7 @@ const CurrentDisasterZones = () => {
       <div className="flex flex-col  xl:flex-row gap-6 px-6 py-8 dark:bg-slate-900 bg-gray-100 min-h-screen">
       
       {/* Details Panel */}
-      <div className="xl:w-1/3 w-full space-y-6">
+      <div className="xl:w-1/3  w-full space-y-6">
        
 
         {/* Filters Section */}
@@ -104,10 +104,10 @@ const CurrentDisasterZones = () => {
         </div>
 
         {/* Alerts List */}
-        <div className="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-md max-h-[460px] overflow-y-auto space-y-3">
-          <h3 className="text-lg font-semibold dark:text-white text-gray-700 mb-2">Recent Alerts</h3>
+        <div className="bg-white  dark:bg-slate-900 p-4 rounded-xl shadow-md max-h-[460px] overflow-y-auto space-y-3">
+          <h3 className="text-lg  font-semibold dark:text-white text-gray-700 mb-2">Recent Alerts</h3>
           {filteredData.length === 0 ? (
-            <p className="text-sm text-gray-500 dark:text-white">No alerts found with current filters.</p>
+            <p className="text-sm  text-gray-500 dark:text-white">No alerts found with current filters.</p>
           ) : (
             filteredData.slice(0, 8).map((item, idx) => (
               <div

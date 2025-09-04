@@ -25,6 +25,7 @@ import SafetyContents from "../DashboardComponents/CitizenRoutes/SafetyContents"
 import BlogDetails from "../Components/Home/BlogDetails";
 import AssignMissions from "../DashboardComponents/AdminRoutes/AssignMissions";
 import PaymentPage from "../Components/Payment/PayementPage";
+import Donate from "../pages/Donation/Donate";
 
 export const router = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>
+      },
+      {
+        path: "donateUs",
+        element: <Donate></Donate>
       },
       {
         path: "liveAlerts",
