@@ -11,14 +11,17 @@ const Donate = () => {
           className="w-full h-[410px] "
         />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-6xl tracking-wider font-extrabold text-white mb-5">
+          <h1 className="text-6xl tracking-wider font-extrabold text-white mb-7">
             Your Help Matters
           </h1>
           <p className="text-lg font-semibold text-white lg:w-[550px] w-[350px]">
             Together we help victims of natural disasters in Bangladesh.
           </p>
-          <p className="text-lg font-semibold text-white max-w-md">
+          <p className="text-lg font-semibold mb-7 text-white max-w-md">
             100% of donations goes to the victims.
+          </p>
+          <p className="text-[15px] hover:underline-offset-2 hover:underline font-semibold text-white max-w-md">
+            Learn More About Us
           </p>
         </div>
       </div>
