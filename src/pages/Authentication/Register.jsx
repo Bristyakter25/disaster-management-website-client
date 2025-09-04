@@ -80,7 +80,7 @@ const Register = () => {
  return (
   <div>
     {/* Top Section (Hero) */}
-    <div className="text-center dark:text-white py-24 px-4 bg-gradient-to-r from-white to-sky-200 dark:from-[#00072D] dark:to-[#001F54]">
+    <div className="text-center dark:text-white py-36 px-4 bg-gradient-to-r from-white to-sky-200 dark:from-[#00072D] dark:to-[#001F54]">
       <h2 className="text-4xl md:text-5xl font-bold mb-4">Register Here!</h2>
       <div className="flex items-center justify-center gap-x-2 text-center text-base md:text-lg">
         <Link to="/" className="hover:text-blue-500">Home</Link>
