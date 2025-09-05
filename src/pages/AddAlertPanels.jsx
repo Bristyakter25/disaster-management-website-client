@@ -35,9 +35,18 @@ const AddAlertPanels = () => {
       image: form.image.value,
       affectedPopulation: parseInt(form.affectedPopulation.value),
       requiredResources: form.requiredResources.value,
+      // Donation data
+    donationNeeded: form.donationNeeded.checked,
+  donationGoal: form.donationGoal.value ? parseInt(form.donationGoal.value) : 0,
+  donationReceived: 0, // will increase when donations are made
+  donationCategory: form.donationCategory.value || "general",
+
+
    submittedBy: {
     name: user?.displayName || "Anonymous",
-    email: user?.email
+    email: user?.email,
+
+    
   
   },
       status: form.status.value,
@@ -63,7 +72,7 @@ const AddAlertPanels = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white dark:bg-slate-800 shadow-md rounded-xl mt-10">
+    <div className="max-w-3xl mx-auto p-6 bg-white dark:bg-slate-800 shadow-md rounded-xl mt-20">
       <h2 className="text-2xl text-center font-bold mb-6 dark:text-white text-gray-800">Add New Alert Panel</h2>
       <form onSubmit={handleSubmit} className="space-y-5 mb-8">
         {[
@@ -89,8 +98,8 @@ const AddAlertPanels = () => {
           </div>
         ))}
 
-        <div>
-  <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1">Severity</label>
+        <div >
+  <label className="block  text-sm font-medium dark:text-white text-gray-700 mb-1">Severity</label>
   <select
     name="severity"
     required
@@ -105,8 +114,48 @@ const AddAlertPanels = () => {
 </div>
 
 
+{/* Donation fields */}
+
+<div className="pt-5 pb-10 border-y-4 ">
+  <h3 className="text-lg font-semibold mb-2 dark:text-white">Donation Settings</h3>
+
+  <div className="flex items-center gap-2 mb-3">
+    <input type="checkbox" name="donationNeeded" id="donationNeeded" />
+    <label htmlFor="donationNeeded" className="dark:text-white">
+      Enable Donations for this Disaster
+    </label>
+  </div>
+
+  <div>
+    <label className="block text-sm font-medium dark:text-white mb-1">
+      Donation Goal (BDT)
+    </label>
+    <input
+      type="number"
+      name="donationGoal"
+      className="w-full border dark:bg-black bg-white rounded-md px-3 py-2"
+    />
+  </div>
+
+  <div className="mt-3">
+    <label className="block text-sm font-medium dark:text-white mb-1">
+      Donation Category
+    </label>
+    <select
+      name="donationCategory"
+      className="w-full border dark:bg-black bg-white rounded-md px-3 py-2"
+    >
+      <option value="general">General Relief</option>
+      <option value="food">Food & Water</option>
+      <option value="shelter">Shelter</option>
+      <option value="medical">Medical</option>
+    </select>
+  </div>
+</div>
+
+
         <div>
-          <label className="block text-sm font-medium dark:text-white text-gray-700 mb-1">Details</label>
+          <label className="block mt-5 text-sm font-medium dark:text-white text-gray-700 mb-1">Details</label>
           <textarea
             name="details"
             required
