@@ -51,7 +51,7 @@ const MyReports = () => {
   };
 
   return (
-    <div className="px-4 md:px-5 lg:px-10 py-5 bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors">
+    <div className="px-4 md:px-5 lg:px-5 py-5 bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors">
       <h2 className="text-3xl font-extrabold mb-10 text-center text-gray-800 dark:text-white">
         My Submitted Alerts
       </h2>
