@@ -11,6 +11,10 @@ const Donate = () => {
       .then((data) => setDonations(data))
       .catch((err) => console.error("Error fetching blogs:", err));
   }, []);
+
+  // const handleDonateClick = () => {
+  //   navigate(`/alertPanel/donations/${disaster._id}`); // Navigate to details page
+  // };
   return (
     <div className="mt-16 ">
       {/* Image with text overlay */}
@@ -48,7 +52,7 @@ const Donate = () => {
           <div
             key={disaster._id}
            
-          onClick={() => navigate(`/alertPanel/${disaster._id}`)}
+         
             className="bg-white dark:bg-slate-800 shadow-md rounded-lg overflow-hidden"
           >
             <img
@@ -57,7 +61,7 @@ const Donate = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-lg font-bold mb-2 dark:text-white">
+              <h2  onClick={() => navigate(`/alertPanel/${disaster._id}`)} className="text-lg hover:underline hover:underline-offset-2 font-bold mb-2 dark:text-white">
                 {disaster.headline}
               </h2>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
@@ -74,7 +78,12 @@ const Donate = () => {
               <p className="text-lg font-bold mx-5 text-black dark:text-gray-300">
                 ৳{received} / ৳{goal} ({Math.floor(percentage)}%)
               </p>
-              <button className="btn hover:bg-green-900 text-white bg-green-600 p-3 my-4 w-full">Donate </button>
+               <button
+          onClick={() => navigate(`/alertPanel/donations/${disaster._id}`)}
+          className="btn hover:bg-green-900 text-white bg-green-600 p-3 my-4 w-full"
+        >
+          Donate
+        </button>
             </div>
           </div>
         );

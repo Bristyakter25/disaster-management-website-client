@@ -26,6 +26,7 @@ import BlogDetails from "../Components/Home/BlogDetails";
 import AssignMissions from "../DashboardComponents/AdminRoutes/AssignMissions";
 import PaymentPage from "../Components/Payment/PayementPage";
 import Donate from "../pages/Donation/Donate";
+import DonationInfoPage from "../pages/Donation/DonationInfoPage";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: '/alertPanel/:id',
         element: <AllAlertPanelDetails></AllAlertPanelDetails>
+      },
+      {
+        path: '/alertPanel/donations/:id',
+        element: <DonationInfoPage></DonationInfoPage>
       },
       {
         path: '/blogPosts/:id',

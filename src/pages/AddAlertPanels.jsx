@@ -38,7 +38,7 @@ const AddAlertPanels = () => {
       // Donation data
     donationNeeded: form.donationNeeded.checked,
   donationGoal: form.donationGoal.value ? parseInt(form.donationGoal.value) : 0,
-  donationReceived: 0, // will increase when donations are made
+  donationReceived: 0, 
   donationCategory: form.donationCategory.value || "general",
 
 
