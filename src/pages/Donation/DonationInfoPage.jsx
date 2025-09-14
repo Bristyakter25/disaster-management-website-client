@@ -10,7 +10,8 @@ const DonationInfoPage = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [donationAmount, setDonationAmount] = useState(100);
   const [customAmount, setCustomAmount] = useState("");
-  const [canPay, setCanPay] = useState(false); // flag to allow payment
+  const [canPay, setCanPay] = useState(false); 
+  
 
   useEffect(() => {
     fetch(`http://localhost:5000/alertPanel/donations/${id}`)
@@ -191,7 +192,7 @@ const DonationInfoPage = () => {
             </div>
           </div>
 
-          {/* PaymentPage with props (only if form is filled) */}
+      
           {canPay ? (
             <PaymentPage
               donor={form}

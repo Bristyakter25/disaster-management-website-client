@@ -7,6 +7,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
@@ -14,6 +15,7 @@ function CheckoutForm({ donor, disaster, amount }) {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [isDark, setIsDark] = useState(
     document.documentElement.classList.contains("dark")
   );
@@ -109,6 +111,8 @@ function CheckoutForm({ donor, disaster, amount }) {
           "🎉 Donation Successful! Thank you ❤️",
           "success"
         );
+        navigate("/donateUs");
+
 
         // 4️⃣ Update donation as completed
         await fetch(
