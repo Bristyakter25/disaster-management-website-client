@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
 import donationImage from "../../assets/bannerImages/donate-image.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Donate = () => {
+  const [donations, setDonations] = useState([]);
+    const navigate = useNavigate();
+   useEffect(() => {
+    fetch("http://localhost:5000/alertPanel/donations")
+      .then((res) => res.json())
+      .then((data) => setDonations(data))
+      .catch((err) => console.error("Error fetching blogs:", err));
+  }, []);
+
+  // const handleDonateClick = () => {
+  //   navigate(`/alertPanel/donations/${disaster._id}`); // Navigate to details page
+  // };
   return (
     <div className="mt-16 ">
       {/* Image with text overlay */}
@@ -26,10 +40,60 @@ const Donate = () => {
         </div>
       </div>
 
+     {/* Donation needed cards or data's */}
+
+      <div className="grid my-10 max-w-5xl mx-auto md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {donations.map((disaster) => {
+        const goal = disaster.donationGoal || 1; // prevent divide by 0
+        const received = disaster.donationReceived || 0;
+        const percentage = Math.min((received / goal) * 100, 100);
+
+        return (
+          <div
+            key={disaster._id}
+           
+         
+            className="bg-white dark:bg-slate-800 shadow-md rounded-lg overflow-hidden"
+          >
+            <img
+              src={disaster.image}
+              alt={disaster.headline}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-4">
+              <h2  onClick={() => navigate(`/alertPanel/${disaster._id}`)} className="text-lg hover:underline hover:underline-offset-2 font-bold mb-2 dark:text-white">
+                {disaster.headline}
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                {disaster.description.slice(0, 100)}...
+              </p>
+
+              {/* Progress Bar */}
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-2">
+                <div
+                  className="bg-blue-600 h-3 rounded-full transition-all duration-500"
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
+              <p className="text-lg font-bold mx-5 text-black dark:text-gray-300">
+                ৳{received} / ৳{goal} ({Math.floor(percentage)}%)
+              </p>
+               <button
+          onClick={() => navigate(`/alertPanel/donations/${disaster._id}`)}
+          className="btn hover:bg-green-900 text-white bg-green-600 p-3 my-4 w-full"
+        >
+          Donate
+        </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
       {/* Donation Form Below */}
-      <div className="mt-6 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+      {/* <div className="mt-6 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
         {/* Preset Amounts */}
-        <div className="flex justify-center gap-4 mb-4">
+        {/* <div className="flex justify-center gap-4 mb-4">
           {[10, 25, 50, 100].map((amt) => (
             <button
               key={amt}
@@ -46,15 +110,15 @@ const Donate = () => {
         </div>
 
         {/* Stripe Payment Button */}
-        <button className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition">
+        {/* <button className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition">
           Donate Now
         </button>
 
         {/* Optional Impact Section */}
-        <div className="mt-6 text-center text-gray-600 dark:text-gray-300">
+        {/* <div className="mt-6 text-center text-gray-600 dark:text-gray-300">
           <p>Every dollar you donate provides immediate relief to families in need.</p>
         </div>
-      </div>
+      </div> */} 
     </div>
   );
 };

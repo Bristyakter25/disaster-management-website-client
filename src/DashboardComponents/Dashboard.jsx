@@ -69,7 +69,7 @@ const Dashboard = () => {
           {role === "Rescue Member" && (
             <>
               <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Rescue Member</h2>
-              <li><NavLink>Assigned Missions</NavLink></li>
+              <li><NavLink to="/dashboard/assignedMissions">Assigned Missions</NavLink></li>
               <li><NavLink>Update Status</NavLink></li>
               <li><NavLink>Emergency Alerts</NavLink></li>
               <li><NavLink to="/dashboard/rescuerProfile">Profile</NavLink></li>

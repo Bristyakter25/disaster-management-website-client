@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ArrowRightCircle } from "lucide-react";
+import { ArrowRightCircle, Calendar } from "lucide-react";
 
 const disasterTypes = ["Flood", "Earthquake", "Fire", "Cyclone", "Landslide", "Other"];
 const priorityLevels = ["Low", "Medium", "High", "Critical"];
@@ -35,11 +35,7 @@ const AssignMissions = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const payload = {
-      ...mission,
-      location: mission.address,
-    };
+    const payload = { ...mission, location: mission.address };
 
     try {
       const response = await fetch("http://localhost:5000/missions", {
@@ -73,10 +69,14 @@ const AssignMissions = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white dark:bg-transparent shadow-xl rounded-2xl px-8 mb-10 ">
+    <div className="max-w-3xl mx-auto bg-white dark:bg-slate-900 shadow-xl rounded-2xl px-8 mb-10">
       <div className="text-center mb-6">
-        <h2 className="text-3xl py-5 font-bold dark:text-white text-gray-800 mb-2">🛡️ Assign Rescue Mission</h2>
-        <p className="text-gray-500 dark:text-white">Fill in the details below to dispatch a team to the disaster site!</p>
+        <h2 className="text-3xl py-5 font-bold dark:text-white text-gray-800 mb-2">
+          🛡️ Assign Rescue Mission
+        </h2>
+        <p className="text-gray-500 dark:text-gray-300">
+          Fill in the details below to dispatch a team to the disaster site!
+        </p>
       </div>
 
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -88,7 +88,7 @@ const AssignMissions = () => {
           onChange={handleChange}
           placeholder="Mission Title *"
           required
-          className="border p-3 rounded-md bg-white dark:bg-slate-950 focus:ring-2 ring-blue-500"
+          className="border p-3 rounded-md text-black dark:text-white bg-white dark:bg-slate-800 focus:ring-2 ring-blue-500"
         />
 
         {/* Disaster Type */}
@@ -97,7 +97,7 @@ const AssignMissions = () => {
           value={mission.disasterType}
           onChange={handleChange}
           required
-          className="border p-3 rounded-md bg-white dark:bg-slate-950 focus:ring-2 ring-blue-500"
+          className="border p-3 rounded-md text-black dark:text-white bg-white dark:bg-slate-800 focus:ring-2 ring-blue-500"
         >
           <option value="">Select Disaster Type *</option>
           {disasterTypes.map((type) => (
@@ -112,7 +112,7 @@ const AssignMissions = () => {
           name="severity"
           value={mission.severity}
           onChange={handleChange}
-          className="border p-3 rounded-md bg-white dark:bg-slate-950 focus:ring-2 ring-blue-500"
+          className="border p-3 text-black dark:text-white rounded-md bg-white dark:bg-slate-800 focus:ring-2 ring-blue-500"
         >
           <option value="Low">Severity: Low</option>
           <option value="Moderate">Severity: Moderate</option>
@@ -124,7 +124,7 @@ const AssignMissions = () => {
           name="priority"
           value={mission.priority}
           onChange={handleChange}
-          className="border p-3 rounded-md bg-white dark:bg-slate-950 focus:ring-2 ring-blue-500"
+          className="border p-3 text-black dark:text-white rounded-md bg-white dark:bg-slate-800 focus:ring-2 ring-blue-500"
         >
           {priorityLevels.map((level) => (
             <option key={level} value={level}>
@@ -140,17 +140,20 @@ const AssignMissions = () => {
           value={mission.estimatedResponseTime}
           onChange={handleChange}
           placeholder="Estimated Response Time (e.g. 2 hours)"
-          className="border p-3 bg-white dark:bg-slate-950 rounded-md focus:ring-2 ring-blue-500"
+          className="border text-black dark:text-white p-3 bg-white dark:bg-slate-800 rounded-md focus:ring-2 ring-blue-500"
         />
 
-        {/* Deadline */}
-        <input
-          type="datetime-local"
-          name="deadline"
-          value={mission.deadline}
-          onChange={handleChange}
-          className="border p-3 bg-white dark:bg-slate-950 rounded-md focus:ring-2 ring-blue-500"
-        />
+        {/* Deadline with Calendar Picker */}
+        <div className="relative">
+          <input
+            type="datetime-local"
+            name="deadline"
+            value={mission.deadline}
+            onChange={handleChange}
+            className="border text-black dark:text-white p-3 bg-white dark:bg-slate-800 rounded-md focus:ring-2 ring-blue-500 w-full"
+          />
+          <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-300 pointer-events-none" />
+        </div>
 
         {/* Address */}
         <input
@@ -160,20 +163,18 @@ const AssignMissions = () => {
           onChange={handleChange}
           placeholder="Disaster Location Address *"
           required
-          className="border p-3 bg-white dark:bg-slate-950 rounded-md focus:ring-2 ring-blue-500 col-span-1 md:col-span-2"
+          className="border text-black dark:text-white p-3 bg-white dark:bg-slate-800 rounded-md focus:ring-2 ring-blue-500 col-span-1 md:col-span-2"
         />
 
-
         {/* Description */}
-<textarea
-  name="description"
-  value={mission.description}
-  onChange={handleChange}
-  placeholder="Detailed Description of the Mission"
-  className="border p-3 rounded-md bg-white dark:bg-slate-950 focus:ring-2 ring-blue-500 col-span-1 md:col-span-2"
-  rows={4}
-/>
-
+        <textarea
+          name="description"
+          value={mission.description}
+          onChange={handleChange}
+          placeholder="Detailed Description of the Mission"
+          className="border p-3 text-black dark:text-white rounded-md bg-white dark:bg-slate-800 focus:ring-2 ring-blue-500 col-span-1 md:col-span-2"
+          rows={4}
+        />
 
         {/* Notes */}
         <textarea
@@ -181,7 +182,7 @@ const AssignMissions = () => {
           value={mission.notes}
           onChange={handleChange}
           placeholder="Additional Notes (optional)"
-          className="border p-3 bg-white dark:bg-slate-950 rounded-md focus:ring-2 ring-blue-500 col-span-1 md:col-span-2"
+          className="border text-black dark:text-white p-3 bg-white dark:bg-slate-800 rounded-md focus:ring-2 ring-blue-500 col-span-1 md:col-span-2"
           rows={3}
         />
 
@@ -191,7 +192,7 @@ const AssignMissions = () => {
           value={mission.assignedTo}
           onChange={handleChange}
           required
-          className="border p-3 bg-white dark:bg-slate-950 rounded-md focus:ring-2 ring-blue-500 col-span-1 md:col-span-2"
+          className="border text-black dark:text-white p-3 bg-white dark:bg-slate-800 rounded-md focus:ring-2 ring-blue-500 col-span-1 md:col-span-2"
         >
           <option value="">Select Rescuer *</option>
           {rescuers.map((rescuer) => (

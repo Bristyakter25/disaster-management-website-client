@@ -1,6 +1,5 @@
 
 
-import PaymentPage from '../Payment/PayementPage';
 import Banner from './Banner';
 import BlogPost from './BlogPost';
 
@@ -25,7 +24,7 @@ const Home = () => {
         </div>
         <BlogPost></BlogPost>
 <FAQ></FAQ>
-        <PaymentPage></PaymentPage>
+        {/* <PaymentPage></PaymentPage> */}
        </div>
     );
 };
