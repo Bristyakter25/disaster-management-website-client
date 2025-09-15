@@ -27,6 +27,8 @@ import AssignMissions from "../DashboardComponents/AdminRoutes/AssignMissions";
 import PaymentPage from "../Components/Payment/PayementPage";
 import Donate from "../pages/Donation/Donate";
 import DonationInfoPage from "../pages/Donation/DonationInfoPage";
+import AssignedMissions from "../DashboardComponents/RescueMember/Missions/AssignedMissions";
+import MissionDetails from "../DashboardComponents/RescueMember/Missions/MissionDetails";
 
 export const router = createBrowserRouter([
     {
@@ -129,6 +131,14 @@ export const router = createBrowserRouter([
           {
             path: "safetyContents",
             element: <SafetyContents></SafetyContents>
+          },
+          {
+            path: "assignedMissions",
+            element: <AssignedMissions></AssignedMissions>
+          },
+          {
+            path: "missions/:id",
+            element: <MissionDetails></MissionDetails>
           }
         ]
       }
