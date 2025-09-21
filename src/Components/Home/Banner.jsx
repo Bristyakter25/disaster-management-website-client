@@ -12,7 +12,7 @@ const Banner = () => {
     return (
         <div className="mb-5  w-full ">
           <Carousel
-  autoPlay={true}
+  autoPlay={false}
   infiniteLoop={true}
   interval={3000}          
   transitionTime={600}     
@@ -22,7 +22,21 @@ const Banner = () => {
 >
 <div className="relative lg:h-[640px] h-[400px] w-full">
   <img src={pic1} className="w-full h-full object-cover" alt="Disaster Preview 1" />
-  <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
+   <div
+  className="absolute inset-0 flex items-center text-white"
+  style={{
+    background: "rgba(0,0,0,0.6)", // dark overlay
+    WebkitMaskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    WebkitMaskRepeat: "no-repeat",
+    WebkitMaskSize: "cover",
+    maskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    maskRepeat: "no-repeat",
+    maskSize: "cover",
+  }}
+>
+
     <div className="ml-10 lg:ml-20 max-w-2xl text-left space-y-4">
       <h2 className="text-2xl lg:text-5xl font-bold text-[#8DD8FF]">
         Disaster Management
@@ -40,7 +54,20 @@ const Banner = () => {
 <div className="relative lg:h-[640px] h-[400px] w-full">
   <div className="lg:h-[640px] h-[400px]">
     <img src={pic2} className="w-full h-full object-cover" alt="Disaster Preview 2" />
-    <div className="absolute  inset-0 flex items-center text-white bg-black bg-opacity-50">
+    <div
+  className="absolute inset-0 flex items-center text-white"
+  style={{
+    background: "rgba(0,0,0,0.6)", // dark overlay
+    WebkitMaskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    WebkitMaskRepeat: "no-repeat",
+    WebkitMaskSize: "cover",
+    maskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    maskRepeat: "no-repeat",
+    maskSize: "cover",
+  }}
+>
       <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
         <h2 className="text-3xl lg:text-5xl font-bold text-[#F97316]">
           After the Quake: Every Second Counts
@@ -59,7 +86,20 @@ const Banner = () => {
 {/* Fire Extinguisher - Slide 3 */}
 <div className="relative lg:h-[640px] h-[400px] w-full">
   <img src={pic3} className="w-full h-full" alt="Cyclone Emergency Response" />
-  <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
+  <div
+  className="absolute inset-0 flex items-center text-white"
+  style={{
+    background: "rgba(0,0,0,0.6)", // dark overlay
+    WebkitMaskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    WebkitMaskRepeat: "no-repeat",
+    WebkitMaskSize: "cover",
+    maskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    maskRepeat: "no-repeat",
+    maskSize: "cover",
+  }}
+>
     <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
       <h2 className="text-3xl lg:text-5xl font-bold text-cyan-400">
         Battling the Storms
@@ -78,7 +118,20 @@ const Banner = () => {
 {/* Fire Rescue - Slide 4 */}
 <div className="relative lg:h-[640px] h-[400px] w-full">
   <img src={pic4} className="w-full h-full" alt="River Erosion Crisis in Bangladesh" />
-  <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
+  <div
+  className="absolute inset-0 flex items-center text-white"
+  style={{
+    background: "rgba(0,0,0,0.6)", // dark overlay
+    WebkitMaskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    WebkitMaskRepeat: "no-repeat",
+    WebkitMaskSize: "cover",
+    maskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    maskRepeat: "no-repeat",
+    maskSize: "cover",
+  }}
+>
     <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
       <h2 className="text-3xl lg:text-5xl font-bold text-[#FFFA8D]">
         Losing Land to the River
@@ -97,7 +150,20 @@ const Banner = () => {
 {/* Flood Response - Slide 5 */}
 <div className="relative lg:h-[640px] h-[400px] w-full">
   <img src={pic5} className="w-full h-full object-cover" alt="Flood Emergency" />
-  <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
+  <div
+  className="absolute inset-0 flex items-center text-white"
+  style={{
+    background: "rgba(0,0,0,0.6)", // dark overlay
+    WebkitMaskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    WebkitMaskRepeat: "no-repeat",
+    WebkitMaskSize: "cover",
+    maskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    maskRepeat: "no-repeat",
+    maskSize: "cover",
+  }}
+>
     <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
       <h2 className="text-3xl lg:text-5xl font-bold text-blue-400">
         Rising Waters, Rising Risks
@@ -115,7 +181,20 @@ const Banner = () => {
 {/* Flood Aftermath - Slide 6 */}
 <div className="relative lg:h-[640px] h-[400px] w-full">
   <img src={pic6} className="w-full h-full object-cover" alt="Flood Recovery" />
-  <div className="absolute inset-0 flex items-center text-white bg-black bg-opacity-50">
+  <div
+  className="absolute inset-0 flex items-center text-white"
+  style={{
+    background: "rgba(0,0,0,0.6)", 
+    WebkitMaskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    WebkitMaskRepeat: "no-repeat",
+    WebkitMaskSize: "cover",
+    maskImage:
+      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
+    maskRepeat: "no-repeat",
+    maskSize: "cover",
+  }}
+>
     <div className="ml-10 lg:ml-20 max-w-2xl text-left space-y-4">
       <h2 className="text-3xl lg:text-5xl font-bold text-blue-500">
         After the Flood: Recovery and Resilience
