@@ -1,5 +1,5 @@
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import pic1 from '../../assets/bannerImages/banner-1.jpg';
 import pic2 from '../../assets/bannerImages/banner-2.jpg';
 import pic3 from '../../assets/bannerImages/banner-3.jpg';
@@ -7,214 +7,103 @@ import pic4 from '../../assets/bannerImages/banner-4.jpg';
 import pic5 from '../../assets/bannerImages/banner-5.jpg';
 import pic6 from '../../assets/bannerImages/banner-6.jpg';
 
+const slides = [
+  {
+    image: pic1,
+    title: "Disaster Management",
+    titleColor: "#8DD8FF",
+    subtitle: "Timely action saves lives. Through preparation, coordination, and swift response, we mitigate the impact of natural and man-made disasters.",
+    description: "Empower communities. Strengthen infrastructure. Foster resilience."
+  },
+  {
+    image: pic2,
+    title: "After the Quake: Every Second Counts",
+    titleColor: "#F97316",
+    subtitle: "Rapid response is critical. Teams are deployed, lives are rescued, and infrastructure begins to recover.",
+    description: "Search. Rescue. Rebuild. Together, we restore hope."
+  },
+  {
+    image: pic3,
+    title: "Battling the Storms",
+    titleColor: "cyan",
+    subtitle: "Cyclone shelters, early warnings, and brave volunteers reduce loss of life.",
+    description: "Coastal communities face the storm head-on with preparation and resilience."
+  },
+  {
+    image: pic4,
+    title: "Losing Land to the River",
+    titleColor: "#FFFA8D",
+    subtitle: "Villages vanish overnight as mighty rivers erode banks relentlessly.",
+    description: "Displaced families depend on rapid aid and long-term resettlement efforts."
+  },
+  {
+    image: pic5,
+    title: "Rising Waters, Rising Risks",
+    titleColor: "#93DA97",
+    subtitle: "Floods can devastate communities—preparedness and early warning systems are vital.",
+    description: "Monitor water levels. Evacuate safely. Rebuild stronger."
+  },
+  {
+    image: pic6,
+    title: "After the Flood: Recovery and Resilience",
+    titleColor: "#799EFF",
+    subtitle: "Recovery starts with clean-up, relief distribution, and rebuilding homes and hope.",
+    description: "Support displaced families. Strengthen future defenses. Unite for recovery."
+  },
+];
 
 const Banner = () => {
-    return (
-        <div className="mb-5  w-full ">
-          <Carousel
-  autoPlay={false}
-  infiniteLoop={true}
-  interval={3000}          
-  transitionTime={600}     
-  showThumbs={false}       
-  showStatus={false}       
-  showArrows={true}        
->
-<div className="relative lg:h-[640px] h-[400px] w-full">
-  <img src={pic1} className="w-full h-full object-cover" alt="Disaster Preview 1" />
-   <div
-  className="absolute inset-0 flex items-center text-white"
-  style={{
-    background: "rgba(0,0,0,0.6)", // dark overlay
-    WebkitMaskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    WebkitMaskRepeat: "no-repeat",
-    WebkitMaskSize: "cover",
-    maskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    maskRepeat: "no-repeat",
-    maskSize: "cover",
-  }}
->
+  const [current, setCurrent] = useState(0);
 
-    <div className="ml-10 lg:ml-20 max-w-2xl text-left space-y-4">
-      <h2 className="text-2xl lg:text-5xl font-bold text-[#8DD8FF]">
-        Disaster Management
-      </h2>
-      <p className="text-lg lg:text-xl">
-        Timely action saves lives. Through preparation, coordination, and swift response, we mitigate the impact of natural and man-made disasters.
-      </p>
-      <p className="text-base lg:text-lg">
-        Empower communities. Strengthen infrastructure. Foster resilience.
-      </p>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent(prev => (prev + 1) % slides.length);
+    }, 5000); // change every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative mb-10 w-full lg:h-[640px] h-[400px] overflow-hidden">
+      <AnimatePresence>
+        {slides.map((slide, index) =>
+          index === current && (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5 }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
+              <motion.div
+                className="absolute inset-0 flex items-center text-white bg-black/40"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 1 }}
+              >
+                <div className="ml-10 lg:ml-20 max-w-2xl space-y-4">
+                  <h2
+                    className="text-3xl lg:text-5xl font-bold"
+                    style={{ color: slide.titleColor }}
+                  >
+                    {slide.title}
+                  </h2>
+                  <p className="text-lg lg:text-xl">{slide.subtitle}</p>
+                  <p className="text-base lg:text-lg">{slide.description}</p>
+                </div>
+              </motion.div>
+            </motion.div>
+          )
+        )}
+      </AnimatePresence>
     </div>
-  </div>
-</div>
-
-<div className="relative lg:h-[640px] h-[400px] w-full">
-  <div className="lg:h-[640px] h-[400px]">
-    <img src={pic2} className="w-full h-full object-cover" alt="Disaster Preview 2" />
-    <div
-  className="absolute inset-0 flex items-center text-white"
-  style={{
-    background: "rgba(0,0,0,0.6)", // dark overlay
-    WebkitMaskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    WebkitMaskRepeat: "no-repeat",
-    WebkitMaskSize: "cover",
-    maskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    maskRepeat: "no-repeat",
-    maskSize: "cover",
-  }}
->
-      <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
-        <h2 className="text-3xl lg:text-5xl font-bold text-[#F97316]">
-          After the Quake: Every Second Counts
-        </h2>
-        <p className="text-lg lg:text-xl">
-          Rapid response is critical. Teams are deployed, lives are rescued, and infrastructure begins to recover.
-        </p>
-        <p className="text-base lg:text-lg">
-          Search. Rescue. Rebuild. Together, we restore hope.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-{/* Fire Extinguisher - Slide 3 */}
-<div className="relative lg:h-[640px] h-[400px] w-full">
-  <img src={pic3} className="w-full h-full" alt="Cyclone Emergency Response" />
-  <div
-  className="absolute inset-0 flex items-center text-white"
-  style={{
-    background: "rgba(0,0,0,0.6)", // dark overlay
-    WebkitMaskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    WebkitMaskRepeat: "no-repeat",
-    WebkitMaskSize: "cover",
-    maskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    maskRepeat: "no-repeat",
-    maskSize: "cover",
-  }}
->
-    <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
-      <h2 className="text-3xl lg:text-5xl font-bold text-cyan-400">
-        Battling the Storms
-      </h2>
-      <p className="text-lg lg:text-xl">
-        Cyclone shelters, early warnings, and brave volunteers reduce loss of life.
-      </p>
-      <p className="text-base lg:text-lg">
-        Coastal communities face the storm head-on with preparation and resilience.
-      </p>
-    </div>
-  </div>
-</div>
-
-
-{/* Fire Rescue - Slide 4 */}
-<div className="relative lg:h-[640px] h-[400px] w-full">
-  <img src={pic4} className="w-full h-full" alt="River Erosion Crisis in Bangladesh" />
-  <div
-  className="absolute inset-0 flex items-center text-white"
-  style={{
-    background: "rgba(0,0,0,0.6)", // dark overlay
-    WebkitMaskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    WebkitMaskRepeat: "no-repeat",
-    WebkitMaskSize: "cover",
-    maskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    maskRepeat: "no-repeat",
-    maskSize: "cover",
-  }}
->
-    <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
-      <h2 className="text-3xl lg:text-5xl font-bold text-[#FFFA8D]">
-        Losing Land to the River
-      </h2>
-      <p className="text-lg lg:text-xl">
-        Villages vanish overnight as mighty rivers erode banks relentlessly.
-      </p>
-      <p className="text-base lg:text-lg">
-        Displaced families depend on rapid aid and long-term resettlement efforts.
-      </p>
-    </div>
-  </div>
-</div>
-
-
-{/* Flood Response - Slide 5 */}
-<div className="relative lg:h-[640px] h-[400px] w-full">
-  <img src={pic5} className="w-full h-full object-cover" alt="Flood Emergency" />
-  <div
-  className="absolute inset-0 flex items-center text-white"
-  style={{
-    background: "rgba(0,0,0,0.6)", // dark overlay
-    WebkitMaskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    WebkitMaskRepeat: "no-repeat",
-    WebkitMaskSize: "cover",
-    maskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    maskRepeat: "no-repeat",
-    maskSize: "cover",
-  }}
->
-    <div className="ml-10 lg:ml-20 max-w-xl text-left space-y-4">
-      <h2 className="text-3xl lg:text-5xl font-bold text-blue-400">
-        Rising Waters, Rising Risks
-      </h2>
-      <p className="text-lg lg:text-xl">
-        Floods can devastate communities—preparedness and early warning systems are vital.
-      </p>
-      <p className="text-base lg:text-lg">
-        Monitor water levels. Evacuate safely. Rebuild stronger.
-      </p>
-    </div>
-  </div>
-</div>
-
-{/* Flood Aftermath - Slide 6 */}
-<div className="relative lg:h-[640px] h-[400px] w-full">
-  <img src={pic6} className="w-full h-full object-cover" alt="Flood Recovery" />
-  <div
-  className="absolute inset-0 flex items-center text-white"
-  style={{
-    background: "rgba(0,0,0,0.6)", 
-    WebkitMaskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    WebkitMaskRepeat: "no-repeat",
-    WebkitMaskSize: "cover",
-    maskImage:
-      "radial-gradient(circle at 90% center, transparent 300px, black 500px)",
-    maskRepeat: "no-repeat",
-    maskSize: "cover",
-  }}
->
-    <div className="ml-10 lg:ml-20 max-w-2xl text-left space-y-4">
-      <h2 className="text-3xl lg:text-5xl font-bold text-blue-500">
-        After the Flood: Recovery and Resilience
-      </h2>
-      <p className="text-lg lg:text-xl">
-        Recovery starts with clean-up, relief distribution, and rebuilding homes and hope.
-      </p>
-      <p className="text-base lg:text-lg">
-        Support displaced families. Strengthen future defenses. Unite for recovery.
-      </p>
-    </div>
-  </div>
-</div>
-
-
- 
-</Carousel>
-
-        </div>
-    );
+  );
 };
 
 export default Banner;

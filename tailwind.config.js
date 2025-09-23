@@ -5,10 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-    fontFamily: {
-      tomorrow: ['Tomorrow', 'sans-serif'],
+    extend: {
+      fontFamily: {
+      anton: ['Anton', 'sans-serif'],
+      
     }
+    },
+    
     
   },
   plugins: [

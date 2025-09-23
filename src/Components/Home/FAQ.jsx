@@ -46,7 +46,7 @@ const FAQ = () => {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white">
+          <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28  text-gray-800 font-anton dark:text-white mb-16">
             Frequently Asked Questions
           </h2>
           <p className="mt-2 text-lg text-gray-600 dark:text-gray-300">
