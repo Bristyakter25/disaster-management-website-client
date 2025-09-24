@@ -36,11 +36,11 @@ const LatestHeadlines = () => {
   if (error) return <p className="text-red-500 text-center">{error}</p>;
 
   return (
-    <div className="px-4 md:px-10">
+    <div className="px-4 md:px-10 ">
       <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28 text-gray-800 font-anton dark:text-white mb-2">
         LATEST HEADLINES
       </h2>
-      <p className="text-center dark:text-white mb-24 text-gray-700 tracking-wider text-lg">
+      <p className="text-center dark:text-white mb-16 text-gray-700 tracking-wider text-lg">
         Get real-time information and safety tips for ongoing disasters.
       </p>
 
@@ -81,7 +81,7 @@ const LatestHeadlines = () => {
 </button>
 
 
-        <div className="w-full">
+        <div className="w-full ">
           {alerts.length > 0 ? (
             <Swiper
               modules={[Navigation, Autoplay]}
@@ -106,7 +106,7 @@ const LatestHeadlines = () => {
               {alerts.map((alert) => (
                 <SwiperSlide key={alert._id} className="flex justify-center">
                   <div
-                    className="rounded-xl shadow-lg cursor-pointer bg-white overflow-hidden transform transition-all duration-500 hover:shadow-[0_8px_25px_#7dd3fc] hover:-translate-y-1 hover:scale-105 w-full max-w-xs"
+                    className="rounded-xl  shadow-lg cursor-pointer bg-white overflow-hidden transform transition-all duration-500 hover:shadow-[0_8px_25px_#7dd3fc] hover:-translate-y-1 hover:scale-105 w-full max-w-xs"
                     onClick={() => navigate(`/latestAlerts/${alert._id}`)}
                   >
                     <div className="overflow-hidden rounded-t-xl">
@@ -126,7 +126,7 @@ const LatestHeadlines = () => {
                         {alert.location}
                       </span>
                     </div>
-                    <p className="my-4 px-4 text-md md:text-lg font-bold text-gray-700 hover:underline">
+                    <p className="my-4 lg:h-[90px] h-[120px] px-4 text-md md:text-lg font-bold text-black hover:underline">
                       {alert.details}
                     </p>
                     <div className="px-4 pb-4 text-gray-600 text-sm space-y-1">

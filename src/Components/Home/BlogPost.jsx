@@ -14,9 +14,12 @@ const BlogPost = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-10 ">
-      <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-24  text-gray-800 font-anton dark:text-white mb-16">
+      <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-24  text-gray-800 font-anton dark:text-white mb-7">
        News & Blogs
       </h2>
+      <p className="text-center dark:text-white mb-16 text-gray-700 tracking-wider text-lg">
+        Latest disaster news and stories from communities across Bangladesh.
+      </p>
 
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {blogs.map((post) => (

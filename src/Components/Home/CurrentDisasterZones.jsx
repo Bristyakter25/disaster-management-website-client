@@ -68,8 +68,11 @@ const CurrentDisasterZones = () => {
   });
 
   return (
-    <div>
+    <div className='my-10'>
        <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28  text-gray-800 font-anton dark:text-white mb-7">Interactive Disaster Map</h2>
+       <p className="text-center dark:text-white mb-16 text-gray-700 tracking-wider text-lg">
+        An interactive disaster map designed to provide accurate, real-time information for analysis and decision-making.
+      </p>
       <div className="flex flex-col  xl:flex-row gap-6 px-6  dark:bg-slate-900 bg-gray-100 py-16">
       
       {/* Details Panel */}
