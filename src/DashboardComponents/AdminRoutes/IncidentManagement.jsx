@@ -11,7 +11,7 @@ const IncidentManagement = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://disaster-management-website-server.onrender.com/alertPanel")
+    fetch("https://disaster-management-website-server.vercel.app/alertPanel")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -42,7 +42,7 @@ const IncidentManagement = () => {
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`https://disaster-management-website-server.onrender.com/alertPanel/${id}`, {
+      fetch(`https://disaster-management-website-server.vercel.app/alertPanel/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

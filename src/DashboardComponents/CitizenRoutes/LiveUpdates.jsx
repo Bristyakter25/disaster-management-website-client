@@ -19,7 +19,7 @@ const LiveUpdates = () => {
 
   // Fetch alerts from backend
   useEffect(() => {
-    fetch("https://disaster-management-website-server.onrender.com/alertPanel")
+    fetch("https://disaster-management-website-server.vercel.app/alertPanel")
       .then((res) => res.json())
       .then((alerts) => {
         setData(alerts);

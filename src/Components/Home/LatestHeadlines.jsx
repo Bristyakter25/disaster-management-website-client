@@ -13,7 +13,7 @@ const LatestHeadlines = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://disaster-management-website-server.onrender.com/latestAlerts")
+    fetch("https://disaster-management-website-server.vercel.app/latestAlerts")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();

@@ -16,7 +16,7 @@ const Dashboard = () => {
     const fetchUserData = async () => {
       if (!user?.email) return;
       try {
-        const res = await fetch(`https://disaster-management-website-server.onrender.com/users/${user.email}`);
+        const res = await fetch(`https://disaster-management-website-server.vercel.app/users/${user.email}`);
         const userData = await res.json();
         if (userData?.role) setRole(userData.role);
       } catch (err) {

@@ -6,7 +6,7 @@ const MissionDetails = () => {
   const [mission, setMission] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/missions/${id}`)
+    fetch(`https://disaster-management-website-server.vercel.app/missions/${id}`)
       .then((res) => res.json())
       .then((data) => setMission(data))
       .catch((err) => console.error(err));

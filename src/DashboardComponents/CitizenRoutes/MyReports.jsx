@@ -11,7 +11,7 @@ const MyReports = () => {
   // Fetch reports submitted by the logged-in user
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://disaster-management-website-server.onrender.com/alertPanel?email=${user.email}`)
+      fetch(`https://disaster-management-website-server.vercel.app/alertPanel?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setDisasters(data))
         .catch((err) => console.error("Error fetching reports:", err));
@@ -30,7 +30,7 @@ const MyReports = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://disaster-management-website-server.onrender.com/alertPanel/${id}`, {
+        fetch(`https://disaster-management-website-server.vercel.app/alertPanel/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

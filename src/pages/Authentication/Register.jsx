@@ -36,7 +36,7 @@ const Register = () => {
               role
             };
 
-            fetch('https://disaster-management-website-server.onrender.com/users', {
+            fetch('https://disaster-management-website-server.vercel.app/users', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'

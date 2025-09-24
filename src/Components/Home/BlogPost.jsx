@@ -6,7 +6,7 @@ const BlogPost = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://disaster-management-website-server.onrender.com/blogPosts")
+    fetch("https://disaster-management-website-server.vercel.app/blogPosts")
       .then((res) => res.json())
       .then((data) => setBlogs(data))
       .catch((err) => console.error("Error fetching blogs:", err));
