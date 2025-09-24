@@ -8,7 +8,6 @@ import FAQ from './FAQ';
 
 import LatestHeadlines from './LatestHeadlines';
 import MarqueeAlert from './MarqueeAlert';
-import RightSideBar from './RightSideBar';
 
 const Home = () => {
     return (
@@ -17,15 +16,17 @@ const Home = () => {
        <div className='mx-8'>
          <MarqueeAlert></MarqueeAlert>
        </div>
-         <div className='mx-8 '>
-            <div >
+        
+           
 <LatestHeadlines></LatestHeadlines>
-{/* <RightSideBar></RightSideBar> */}
-            </div>
+
+           
             
-            <CurrentDisasterZones></CurrentDisasterZones>
+           <div className='mx-8'>
+             <CurrentDisasterZones></CurrentDisasterZones>
+           </div>
             
-        </div>
+       
         <BlogPost></BlogPost>
 <FAQ></FAQ>
         {/* <PaymentPage></PaymentPage> */}
