@@ -12,7 +12,7 @@ const EditIncidentData = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://disaster-management-website-server.onrender.com/alertPanel/${id}`)
+    fetch(`https://disaster-management-website-server.vercel.app/alertPanel/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setAlertData(data);
@@ -54,7 +54,7 @@ const EditIncidentData = () => {
       status: form.status.value,
     };
 
-    fetch(`https://disaster-management-website-server.onrender.com/alertPanel/${id}`, {
+    fetch(`https://disaster-management-website-server.vercel.app/alertPanel/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedAlert),

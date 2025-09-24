@@ -7,7 +7,7 @@ const BlogDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://disaster-management-website-server.onrender.com/blogPosts/${id}`)
+    fetch(`https://disaster-management-website-server.vercel.app/blogPosts/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);

@@ -25,7 +25,7 @@ const AssignedMissions = () => {
     if (!user) return;
 
     setLoading(true);
-    fetch(`http://localhost:5000/missions?assignedTo=${user.email}`)
+    fetch(`https://disaster-management-website-server.vercel.app/missions?assignedTo=${user.email}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch missions");
         return res.json();

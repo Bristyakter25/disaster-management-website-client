@@ -14,7 +14,7 @@ const DonationInfoPage = () => {
   
 
   useEffect(() => {
-    fetch(`http://localhost:5000/alertPanel/donations/${id}`)
+    fetch(`https://disaster-management-website-server.vercel.app/alertPanel/donations/${id}`)
       .then((res) => res.json())
       .then((data) => setDisaster(data))
       .catch((err) => console.error(err));
@@ -51,7 +51,7 @@ const DonationInfoPage = () => {
       date: new Date(),
     };
 
-    fetch("http://localhost:5000/alertPanel/save-donation", {
+    fetch("https://disaster-management-website-server.vercel.app/alertPanel/save-donation", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(donationInfo),

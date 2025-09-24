@@ -13,7 +13,7 @@ const OverviewPanel = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    fetch("https://disaster-management-website-server.onrender.com/alertPanel")
+    fetch("https://disaster-management-website-server.vercel.app/alertPanel")
       .then(res => res.json())
       .then(rawData => {
         setData(rawData);

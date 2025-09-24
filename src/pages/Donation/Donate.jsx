@@ -6,7 +6,7 @@ const Donate = () => {
   const [donations, setDonations] = useState([]);
     const navigate = useNavigate();
    useEffect(() => {
-    fetch("http://localhost:5000/alertPanel/donations")
+    fetch("https://disaster-management-website-server.vercel.app/alertPanel/donations")
       .then((res) => res.json())
       .then((data) => setDonations(data))
       .catch((err) => console.error("Error fetching blogs:", err));

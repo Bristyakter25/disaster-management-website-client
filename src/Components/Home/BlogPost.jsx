@@ -6,15 +6,15 @@ const BlogPost = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://disaster-management-website-server.onrender.com/blogPosts")
+    fetch("https://disaster-management-website-server.vercel.app/blogPosts")
       .then((res) => res.json())
       .then((data) => setBlogs(data))
       .catch((err) => console.error("Error fetching blogs:", err));
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-10 py-10">
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+    <div className="max-w-7xl mx-auto px-10 ">
+      <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-24  text-gray-800 font-anton dark:text-white mb-16">
        News & Blogs
       </h2>
 

@@ -51,7 +51,7 @@ const CurrentDisasterZones = () => {
   const mapRef = useRef(null);
 
   useEffect(() => {
-    fetch('https://disaster-management-website-server.onrender.com/alertPanel')
+    fetch('https://disaster-management-website-server.vercel.app/alertPanel')
       .then(res => res.json())
       .then(data => setData(data))
       .catch(err => console.error('Error fetching data:', err));
@@ -69,8 +69,8 @@ const CurrentDisasterZones = () => {
 
   return (
     <div>
-       <h2 className="text-3xl text-center mt-28 font-bold text-gray-800 dark:text-white mb-2">Interactive Disaster Map</h2>
-      <div className="flex flex-col  xl:flex-row gap-6 px-6 py-8 dark:bg-slate-900 bg-gray-100 min-h-screen">
+       <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28  text-gray-800 font-anton dark:text-white mb-7">Interactive Disaster Map</h2>
+      <div className="flex flex-col  xl:flex-row gap-6 px-6  dark:bg-slate-900 bg-gray-100 py-16">
       
       {/* Details Panel */}
       <div className="xl:w-1/3  w-full space-y-6">
