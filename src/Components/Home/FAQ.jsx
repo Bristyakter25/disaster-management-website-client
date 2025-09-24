@@ -84,15 +84,7 @@ const FAQ = () => {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Still have questions?
-          </h3>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md transition-colors">
-            Contact Us
-          </button>
-        </div>
+        
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
 
 
+
 import Banner from './Banner';
 import BannerCards from './BannerCards';
 import BlogPost from './BlogPost';
+import Contact from './ContactUs/Contact';
 
 import CurrentDisasterZones from './CurrentDisasterZones';
 import FAQ from './FAQ';
@@ -31,6 +33,7 @@ const Home = () => {
        
         <BlogPost></BlogPost>
 <FAQ></FAQ>
+<Contact></Contact>
         {/* <PaymentPage></PaymentPage> */}
        </div>
     );
