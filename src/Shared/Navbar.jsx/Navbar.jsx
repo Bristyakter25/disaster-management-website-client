@@ -121,7 +121,7 @@ const Navbar = () => {
 
       <li><UnderlineNavLink to="/request-help">Request Help</UnderlineNavLink></li>
       <li><UnderlineNavLink to="/donateUs">Donate</UnderlineNavLink></li>
-      <li><UnderlineNavLink to="/dashboard">Dashboard</UnderlineNavLink></li>
+      <li><UnderlineNavLink to="/dashboard/overviewPanel">Dashboard</UnderlineNavLink></li>
 
       {!user ? (
         <>
