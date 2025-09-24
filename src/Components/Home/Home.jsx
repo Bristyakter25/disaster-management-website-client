@@ -1,6 +1,7 @@
 
 
 import Banner from './Banner';
+import BannerCards from './BannerCards';
 import BlogPost from './BlogPost';
 
 import CurrentDisasterZones from './CurrentDisasterZones';
@@ -11,11 +12,12 @@ import MarqueeAlert from './MarqueeAlert';
 
 const Home = () => {
     return (
-       <div>
+       <div className='bg-[#ECF2FF] dark:bg-black'>
         <Banner></Banner>
        <div className='mx-8'>
          <MarqueeAlert></MarqueeAlert>
        </div>
+       <BannerCards></BannerCards>
         
            
 <LatestHeadlines></LatestHeadlines>

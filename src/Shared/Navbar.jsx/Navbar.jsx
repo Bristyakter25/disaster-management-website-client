@@ -175,14 +175,15 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 
-        ${scrolled 
-          ? "bg-white/30 dark:bg-gray-900/50 backdrop-blur-md shadow-md text-black dark:text-white" 
-          : isHome 
-            ? "bg-transparent text-white" 
-            : "bg-transparent text-black dark:text-white"
-        }`}
-    >
+  className={`fixed top-0 w-full z-50 transition-all duration-500 
+    ${scrolled 
+      ? "bg-white/30 dark:bg-gray-900/50 backdrop-blur-md shadow-md" 
+      : isHome 
+        ? "bg-transparent" 
+        : "bg-white/50 dark:bg-gray-900/50 backdrop-blur-md"
+    }`}
+>
+
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">

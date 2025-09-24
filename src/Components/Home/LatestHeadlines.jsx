@@ -36,22 +36,22 @@ const LatestHeadlines = () => {
   if (error) return <p className="text-red-500 text-center">{error}</p>;
 
   return (
-    <div className="px-4 md:px-10 ">
-      <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28 text-gray-800 font-anton dark:text-white mb-2">
+    <div className="px-4  md:px-10 ">
+      <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28 text-gray-800 font-anton dark:text-white mb-7">
         LATEST HEADLINES
       </h2>
-      <p className="text-center dark:text-white mb-16 text-gray-700 tracking-wider text-lg">
+      <p className="text-center dark:text-white mb-7 text-gray-700 tracking-wider text-lg">
         Get real-time information and safety tips for ongoing disasters.
       </p>
 
-      <div className="relative flex items-center justify-center max-w-6xl mx-auto">
+      <div className="relative p-4 flex items-center justify-center max-w-6xl mx-auto">
         {/* Left Arrow: Negative left so it's outside the Swiper cards */}
         {/* Left Arrow */}
 <button
   ref={prevRef}
   className="
     absolute top-1/2 -translate-y-1/2 
-    left-2 sm:left-4 md:-left-10 lg:-left-16
+    left-2 sm:left-4 md:-left-10 lg:-left-14
     z-10 
     bg-blue-100 hover:bg-blue-300 text-blue-700 
     font-bold 
@@ -81,7 +81,7 @@ const LatestHeadlines = () => {
 </button>
 
 
-        <div className="w-full ">
+        <div className="w-full">
           {alerts.length > 0 ? (
             <Swiper
               modules={[Navigation, Autoplay]}
@@ -106,7 +106,7 @@ const LatestHeadlines = () => {
               {alerts.map((alert) => (
                 <SwiperSlide key={alert._id} className="flex justify-center">
                   <div
-                    className="rounded-xl  shadow-lg cursor-pointer bg-white overflow-hidden transform transition-all duration-500 hover:shadow-[0_8px_25px_#7dd3fc] hover:-translate-y-1 hover:scale-105 w-full max-w-xs"
+                    className="rounded-xl  shadow-lg cursor-pointer bg-white overflow-hidden my-7 transform transition-all duration-500 hover:shadow-[0_8px_25px_#7dd3fc] hover:-translate-y-1 hover:scale-105 w-full max-w-xs"
                     onClick={() => navigate(`/latestAlerts/${alert._id}`)}
                   >
                     <div className="overflow-hidden rounded-t-xl">
