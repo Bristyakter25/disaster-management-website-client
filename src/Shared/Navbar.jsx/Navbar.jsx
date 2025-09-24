@@ -41,6 +41,7 @@ const Navbar = () => {
 
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const isDonationPage = location.pathname === "/donateUs"
 
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -120,7 +121,7 @@ const Navbar = () => {
 
       <li><UnderlineNavLink to="/request-help">Request Help</UnderlineNavLink></li>
       <li><UnderlineNavLink to="/donateUs">Donate</UnderlineNavLink></li>
-      <li><UnderlineNavLink to="/dashboard/overviewPanel">Dashboard</UnderlineNavLink></li>
+      <li><UnderlineNavLink to="/dashboard">Dashboard</UnderlineNavLink></li>
 
       {!user ? (
         <>
@@ -175,15 +176,14 @@ const Navbar = () => {
 
   return (
     <header
-  className={`fixed top-0 w-full z-50 transition-all duration-500 
-    ${scrolled 
-      ? "bg-white/30 dark:bg-gray-900/50 backdrop-blur-md shadow-md" 
-      : isHome 
-        ? "bg-transparent" 
-        : "bg-white/50 dark:bg-gray-900/50 backdrop-blur-md"
-    }`}
->
-
+      className={`fixed top-0 w-full z-50 transition-all duration-500 
+        ${scrolled 
+          ? "bg-white/30 dark:bg-gray-900/50 backdrop-blur-md shadow-md text-black dark:text-white" 
+          : isHome ||  isDonationPage
+            ? "bg-transparent text-white" 
+            : "bg-transparent text-black dark:text-white"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
