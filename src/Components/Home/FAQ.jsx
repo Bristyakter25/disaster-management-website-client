@@ -42,14 +42,14 @@ const FAQ = () => {
   };
 
   return (
-    <div className="py-16 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="py-16 px-6 sm:px-12 lg:px-20  transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28  text-gray-800 font-anton dark:text-white mb-16">
+          <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28  text-gray-800 font-anton dark:text-white mb-7">
             Frequently Asked Questions
           </h2>
-          <p className="mt-2 text-lg text-gray-600 dark:text-gray-300">
+          <p className="mt-2 tracking-wider text-lg text-gray-600 dark:text-gray-300">
             Common questions about disaster preparedness and response
           </p>
         </div>
@@ -84,15 +84,7 @@ const FAQ = () => {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Still have questions?
-          </h3>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md transition-colors">
-            Contact Us
-          </button>
-        </div>
+        
       </div>
     </div>
   );

@@ -29,6 +29,7 @@ import Donate from "../pages/Donation/Donate";
 import DonationInfoPage from "../pages/Donation/DonationInfoPage";
 import AssignedMissions from "../DashboardComponents/RescueMember/Missions/AssignedMissions";
 import MissionDetails from "../DashboardComponents/RescueMember/Missions/MissionDetails";
+import ContactForm from "../Components/Home/ContactUs/ContactForm";
 
 export const router = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: "donateUs",
         element: <Donate></Donate>
+      },
+      {
+        path:"contactForm",
+        element:<ContactForm></ContactForm>
       },
       {
         path: "liveAlerts",

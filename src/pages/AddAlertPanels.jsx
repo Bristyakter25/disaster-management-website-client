@@ -72,8 +72,8 @@ const AddAlertPanels = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white dark:bg-slate-800 shadow-md rounded-xl mt-20">
-      <h2 className="text-2xl text-center font-bold mb-6 dark:text-white text-gray-800">Add New Alert Panel</h2>
+    <div className="max-w-3xl mx-auto px-6 bg-white dark:bg-transparent shadow-md rounded-xl py-28">
+      <h2 className="text-3xl tracking-widest text-center text-gray-800 font-anton dark:text-white mb-10">Add New Alert Panel</h2>
       <form onSubmit={handleSubmit} className="space-y-5 mb-8">
         {[
           { label: "Headline", name: "headline", type: "text" },

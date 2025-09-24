@@ -73,7 +73,7 @@ const CurrentDisasterZones = () => {
        <p className="text-center dark:text-white mb-16 text-gray-700 tracking-wider text-lg">
         An interactive disaster map designed to provide accurate, real-time information for analysis and decision-making.
       </p>
-      <div className="flex flex-col  xl:flex-row gap-6 px-6  dark:bg-slate-900 bg-gray-100 py-16">
+      <div className="flex flex-col  xl:flex-row gap-6 px-6  dark:bg-slate-900 ">
       
       {/* Details Panel */}
       <div className="xl:w-1/3  w-full space-y-6">
@@ -129,7 +129,7 @@ const CurrentDisasterZones = () => {
       </div>
 
       {/* Map Panel */}
-      <div className="xl:w-2/3 mt-12 w-full">
+      <div className="xl:w-2/3 mt-6 w-full">
         {/* <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Disaster Map</h2> */}
         <div className="w-full h-[650px] rounded-xl overflow-hidden shadow-lg border border-gray-200">
           <MapContainer

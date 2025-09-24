@@ -74,7 +74,7 @@ const DonationInfoPage = () => {
   };
 
   return (
-    <div className="min-h-screen mt-28 bg-gray-100 dark:bg-gray-900 p-4 flex flex-col items-center">
+    <div className="min-h-screen pt-28 bg-gray-100 dark:bg-gray-900 p-4 flex flex-col items-center">
       {/* Hero Section */}
       <div className="w-full max-w-5xl flex flex-col md:flex-row bg-sky-300 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-8">
         {/* Left: Image */}

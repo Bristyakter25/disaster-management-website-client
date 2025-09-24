@@ -41,6 +41,7 @@ const Navbar = () => {
 
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const isDonationPage = location.pathname === "/donateUs"
 
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -120,7 +121,7 @@ const Navbar = () => {
 
       <li><UnderlineNavLink to="/request-help">Request Help</UnderlineNavLink></li>
       <li><UnderlineNavLink to="/donateUs">Donate</UnderlineNavLink></li>
-      <li><UnderlineNavLink to="/dashboard">Dashboard</UnderlineNavLink></li>
+      <li><UnderlineNavLink to="/dashboard/overviewPanel">Dashboard</UnderlineNavLink></li>
 
       {!user ? (
         <>
@@ -178,7 +179,7 @@ const Navbar = () => {
       className={`fixed top-0 w-full z-50 transition-all duration-500 
         ${scrolled 
           ? "bg-white/30 dark:bg-gray-900/50 backdrop-blur-md shadow-md text-black dark:text-white" 
-          : isHome 
+          : isHome ||  isDonationPage
             ? "bg-transparent text-white" 
             : "bg-transparent text-black dark:text-white"
         }`}

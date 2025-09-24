@@ -16,7 +16,7 @@ const Donate = () => {
   //   navigate(`/alertPanel/donations/${disaster._id}`); // Navigate to details page
   // };
   return (
-    <div className="mt-16 ">
+    <div className="">
       {/* Image with text overlay */}
       <div className="relative  overflow-hidden">
         <img
