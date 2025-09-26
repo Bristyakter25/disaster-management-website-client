@@ -7,7 +7,7 @@ const ManageUser = () => {
 
   // Fetch all users
   useEffect(() => {
-    fetch("https://disaster-management-website-server.vercel.app/users")
+    fetch("https://disaster-management-website-server.onrender.com/users")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
@@ -20,7 +20,7 @@ const ManageUser = () => {
   }, []);
 
   const fetchUsers = () => {
-  fetch("https://disaster-management-website-server.vercel.app/users")
+  fetch("https://disaster-management-website-server.onrender.com/users")
     .then(res => res.json())
     .then(data => {
       setUsers(data);
@@ -29,7 +29,7 @@ const ManageUser = () => {
 };
   // Handle user role update
  const handleUpdateRole = (userId, newRole) => {
-  fetch(`https://disaster-management-website-server.vercel.app/users/${userId}`, {
+  fetch(`https://disaster-management-website-server.onrender.com/users/${userId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const ManageUser = () => {
     confirmButtonText: 'Yes, delete it!',
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`https://disaster-management-website-server.vercel.app/users/${id}`, {
+      fetch(`https://disaster-management-website-server.onrender.com/users/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

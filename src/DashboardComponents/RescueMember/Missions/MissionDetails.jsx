@@ -6,7 +6,7 @@ const MissionDetails = () => {
   const [mission, setMission] = useState(null);
 
   useEffect(() => {
-    fetch(`https://disaster-management-website-server.vercel.app/missions/${id}`)
+    fetch(`https://disaster-management-website-server.onrender.com/missions/${id}`)
       .then((res) => res.json())
       .then((data) => setMission(data))
       .catch((err) => console.error(err));

@@ -22,7 +22,7 @@ const AssignMissions = () => {
   });
 
   useEffect(() => {
-    fetch("https://disaster-management-website-server.vercel.app/rescuerProfile")
+    fetch("https://disaster-management-website-server.onrender.com/rescuerProfile")
       .then((res) => res.json())
       .then((data) => setRescuers(data))
       .catch((err) => console.error("Error fetching rescuers:", err));
@@ -38,7 +38,7 @@ const AssignMissions = () => {
     const payload = { ...mission, location: mission.address };
 
     try {
-      const response = await fetch("https://disaster-management-website-server.vercel.app/missions", {
+      const response = await fetch("https://disaster-management-website-server.onrender.com/missions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

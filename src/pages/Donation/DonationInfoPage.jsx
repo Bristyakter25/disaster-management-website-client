@@ -14,7 +14,7 @@ const DonationInfoPage = () => {
 
   useEffect(() => {
     fetch(
-      `https://disaster-management-website-server.vercel.app/alertPanel/donations/${id}`
+      `https://disaster-management-website-server.onrender.com/alertPanel/donations/${id}`
     )
       .then((res) => res.json())
       .then((data) => setDisaster(data))
@@ -70,7 +70,7 @@ const DonationInfoPage = () => {
     };
 
     fetch(
-      "https://disaster-management-website-server.vercel.app/alertPanel/save-donation",
+      "https://disaster-management-website-server.onrender.com/alertPanel/save-donation",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

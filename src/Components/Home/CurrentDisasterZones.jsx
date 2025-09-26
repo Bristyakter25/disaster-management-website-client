@@ -51,7 +51,7 @@ const CurrentDisasterZones = () => {
   const mapRef = useRef(null);
 
   useEffect(() => {
-    fetch('https://disaster-management-website-server.vercel.app/alertPanel')
+    fetch('https://disaster-management-website-server.onrender.com/alertPanel')
       .then(res => res.json())
       .then(data => setData(data))
       .catch(err => console.error('Error fetching data:', err));
