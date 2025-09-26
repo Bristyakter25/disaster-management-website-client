@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-function CheckoutForm({ donor, disaster, amount }) {
+function CheckoutForm({ donor, disaster, amount, onSuccess }) {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,6 @@ function CheckoutForm({ donor, disaster, amount }) {
     document.documentElement.classList.contains("dark")
   );
 
-  // 🔄 Listen for theme changes dynamically
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));
@@ -32,7 +31,6 @@ function CheckoutForm({ donor, disaster, amount }) {
     return () => observer.disconnect();
   }, []);
 
-  // ✅ Memoize styles so they update on theme change
   const cardElementOptions = useMemo(
     () => ({
       style: {
@@ -58,6 +56,7 @@ function CheckoutForm({ donor, disaster, amount }) {
     setLoading(true);
 
     try {
+     
       const saveRes = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/alertPanel/save-donation`,
         {
@@ -81,7 +80,6 @@ function CheckoutForm({ donor, disaster, amount }) {
 
       const donationId = saveData.id;
 
-      // 2️⃣ Create Stripe Payment Intent
       const paymentRes = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/create-payment-intent`,
         {
@@ -92,7 +90,7 @@ function CheckoutForm({ donor, disaster, amount }) {
       );
       const { clientSecret } = await paymentRes.json();
 
-      // 3️⃣ Confirm Payment
+     
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
@@ -106,15 +104,18 @@ function CheckoutForm({ donor, disaster, amount }) {
       if (result.error) {
         Swal.fire("Payment Failed", result.error.message, "error");
       } else if (result.paymentIntent.status === "succeeded") {
+      
+        if (onSuccess) {
+          onSuccess(amount);
+        }
+
         Swal.fire(
           "Success!",
           "🎉 Donation Successful! Thank you ❤️",
           "success"
         );
-        navigate("/donateUs");
 
-
-        // 4️⃣ Update donation as completed
+      
         await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/alertPanel/donation-success/${donationId}`,
           {
@@ -123,6 +124,9 @@ function CheckoutForm({ donor, disaster, amount }) {
             body: JSON.stringify({ paymentId: result.paymentIntent.id }),
           }
         );
+
+       
+        navigate("/donateUs");
       }
     } catch (err) {
       console.error(err);
@@ -161,13 +165,14 @@ function CheckoutForm({ donor, disaster, amount }) {
   );
 }
 
-export default function PaymentPage({ donor, disaster, amount }) {
+export default function PaymentPage({ donor, disaster, amount, onSuccess }) {
   return (
     <Elements stripe={stripePromise}>
       <CheckoutForm
         donor={donor}
         disaster={disaster}
         amount={amount}
+        onSuccess={onSuccess}   
       />
     </Elements>
   );

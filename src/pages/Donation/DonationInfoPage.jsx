@@ -10,11 +10,12 @@ const DonationInfoPage = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [donationAmount, setDonationAmount] = useState(100);
   const [customAmount, setCustomAmount] = useState("");
-  const [canPay, setCanPay] = useState(false); 
-  
+  const [canPay, setCanPay] = useState(false);
 
   useEffect(() => {
-    fetch(`https://disaster-management-website-server.vercel.app/alertPanel/donations/${id}`)
+    fetch(
+      `https://disaster-management-website-server.onrender.com/alertPanel/donations/${id}`
+    )
       .then((res) => res.json())
       .then((data) => setDisaster(data))
       .catch((err) => console.error(err));
@@ -26,7 +27,25 @@ const DonationInfoPage = () => {
   const goal = disaster.donationGoal || 1;
   const percentage = Math.min((received / goal) * 100, 100);
 
-  // Validate form fields
+  // ✅ Update UI instantly after successful payment
+  const handleDonationSuccess = (donatedAmount) => {
+    setDisaster((prev) =>
+      prev
+        ? {
+            ...prev,
+            donationReceived: (prev.donationReceived || 0) + Number(donatedAmount),
+          }
+        : prev
+    );
+
+    Swal.fire({
+      icon: "success",
+      title: "Thank You!",
+      text: `Your donation of ৳${donatedAmount} was successful.`,
+    });
+  };
+
+  // ✅ Validate and save donor info before payment
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -40,7 +59,6 @@ const DonationInfoPage = () => {
       return;
     }
 
-    // Save donation info to backend (optional, or you can do this after successful payment)
     const donationInfo = {
       donor: form,
       disaster: {
@@ -51,11 +69,14 @@ const DonationInfoPage = () => {
       date: new Date(),
     };
 
-    fetch("https://disaster-management-website-server.vercel.app/alertPanel/save-donation", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(donationInfo),
-    })
+    fetch(
+      "https://disaster-management-website-server.onrender.com/alertPanel/save-donation",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(donationInfo),
+      }
+    )
       .then(() => {
         Swal.fire({
           icon: "success",
@@ -164,7 +185,7 @@ const DonationInfoPage = () => {
 
           {/* Donation Amount Selection */}
           <div>
-            <h3 className="font-semibold mb-2 dark:text-white  text-gray-900">
+            <h3 className="font-semibold mb-2 dark:text-white text-gray-900">
               Choose Donation Amount (TK)
             </h3>
             <div className="flex flex-wrap gap-3 mb-4">
@@ -187,18 +208,17 @@ const DonationInfoPage = () => {
                 placeholder="Custom"
                 value={customAmount}
                 onChange={(e) => setCustomAmount(e.target.value)}
-                className="w-24 px-3 py-2 border rounded-lg dark:bg-gray-900 dark:text-white  border-gray-300 dark:border-gray-700"
+                className="w-24 px-3 py-2 border rounded-lg dark:bg-gray-900 dark:text-white border-gray-300 dark:border-gray-700"
               />
             </div>
           </div>
 
-      
           {canPay ? (
             <PaymentPage
               donor={form}
               disaster={disaster}
-              className="dark:text-white text-black"
               amount={customAmount || donationAmount}
+              onSuccess={handleDonationSuccess} // ✅ pass success handler
             />
           ) : (
             <div className="text-center text-red-600 font-semibold">

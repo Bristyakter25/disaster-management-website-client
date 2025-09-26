@@ -16,7 +16,7 @@ const LatestHeadlines = () => {
   const nextRef = useRef(null);
 
   useEffect(() => {
-    fetch("https://disaster-management-website-server.vercel.app/latestAlerts")
+    fetch("https://disaster-management-website-server.onrender.com/latestAlerts")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();

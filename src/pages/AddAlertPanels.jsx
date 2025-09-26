@@ -52,7 +52,7 @@ const AddAlertPanels = () => {
       status: form.status.value,
     };
 
-    fetch("https://disaster-management-website-server.vercel.app/alertPanel", {
+    fetch("https://disaster-management-website-server.onrender.com/alertPanel", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

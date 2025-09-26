@@ -36,7 +36,7 @@ const SafetyContents = () => {
   const [result, setResult] = useState("");
 
   useEffect(() => {
-    fetch("https://disaster-management-website-server.vercel.app/safetyContents")
+    fetch("https://disaster-management-website-server.onrender.com/safetyContents")
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.error("Error fetching data:", err));
