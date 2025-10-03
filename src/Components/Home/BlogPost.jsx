@@ -13,7 +13,7 @@ const BlogPost = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <div className="max-w-7xl pt-20  mx-auto px-6 lg:px-10">
       {/* Section Title */}
       <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-24 font-anton text-gray-800 dark:text-white mb-5">
         News & Blogs

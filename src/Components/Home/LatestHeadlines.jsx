@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import { Navigation, Autoplay } from "swiper/modules";
-
+import Aos from 'aos';
 const LatestHeadlines = () => {
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,6 +16,7 @@ const LatestHeadlines = () => {
   const nextRef = useRef(null);
 
   useEffect(() => {
+Aos.refresh(); 
     fetch("https://disaster-management-website-server.onrender.com/latestAlerts")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
