@@ -51,7 +51,7 @@ const LatestHeadlines = () => {
   ref={prevRef}
   className="
     absolute top-1/2 -translate-y-1/2 
-    left-2 sm:left-4 md:-left-10 lg:-left-14
+    left-2 sm:left-4 md:-left-10 lg:-left-10
     z-10 
     bg-blue-100 hover:bg-blue-300 text-blue-700 
     font-bold 
@@ -68,7 +68,7 @@ const LatestHeadlines = () => {
   ref={nextRef}
   className="
     absolute top-1/2 -translate-y-1/2 
-    right-2 sm:right-4 md:-right-10 lg:-right-4
+   sm:right-4 md:-right-10 lg:-right-10
     z-10 
     bg-blue-100 hover:bg-blue-300 text-blue-700 
     font-bold 
@@ -85,7 +85,7 @@ const LatestHeadlines = () => {
           {alerts.length > 0 ? (
             <Swiper
               modules={[Navigation, Autoplay]}
-              spaceBetween={25}
+              spaceBetween={20}
               slidesPerView={1}
               autoplay={{ delay: 6000, disableOnInteraction: false }}
               breakpoints={{
@@ -104,9 +104,9 @@ const LatestHeadlines = () => {
               }}
             >
               {alerts.map((alert) => (
-                <SwiperSlide key={alert._id} className="flex justify-center">
+                <SwiperSlide key={alert._id} className="flex my-5 justify-center">
                   <div
-                    className="rounded-xl  shadow-lg cursor-pointer bg-white overflow-hidden my-7 transform transition-all duration-500 hover:shadow-[0_8px_25px_#7dd3fc] hover:-translate-y-1 hover:scale-105 w-full max-w-xs"
+                    className="rounded-xl  shadow-lg cursor-pointer bg-white dark:bg-slate-900 text-black dark:text-white pb-5 overflow-hidden  transform transition-all duration-500 hover:shadow-[0_8px_25px_#7dd3fc] hover:-translate-y-1 hover:scale-105 w-full "
                     onClick={() => navigate(`/latestAlerts/${alert._id}`)}
                   >
                     <div className="overflow-hidden rounded-t-xl">
@@ -120,16 +120,16 @@ const LatestHeadlines = () => {
                         }}
                       />
                     </div>
-                    <div className="flex py-3 px-4 justify-between items-center">
-                      <h3 className="text-lg md:text-xl font-semibold text-gray-900">{alert.type}</h3>
-                      <span className="px-3 py-1 rounded-full bg-gray-100 text-gray-800 text-sm font-medium">
+                    <div className="flex py-3 px-6   justify-between items-center">
+                      <h3 className="text-lg md:text-xl text-black dark:text-white font-semibold text-gray-900">{alert.type}</h3>
+                      <span className="px-3 py-1 rounded-full bg-gray-100 dark:bg-black text-gray-800 dark:text-white text-sm font-medium">
                         {alert.location}
                       </span>
                     </div>
-                    <p className="my-4 lg:h-[90px] h-[120px] px-4 text-md md:text-lg font-bold text-black hover:underline">
+                    <p className="my-4 lg:h-[90px] h-[120px] px-6 text-md md:text-lg font-bold text-black dark:text-white hover:underline">
                       {alert.details}
                     </p>
-                    <div className="px-4 pb-4 text-gray-600 text-sm space-y-1">
+                    <div className="px-6 pb-4 text-gray-600  dark:text-white text-sm space-y-1">
                       <p><strong>Severity:</strong> {alert.severity}</p>
                       <p><strong>Year:</strong> {alert.year}</p>
                       <p><strong>Time:</strong> {new Date(alert.timestamp).toLocaleString()}</p>
