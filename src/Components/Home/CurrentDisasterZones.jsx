@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { format } from 'date-fns';
+import Aos from 'aos';
 
 const redIcon = new L.Icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
@@ -51,11 +52,15 @@ const CurrentDisasterZones = () => {
   const mapRef = useRef(null);
 
   useEffect(() => {
-    fetch('https://disaster-management-website-server.onrender.com/alertPanel')
-      .then(res => res.json())
-      .then(data => setData(data))
-      .catch(err => console.error('Error fetching data:', err));
-  }, []);
+  fetch('https://disaster-management-website-server.onrender.com/alertPanel')
+    .then(res => res.json())
+    .then(data => {
+      setData(data);
+      setTimeout(() => Aos.refresh(), 300); // refresh after data renders
+    })
+    .catch(err => console.error('Error fetching data:', err));
+}, []);
+
 
   const filteredData = data.filter(item => {
     const itemDate = new Date(item.timestamp).toISOString().split('T')[0];
@@ -68,7 +73,7 @@ const CurrentDisasterZones = () => {
   });
 
   return (
-    <div className='my-10'>
+    <div className="px-4  md:px-10 ">
        <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28  text-gray-800 font-anton dark:text-white mb-7">Interactive Disaster Map</h2>
        <p className="text-center dark:text-white mb-16 text-gray-700 tracking-wider text-lg">
         An interactive disaster map designed to provide accurate, real-time information for analysis and decision-making.

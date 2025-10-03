@@ -12,6 +12,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^3.9.0",
     "@stripe/stripe-js": "^7.8.0",
+    "aos": "^2.3.4",
     "date-fns": "^4.1.0",
     "firebase": "^11.7.1",
     "framer-motion": "^12.15.0",
