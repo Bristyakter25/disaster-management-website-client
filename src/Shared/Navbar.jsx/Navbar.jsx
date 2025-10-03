@@ -192,9 +192,13 @@ const Navbar = () => {
             alt="Logo"
             className="w-10 h-10 rounded-full shadow-md"
           />
-          <span className="text-2xl italic font-extrabold tracking-wide">
-            ResQLink
-          </span>
+       <span className="text-2xl md:text-3xl font-audiowide tracking-wider font-bold bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-500 bg-clip-text text-transparent drop-shadow-lg">
+  ResQLink
+</span>
+
+
+
+
         </div>
 
         {/* Desktop Navigation */}
