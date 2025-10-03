@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
       anton: ['Anton', 'sans-serif'],
+      audiowide : ['Audiowide', "sans-serif"],
       
     }
     },
