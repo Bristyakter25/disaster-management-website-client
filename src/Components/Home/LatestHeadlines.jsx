@@ -55,7 +55,7 @@ const LatestHeadlines = () => {
     z-10 
     bg-blue-100 hover:bg-blue-300 text-blue-700 
     font-bold 
-    py-2 px-3 sm:py-3 sm:px-4 
+    py-2 px-4 sm:py-3 sm:px-4 
     rounded-full shadow transition
   "
   aria-label="Previous"
@@ -72,7 +72,7 @@ const LatestHeadlines = () => {
     z-10 
     bg-blue-100 hover:bg-blue-300 text-blue-700 
     font-bold 
-    py-2 px-3 sm:py-3 sm:px-4 
+    py-2 px-4 sm:py-3 sm:px-4 
     rounded-full shadow transition
   "
   aria-label="Next"
@@ -85,12 +85,12 @@ const LatestHeadlines = () => {
           {alerts.length > 0 ? (
             <Swiper
               modules={[Navigation, Autoplay]}
-              spaceBetween={20}
+              spaceBetween={30}
               slidesPerView={1}
               autoplay={{ delay: 6000, disableOnInteraction: false }}
               breakpoints={{
                 768: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 3, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 30 },
               }}
               navigation={{
                 prevEl: prevRef.current,
@@ -106,34 +106,36 @@ const LatestHeadlines = () => {
               {alerts.map((alert) => (
                 <SwiperSlide key={alert._id} className="flex my-5 justify-center">
                   <div
-                    className="rounded-xl  shadow-lg cursor-pointer bg-white dark:bg-slate-900 text-black dark:text-white pb-5 overflow-hidden  transform transition-all duration-500 hover:shadow-[0_8px_25px_#7dd3fc] hover:-translate-y-1 hover:scale-105 w-full "
+                    className="rounded-xl  cursor-pointer bg-transparent text-black dark:text-white pb-5 overflow-hidden  transform transition-all duration-500 hover:shadow-[0_8px_25px_#7dd3fc] hover:-translate-y-1 hover:scale-105 w-full "
                     onClick={() => navigate(`/latestAlerts/${alert._id}`)}
                   >
-                    <div className="overflow-hidden rounded-t-xl">
+                    <div className="overflow-hidden ">
                       <img
                         src={alert.image}
                         alt={alert.type}
-                        className="w-full h-56 md:h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+                        className="w-full mb-10 h-56 md:h-60 object-cover transform transition-transform duration-500 hover:scale-110"
                         onError={(e) => {
                           e.target.onerror = null;
                           e.target.src = "https://via.placeholder.com/300x200";
                         }}
                       />
                     </div>
-                    <div className="flex py-3 px-6   justify-between items-center">
+                    <div className="flex py-3 px-4   justify-between items-center">
                       <h3 className="text-lg md:text-xl text-black dark:text-white font-semibold text-gray-900">{alert.type}</h3>
-                      <span className="px-3 py-1 rounded-full bg-gray-100 dark:bg-black text-gray-800 dark:text-white text-sm font-medium">
+                      <span className="px-4 py-1 rounded-full bg-gray-100 dark:bg-black text-gray-800 dark:text-white text-sm font-medium">
                         {alert.location}
                       </span>
                     </div>
-                    <p className="my-4 lg:h-[90px] h-[120px] px-6 text-md md:text-lg font-bold text-black dark:text-white hover:underline">
+                    
+                    <p className="my-4  px-4 text-md md:text-lg font-bold text-black dark:text-white hover:underline">
                       {alert.details}
                     </p>
-                    <div className="px-6 pb-4 text-gray-600  dark:text-white text-sm space-y-1">
+                    <p className="px-4 pb-4 text-gray-600  dark:text-white text-sm space-y-1">{new Date(alert.timestamp).toLocaleString()}</p>
+                    {/* <div className="px-4 pb-4 text-gray-600  dark:text-white text-sm space-y-1">
                       <p><strong>Severity:</strong> {alert.severity}</p>
                       <p><strong>Year:</strong> {alert.year}</p>
-                      <p><strong>Time:</strong> {new Date(alert.timestamp).toLocaleString()}</p>
-                    </div>
+                      
+                    </div> */}
                   </div>
                 </SwiperSlide>
               ))}
