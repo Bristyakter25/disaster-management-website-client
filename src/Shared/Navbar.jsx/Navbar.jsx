@@ -27,22 +27,18 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
 
+  // scroll detection for navbar background
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const isDonationPage = location.pathname === "/donateUs"
+  const isDonationPage = location.pathname === "/donateUs";
 
+  // dark mode setup
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       return (
@@ -64,6 +60,15 @@ const Navbar = () => {
     }
   }, [darkMode]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".dropdown-container")) setIsOpen(false);
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
   const handleLogout = () => {
     logOut()
       .then(() => navigate("/login"))
@@ -78,10 +83,12 @@ const Navbar = () => {
           : "hidden lg:flex space-x-6 items-center"
       }`}
     >
-      <li><UnderlineNavLink to="/">Home</UnderlineNavLink></li>
+      <li>
+        <UnderlineNavLink to="/">Home</UnderlineNavLink>
+      </li>
 
       {/* Dropdown */}
-      <li className="relative">
+      <li className="relative dropdown-container">
         <button
           className="flex items-center gap-2 font-semibold text-lg transition relative group"
           onClick={() => setIsOpen((prev) => !prev)}
@@ -98,42 +105,69 @@ const Navbar = () => {
         </button>
 
         {isOpen && (
-          <ul className="absolute py-10 px-6 z-40 bg-white dark:bg-gray-800 mt-2 shadow-lg rounded-md overflow-hidden w-80">
-            <li className="p-3">
-              <UnderlineNavLink
-                to="/addAlertPanels"
+          <div
+            className="absolute top-full mt-2 right-0 w-72 z-[60] bg-white dark:bg-gray-800 
+            text-black dark:text-white shadow-2xl rounded-xl p-4 border border-gray-200 
+            dark:border-gray-700 transition-all duration-300 ease-in-out transform origin-top scale-100"
+          >
+            <div className="flex justify-between items-center mb-3">
+              <h4 className="font-semibold text-lg">Alert Panel</h4>
+              <button
                 onClick={() => setIsOpen(false)}
+                className="text-gray-500 hover:text-red-500 transition"
               >
-                Include Alert Panels
-              </UnderlineNavLink>
-            </li>
-            <li className="p-3">
-              <UnderlineNavLink
-                to="/allAlertPanel"
-                onClick={() => setIsOpen(false)}
-              >
-                All Alert Panels
-              </UnderlineNavLink>
-            </li>
-          </ul>
+                <IoClose size={20} />
+              </button>
+            </div>
+            <ul className="space-y-3">
+              <li>
+                <UnderlineNavLink
+                  to="/addAlertPanels"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Include Alert Panels
+                </UnderlineNavLink>
+              </li>
+              <li>
+                <UnderlineNavLink
+                  to="/allAlertPanel"
+                  onClick={() => setIsOpen(false)}
+                >
+                  All Alert Panels
+                </UnderlineNavLink>
+              </li>
+            </ul>
+          </div>
         )}
       </li>
 
-      <li><UnderlineNavLink to="/request-help">Request Help</UnderlineNavLink></li>
-      <li><UnderlineNavLink to="/donateUs">Donate</UnderlineNavLink></li>
-      <li><UnderlineNavLink to="/dashboard/overviewPanel">Dashboard</UnderlineNavLink></li>
+      <li>
+        <UnderlineNavLink to="/request-help">Request Help</UnderlineNavLink>
+      </li>
+      <li>
+        <UnderlineNavLink to="/donateUs">Donate</UnderlineNavLink>
+      </li>
+      <li>
+        <UnderlineNavLink to="/dashboard/overviewPanel">
+          Dashboard
+        </UnderlineNavLink>
+      </li>
 
       {!user ? (
         <>
-          <li><UnderlineNavLink to="/login">Login</UnderlineNavLink></li>
-          <li><UnderlineNavLink to="/register">Register</UnderlineNavLink></li>
+          <li>
+            <UnderlineNavLink to="/login">Login</UnderlineNavLink>
+          </li>
+          <li>
+            <UnderlineNavLink to="/register">Register</UnderlineNavLink>
+          </li>
         </>
       ) : (
         <>
           <li>
             <button
               onClick={handleLogout}
-              className="relative font-semibold text-lg group text-red-500 hover:underline"
+              className="relative font-semibold text-lg text-red-500 hover:underline"
             >
               Logout
             </button>
@@ -175,60 +209,65 @@ const Navbar = () => {
   );
 
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 
-        ${scrolled 
-          ? "bg-white/30 dark:bg-gray-900/50 backdrop-blur-md shadow-md text-black dark:text-white" 
-          : isHome ||  isDonationPage
-            ? "bg-transparent text-white" 
+    <>
+      {/* Header */}
+      <header
+        className={`fixed top-0 w-full z-50 transition-all duration-500 
+        ${
+          scrolled
+            ? "bg-white/30 dark:bg-gray-900/50 backdrop-blur-md shadow-md text-black dark:text-white"
+            : isHome || isDonationPage
+            ? "bg-transparent text-white"
             : "bg-transparent text-black dark:text-white"
         }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-10 h-10 rounded-full shadow-md"
-          />
-       <span className="text-2xl md:text-3xl font-audiowide tracking-wider font-bold bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-500 bg-clip-text text-transparent drop-shadow-lg">
-  ResQLink
-</span>
+      >
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <img
+              src={logo}
+              alt="Logo"
+              className="w-10 h-10 rounded-full shadow-md"
+            />
+            <span className="text-2xl md:text-3xl font-audiowide tracking-wider font-bold bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-500 bg-clip-text text-transparent drop-shadow-lg">
+              ResQLink
+            </span>
+          </div>
 
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:block">
+            <Links />
+          </nav>
 
-
-
+          {/* Mobile Buttons */}
+          <div className="lg:hidden flex items-center gap-4">
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow"
+            >
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </button>
+            <button
+              onClick={() => {
+                setIsMenuOpen(true);
+                setIsOpen(false);
+              }}
+            >
+              <FaBars size={26} className="text-gray-900 dark:text-white" />
+            </button>
+          </div>
         </div>
+      </header>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:block">
-          <Links />
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <div className="lg:hidden flex items-center gap-4">
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow"
-          >
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </button>
-          <button onClick={() => setIsMenuOpen(true)}>
-            <FaBars size={26} className="text-gray-900 dark:text-white" />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Slide Menu */}
+      {/* Mobile Slide Menu (outside header to avoid transparency issues) */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 bg-white dark:bg-gray-900 text-black dark:text-white shadow-2xl transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-72 bg-white dark:bg-gray-900 text-black dark:text-white shadow-2xl z-[100] transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex justify-end p-4">
           <button onClick={() => setIsMenuOpen(false)}>
-            <IoClose size={28} />
+            <IoClose size={28} className="text-gray-900 dark:text-white" />
           </button>
         </div>
         <div className="px-6 pb-10">
@@ -236,17 +275,17 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Background overlay */}
-      {(isMenuOpen || isOpen) && (
+      {/* Overlay */}
+      {isMenuOpen  && (
         <div
-          className="fixed inset-0 bg-black/50 z-30"
+          className="fixed inset-0 bg-black/60 z-[90]"
           onClick={() => {
             setIsMenuOpen(false);
             setIsOpen(false);
           }}
         ></div>
       )}
-    </header>
+    </>
   );
 };
 
