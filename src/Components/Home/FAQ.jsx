@@ -47,7 +47,7 @@ const FAQ = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-5xl tracking-widest text-center mt-28  text-gray-800 font-anton dark:text-white mb-7">
-            Frequently Asked Questions
+            FREQUENTLY ASKED QUESTIONS
           </h2>
           <p className="mt-2 tracking-wider text-lg text-gray-600 dark:text-gray-300">
             Common questions about disaster preparedness and response
