@@ -72,7 +72,8 @@ const AddAlertPanels = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-6 bg-white dark:bg-transparent shadow-md rounded-xl py-28">
+<div className="max-w-5xl mx-auto pb-20 pt-16 px-10">
+  <div className="bg-gradient-to-r from-purple-50 via-blue-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 p-8 rounded-3xl shadow-xl">
       <h2 className="text-3xl tracking-widest text-center text-gray-800 font-anton dark:text-white mb-10">Add New Alert Panel</h2>
       <form onSubmit={handleSubmit} className="space-y-5 mb-8">
         {[
@@ -195,6 +196,7 @@ const AddAlertPanels = () => {
         </button>
       </form>
     </div>
+</div>
   );
 };
 

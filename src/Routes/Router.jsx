@@ -30,6 +30,9 @@ import DonationInfoPage from "../pages/Donation/DonationInfoPage";
 import AssignedMissions from "../DashboardComponents/RescueMember/Missions/AssignedMissions";
 import MissionDetails from "../DashboardComponents/RescueMember/Missions/MissionDetails";
 import ContactForm from "../Components/Home/ContactUs/ContactForm";
+import RequestHelp from "../pages/RequestHelps/RequestHelps";
+import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
+
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +63,14 @@ export const router = createBrowserRouter([
       {
         path: '/alertPanel/donations/:id',
         element: <DonationInfoPage></DonationInfoPage>
+      },
+      {
+        path: '/requestHelps',
+        element: <RequestHelp></RequestHelp>
+      },
+      {
+        path: '/accessDenialMessage',
+        element: <AccessDenialMessage></AccessDenialMessage>
       },
       {
         path: '/blogPosts/:id',
