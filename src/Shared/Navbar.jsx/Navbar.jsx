@@ -142,7 +142,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <UnderlineNavLink to="/request-help">Request Help</UnderlineNavLink>
+        <UnderlineNavLink to="/requestHelps">Request Help</UnderlineNavLink>
       </li>
       <li>
         <UnderlineNavLink to="/donateUs">Donate</UnderlineNavLink>
