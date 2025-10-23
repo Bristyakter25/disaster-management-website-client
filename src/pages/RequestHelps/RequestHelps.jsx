@@ -31,7 +31,7 @@ const RequestHelps = () => {
 
   
   useEffect(() => {
-    fetch("http://localhost:5000/alertPanel")
+    fetch("https://disaster-management-website-server.onrender.com/alertPanel")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch alerts");
         return res.json();
@@ -60,7 +60,7 @@ const RequestHelps = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/requestHelps", {
+      const res = await fetch("https://disaster-management-website-server.onrender.com/requestHelps", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
