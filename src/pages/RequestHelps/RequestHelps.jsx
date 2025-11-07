@@ -1,133 +1,204 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
-import AccessDenialMessage from "../../Shared/SecuredMessage/AccessDenialMessage";
 import RequestHelpsMap from "./RequestHelpsMap";
-
+import AccessDenialMessage from "../../Shared/SecuredMessage/AccessDenialMessage";
+import socket from "../../Shared/socket";
 
 const RequestHelps = () => {
   const { user } = useContext(AuthContext);
   const [alerts, setAlerts] = useState([]);
-  const [formData, setFormData] = useState({
-    disasterId: "",
-    name: "",
-    contact: "",
-    helpType: "",
-    location: "",
-    coordinates: null, // added coordinates field
-    description: "",
-    familyMembers: "",
-    injuredCount: "",
-    elderlyOrChildren: "",
-    urgentNeeds: "",
-    additionalNotes: "",
-  });
+  const [offlineRequests, setOfflineRequests] = useState([]);
 
-  // Populate user info if logged in
+  const SERVER_URL = "https://disaster-management-website-server.onrender.com/requestHelps";
+
+  // 🔹 Load offline requests at startup
   useEffect(() => {
-    if (user) {
-      setFormData((prev) => ({
-        ...prev,
-        name: user.displayName || "",
-        contact: user.email || "",
-      }));
-    }
-  }, [user]);
+    const saved = JSON.parse(localStorage.getItem("offlineRequests")) || [];
+    setOfflineRequests(saved);
+  }, []);
 
-  // Fetch alerts from server
+  // 🔹 Save request locally when offline
+  const saveOfflineRequest = (request) => {
+    const existing = JSON.parse(localStorage.getItem("offlineRequests")) || [];
+    const updated = [...existing, request];
+    localStorage.setItem("offlineRequests", JSON.stringify(updated));
+    setOfflineRequests(updated);
+  };
+
+  // 🔹 Delete all pending offline requests
+  const clearOfflineRequests = () => {
+    localStorage.removeItem("offlineRequests");
+    setOfflineRequests([]);
+    Swal.fire("Deleted", "All pending offline requests have been removed.", "info");
+  };
+
+  // 🔹 Sync offline requests
+  const syncOfflineRequests = async () => {
+    const offlineRequestsLocal = JSON.parse(localStorage.getItem("offlineRequests")) || [];
+    if (offlineRequestsLocal.length === 0) return;
+
+    let remaining = [];
+
+    Swal.fire({
+      title: "Syncing...",
+      text: "Please wait while we sync your offline requests.",
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading(),
+    });
+
+    for (const req of offlineRequestsLocal) {
+      try {
+        const res = await fetch(SERVER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(req),
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        socket.emit("newRequestHelp", data);
+      } catch (err) {
+        console.error("Failed to sync request:", err);
+        remaining.push(req);
+      }
+    }
+
+    Swal.close();
+
+    if (remaining.length === 0) {
+      localStorage.removeItem("offlineRequests");
+      setOfflineRequests([]);
+      Swal.fire("✅ Synced", "All offline requests synced successfully!", "success");
+    } else {
+      localStorage.setItem("offlineRequests", JSON.stringify(remaining));
+      setOfflineRequests(remaining);
+      Swal.fire(
+        "⚠️ Partial Sync",
+        `${remaining.length} request(s) failed to sync. They will retry automatically.`,
+        "warning"
+      );
+    }
+  };
+
+  // 🔹 Listen for network reconnect
+  useEffect(() => {
+    const handleOnline = () => {
+      console.log("Network reconnected — syncing offline requests...");
+      syncOfflineRequests();
+    };
+    window.addEventListener("online", handleOnline);
+    return () => window.removeEventListener("online", handleOnline);
+  }, []);
+
+  // 🔹 Fetch disaster alerts
   useEffect(() => {
     fetch("https://disaster-management-website-server.onrender.com/alertPanel")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch alerts");
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => setAlerts(data))
       .catch((err) => console.error("Error loading alerts:", err));
   }, []);
 
-  // Handle form field changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "disasterId") {
-      const selectedDisaster = alerts.find((alert) => alert._id === value);
-      setFormData((prev) => ({
-        ...prev,
-        disasterId: value,
-        location: selectedDisaster ? selectedDisaster.location : "",
-        coordinates: selectedDisaster ? selectedDisaster.coordinates : null,
-      }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
-
-  // Submit help request
-  const handleSubmit = async (e) => {
+  // 🔹 Submit new request
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.coordinates) {
-      alert("Selected disaster does not have valid coordinates.");
+    const form = e.target;
+    const selectedAlert = alerts.find((a) => a._id === form.disasterId.value);
+
+    const newRequest = {
+      disasterId: form.disasterId.value,
+      name: user?.displayName || "Anonymous",
+      contact: user?.email || "",
+      helpType: form.helpType.value,
+      location: selectedAlert?.location || "",
+      coordinates: selectedAlert?.coordinates || null,
+      description: form.description.value,
+      familyMembers: form.familyMembers.value,
+      injuredCount: form.injuredCount.value,
+      elderlyOrChildren: form.elderlyOrChildren.value,
+      urgentNeeds: form.urgentNeeds.value,
+      additionalNotes: form.additionalNotes.value,
+      status: navigator.onLine ? "Active" : "Pending",
+      networkStatus: navigator.onLine ? "Online" : "Offline",
+      submittedBy: {
+        name: user?.displayName || "Anonymous",
+        email: user?.email,
+      },
+      timestamp: new Date().toISOString(),
+    };
+
+    if (!navigator.onLine) {
+      saveOfflineRequest(newRequest);
+      Swal.fire(
+        "Offline Mode",
+        "You are offline. Your help request has been saved and will sync automatically.",
+        "info"
+      );
+      form.reset();
       return;
     }
 
-    try {
-      const res = await fetch(
-        "https://disaster-management-website-server.onrender.com/requestHelps",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      if (!res.ok) throw new Error("Failed to submit request");
-
-      alert("Help request submitted successfully!");
-      setFormData((prev) => ({
-        disasterId: "",
-        name: user?.displayName || "",
-        contact: user?.email || "",
-        helpType: "",
-        location: "",
-        coordinates: null,
-        description: "",
-        familyMembers: "",
-        injuredCount: "",
-        elderlyOrChildren: "",
-        urgentNeeds: "",
-        additionalNotes: "",
-      }));
-    } catch (error) {
-      console.error(error);
-      alert("Failed to submit request. Please try again.");
-    }
+    fetch(SERVER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newRequest),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        socket.emit("newRequestHelp", data);
+        Swal.fire("Success", "Help request submitted successfully!", "success");
+        form.reset();
+      })
+      .catch((err) => {
+        console.error("Submit error:", err);
+        Swal.fire("Error", "Something went wrong while submitting!", "error");
+      });
   };
 
   if (!user) return <AccessDenialMessage />;
 
   return (
     <div className="max-w-5xl mx-auto pb-20 pt-16 px-10">
-       {/* Map */}
-        <RequestHelpsMap />
+      <RequestHelpsMap />
+
+      {/* Pending Offline Requests */}
+      {offlineRequests.length > 0 && (
+        <div className="mb-6 p-5 bg-yellow-100 dark:bg-yellow-900 rounded-xl shadow-md border border-yellow-400">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="font-semibold dark:text-yellow-200">Pending Offline Requests</h3>
+            <button
+              onClick={syncOfflineRequests}
+              className="bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700"
+            >
+              Sync Now
+            </button>
+            <button
+              onClick={clearOfflineRequests}
+              className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700"
+            >
+              Clear All
+            </button>
+          </div>
+          <ul className="list-disc pl-5 space-y-1 text-sm dark:text-yellow-100">
+            {offlineRequests.map((req, idx) => (
+              <li key={idx}>
+                Disaster: <strong>{req.disasterId}</strong> | Type: {req.helpType} | Status: {req.status}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Help Request Form */}
       <div className="bg-gradient-to-r my-10 from-purple-50 via-blue-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 p-8 rounded-3xl shadow-xl">
         <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-center text-gray-900 dark:text-white">
           Request Disaster Help
         </h2>
 
-       
-
         <form onSubmit={handleSubmit} className="space-y-5 mt-6">
-          {/* Disaster Selector */}
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-              Select Disaster
-            </label>
-            <select
-              name="disasterId"
-              value={formData.disasterId}
-              onChange={handleChange}
-              className="input bg-white dark:bg-black input-bordered w-full border-2 border-gray-300 rounded-xl px-2 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-              required
-            >
+          <div>
+            <label className="block text-sm font-medium mb-1">Select Disaster</label>
+            <select name="disasterId" required className="w-full border rounded-md p-2">
               <option value="">Select Disaster</option>
               {alerts.map((alert) => (
                 <option key={alert._id} value={alert._id}>
@@ -137,46 +208,9 @@ const RequestHelps = () => {
             </select>
           </div>
 
-          {/* Name and Contact */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex flex-col">
-              <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-                Your Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                className="input input-bordered w-full dark:bg-black bg-gray-100 rounded-xl p-3 cursor-not-allowed"
-                readOnly
-              />
-            </div>
-            <div className="flex flex-col">
-              <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-                Your Email
-              </label>
-              <input
-                type="text"
-                name="contact"
-                value={formData.contact}
-                className="input input-bordered w-full bg-gray-100 rounded-xl  dark:bg-black p-3 cursor-not-allowed"
-                readOnly
-              />
-            </div>
-          </div>
-
-          {/* Help Type */}
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-              Type of Help Needed
-            </label>
-            <select
-              name="helpType"
-              value={formData.helpType}
-              onChange={handleChange}
-              className="input bg-white dark:bg-black input-bordered w-full border-2 border-gray-300 rounded-xl px-3 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-              required
-            >
+          <div>
+            <label className="block text-sm font-medium mb-1">Type of Help Needed</label>
+            <select name="helpType" required className="w-full border rounded-md p-2">
               <option value="">Select Help Type</option>
               <option value="Medical">Medical</option>
               <option value="Rescue">Rescue</option>
@@ -186,111 +220,39 @@ const RequestHelps = () => {
             </select>
           </div>
 
-          {/* Location (read-only) */}
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-              Location of Disaster
-            </label>
-            <input
-              type="text"
-              name="location"
-              value={formData.location}
-              className="input dark:bg-black input-bordered w-full bg-gray-100 rounded-xl px-3 cursor-not-allowed"
-              readOnly
-            />
+          <div>
+            <label className="block text-sm font-medium mb-1">Description</label>
+            <textarea name="description" required className="w-full border rounded-md p-2" />
           </div>
 
-          {/* Description */}
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-              Describe Your Situation
-            </label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              placeholder="Provide detailed information about your situation..."
-              className="textarea bg-white dark:bg-black textarea-bordered w-full rounded-xl p-3 border-2 border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-              required
-            />
+          <div>
+            <label className="block text-sm font-medium mb-1">Family Members Affected</label>
+            <input type="number" name="familyMembers" className="w-full border rounded-md p-2" />
           </div>
 
-          {/* Additional Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex flex-col">
-              <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-                Family Members Affected
-              </label>
-              <input
-                type="number"
-                name="familyMembers"
-                value={formData.familyMembers}
-                onChange={handleChange}
-                placeholder="Number of people affected"
-                className="input bg-white dark:bg-black input-bordered w-full rounded-xl p-3 border-2 border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-                Number of Injured
-              </label>
-              <input
-                type="number"
-                name="injuredCount"
-                value={formData.injuredCount}
-                onChange={handleChange}
-                placeholder="Number of injured people"
-                className="input bg-white dark:bg-black input-bordered w-full rounded-xl p-3 border-2 border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-              />
-            </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Number of Injured</label>
+            <input type="number" name="injuredCount" className="w-full border rounded-md p-2" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex flex-col">
-              <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-                Elderly or Children Affected
-              </label>
-              <input
-                type="text"
-                name="elderlyOrChildren"
-                value={formData.elderlyOrChildren}
-                onChange={handleChange}
-                placeholder="Specify if elderly or children are affected"
-                className="input bg-white dark:bg-black input-bordered w-full rounded-xl p-3 border-2 border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-                Urgent Needs
-              </label>
-              <input
-                type="text"
-                name="urgentNeeds"
-                value={formData.urgentNeeds}
-                onChange={handleChange}
-                placeholder="Food, medicine, shelter, etc."
-                className="input bg-white dark:bg-black input-bordered w-full rounded-xl p-3 border-2 border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-              />
-            </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Elderly or Children Affected</label>
+            <input type="text" name="elderlyOrChildren" className="w-full border rounded-md p-2" />
           </div>
 
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
-              Additional Notes
-            </label>
-            <textarea
-              name="additionalNotes"
-              value={formData.additionalNotes}
-              onChange={handleChange}
-              placeholder="Any other important information"
-              className="textarea bg-white dark:bg-black textarea-bordered w-full rounded-xl p-3 border-2 border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
-            />
+          <div>
+            <label className="block text-sm font-medium mb-1">Urgent Needs</label>
+            <input type="text" name="urgentNeeds" className="w-full border rounded-md p-2" />
           </div>
 
-          {/* Submit Button */}
+          <div>
+            <label className="block text-sm font-medium mb-1">Additional Notes</label>
+            <textarea name="additionalNotes" className="w-full border rounded-md p-2" />
+          </div>
+
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-3 rounded-2xl shadow-lg transition-transform transform hover:scale-105"
+            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
           >
             Submit Request
           </button>
