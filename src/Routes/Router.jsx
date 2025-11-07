@@ -32,6 +32,7 @@ import MissionDetails from "../DashboardComponents/RescueMember/Missions/Mission
 import ContactForm from "../Components/Home/ContactUs/ContactForm";
 import RequestHelp from "../pages/RequestHelps/RequestHelps";
 import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
+import MyRequests from "../DashboardComponents/CitizenRoutes/MyRequests";
 
 
 export const router = createBrowserRouter([
@@ -135,6 +136,10 @@ export const router = createBrowserRouter([
           {
             path: "myReports",
             element: <MyReports></MyReports>
+          },
+          {
+            path: "myRequests",
+            element: <MyRequests></MyRequests>
           },
           {
             path: "liveUpdates",
