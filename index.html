@@ -2,15 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/logo/logo.jpg"  />
+
+    <!-- App Icon -->
+    <link rel="icon" type="image/svg+xml" href="/src/assets/logo/logo.jpg" />
+
+    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Tomorrow&display=swap" rel="stylesheet">
+
+    <!-- ✅ Add this manifest link -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Optional: theme color (for mobile browsers) -->
+    <meta name="theme-color" content="#007bff" />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tomorrow&display=swap"
+      rel="stylesheet"
+    />
 
     <title>ResQLink</title>
   </head>
+
   <body class="bg-white dark:bg-[#0f172a] text-black dark:text-white">
     <div id="root"></div>
+
+    <!-- Your React entry point -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
