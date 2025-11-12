@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- App Icon -->
-    <link rel="icon" type="image/svg+xml" href="/src/assets/logo/logo.jpg" />
+    <!-- App Icon (place logo.jpg in public/) -->
+    <link rel="icon" href="/logo.jpg" />
 
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ✅ Add this manifest link -->
+    <!-- PWA Manifest (place manifest.json in public/) -->
     <link rel="manifest" href="/manifest.json" />
 
-    <!-- Optional: theme color (for mobile browsers) -->
+    <!-- Optional: theme color -->
     <meta name="theme-color" content="#007bff" />
 
     <!-- Fonts -->
@@ -27,7 +27,6 @@
   <body class="bg-white dark:bg-[#0f172a] text-black dark:text-white">
     <div id="root"></div>
 
-    <!-- Your React entry point -->
-    <script type="module" src="/src/main.jsx"></script>
+     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

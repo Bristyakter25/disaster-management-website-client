@@ -33,6 +33,8 @@ import ContactForm from "../Components/Home/ContactUs/ContactForm";
 import RequestHelp from "../pages/RequestHelps/RequestHelps";
 import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
 import MyHelpRequests from "../DashboardComponents/CitizenRoutes/MyHelpRequests";
+import PaymentInfoPage from "../DashboardComponents/CitizenRoutes/PaymentInfoPage";
+import AllPaymentInfo from "../DashboardComponents/AdminRoutes/AllPaymentInfo";
 
 
 
@@ -70,6 +72,7 @@ export const router = createBrowserRouter([
         path: '/requestHelps',
         element: <RequestHelp></RequestHelp>
       },
+      
       {
         path: '/accessDenialMessage',
         element: <AccessDenialMessage></AccessDenialMessage>
@@ -127,6 +130,10 @@ export const router = createBrowserRouter([
             element: <EditIncidentData></EditIncidentData>
           },
           {
+        path: 'allPaymentsInfo',
+        element: <AllPaymentInfo></AllPaymentInfo>
+      },
+          {
             path: "editHelpRequest/:id",
             element: <EditIncidentData></EditIncidentData>
           },
@@ -134,6 +141,10 @@ export const router = createBrowserRouter([
             path: "overviewPanel",
             element: <OverviewPanel></OverviewPanel>
           },
+          {
+        path: 'paymentInfo',
+        element: <PaymentInfoPage></PaymentInfoPage>
+      },
           {
             path: "reportIncident",
             element: <ReportIncident></ReportIncident>
