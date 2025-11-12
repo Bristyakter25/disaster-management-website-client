@@ -91,23 +91,27 @@ const MyReports = () => {
                 <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
                   {item.description}
                 </p>
-         
+         <button
+  onClick={(e) => {
+    e.stopPropagation(); // prevent parent card click
+    handleEdit(item._id);
+  }}
+  className="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition"
+>
+  Edit
+</button>
 
-                {/* Action Buttons */}
-                <div className="flex gap-3 pt-3">
-                  <button
-                    onClick={() => handleEdit(item._id)}
-                    className="px-3 py-1 w-full rounded bg-blue-500 text-white hover:bg-blue-600 transition"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(item._id)}
-                    className="px-3 py-3 rounded w-full  bg-red-500 text-white hover:bg-red-600 transition"
-                  >
-                    Delete
-                  </button>
-                </div>
+<button
+  onClick={(e) => {
+    e.stopPropagation(); // prevent parent click
+    handleDelete(item._id);
+  }}
+  className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600 transition"
+>
+  Delete
+</button>
+
+               
               </div>
             </div>
           ))}
