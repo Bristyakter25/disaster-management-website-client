@@ -1,26 +1,16 @@
-const CACHE_NAME = "disaster-pwa-v8";
+const CACHE_NAME = "disaster-pwa-v10";
+const API_CACHE = "api-cache-v10";
 
-// Pre-cache static assets & routes
 const urlsToCache = [
-  "/", // home
+  "/", 
   "/index.html",
   "/offline.html",
-  "/requestHelps",
-  "/addAlertPanels",
-  "/donateUs",
-  "/login",
-  "/register",
-  "/allAlertPanel",
-  "/contactForm",
-  "/liveAlerts",
-  "/payment",
   "/assets/banner-1.jpg",
   "/assets/banner-2.jpg",
-  "/assets/banner-3.jpg"
-  // Note: dynamic routes like "/latestAlerts/:id" or "/alertPanel/:id" are runtime cached
+  "/assets/banner-3.jpg",
 ];
 
-// Install event: cache static assets
+// INSTALL
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
@@ -28,72 +18,93 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-// Activate event: clean old caches
+// ACTIVATE
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+      Promise.all(
+        keys
+          .filter((key) => key !== CACHE_NAME && key !== API_CACHE)
+          .map((key) => caches.delete(key))
+      )
     )
   );
   self.clients.claim();
 });
 
-// Fetch event: handle caching strategies
+// FETCH
 self.addEventListener("fetch", (event) => {
-  const requestUrl = new URL(event.request.url);
+  const req = event.request;
+  const url = new URL(req.url);
 
-  // Only handle GET requests
-  if (event.request.method !== "GET") return;
+  // 🔹 Skip non-GET or external requests
+  if (req.method !== "GET" || url.origin !== self.location.origin) return;
 
-  // Ignore cross-origin POST/socket.io requests
-  if (requestUrl.pathname.startsWith("/socket.io") || requestUrl.origin !== self.location.origin) {
-    return;
-  }
+  // 🔹 Skip caching on localhost
+  if (url.hostname === "localhost" || url.hostname === "127.0.0.1") return;
 
-  const cacheKey = requestUrl.pathname; // ignore query params for caching
-
-  // 🔹 Runtime caching for /alertPanel and /requestHelps API
-  if (cacheKey.startsWith("/alertPanel") || cacheKey.startsWith("/requestHelps")) {
+  // ⚡ Offline support for /requestHelps and /addAlertPanels
+  if (url.pathname.startsWith("/requestHelps") || url.pathname.startsWith("/addAlertPanels")) {
     event.respondWith(
-      fetch(event.request)
-        .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(cacheKey, clone));
-          return response;
+      fetch(req)
+        .then((res) => {
+          const clone = res.clone();
+          caches.open(API_CACHE).then((cache) => cache.put(req, clone));
+          return res;
         })
-        .catch(() =>
-          caches.match(cacheKey).then((res) =>
-            res || new Response(JSON.stringify({ error: "Offline" }), {
-              status: 503,
-              headers: { "Content-Type": "application/json" },
-            })
-          )
-        )
+        .catch(() => caches.match(req).then((cached) => cached || offlineFallbackJSON()))
     );
     return;
   }
 
-  // 🔹 Cache-first for static assets and pre-cached routes
+  // 🧱 Cache-first for static assets
   event.respondWith(
-    caches.match(event.request).then((cached) => {
+    caches.match(req).then((cached) => {
       if (cached) return cached;
-
-      return fetch(event.request)
-        .then((response) => {
-          // Only cache successful, same-origin responses
-          if (!response || response.status !== 200 || response.type !== "basic") return response;
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-          return response;
+      return fetch(req)
+        .then((res) => {
+          if (!res || res.status !== 200 || res.type !== "basic") return res;
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
+          return res;
         })
         .catch(() => {
-          // fallback for HTML pages
-          if (event.request.headers.get("accept")?.includes("text/html")) {
+          if (req.headers.get("accept")?.includes("text/html")) {
             return caches.match("/offline.html");
           }
-          // fallback for other assets
           return new Response("Offline", { status: 503, statusText: "Offline" });
-        })
+        });
     })
   );
 });
+
+// 📦 Helper for offline API fallback
+function offlineFallbackJSON() {
+  return new Response(
+    JSON.stringify({ error: "Offline: data unavailable" }),
+    { headers: { "Content-Type": "application/json" }, status: 503 }
+  );
+}
+
+// 🔄 BACKGROUND SYNC for offline POSTs
+self.addEventListener("sync", (event) => {
+  if (event.tag === "sync-requests") {
+    event.waitUntil(syncPendingRequests());
+  }
+});
+
+async function syncPendingRequests() {
+  const pending = await getPendingRequestsFromIndexedDB(); // You’ll store offline POSTs in IndexedDB
+  for (const req of pending) {
+    try {
+      await fetch("/requestHelps", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req),
+      });
+      await removeFromIndexedDB(req.id);
+    } catch (err) {
+      console.error("Sync failed for", req, err);
+    }
+  }
+}

@@ -10,8 +10,7 @@ import AuthProvider from "./providers/AuthProvider.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// ✅ Import React.lazy or Suspense if you plan to add lazy loading later (optional improvement)
-// import { Suspense } from "react";
+
 
 const AppWrapper = () => {
   useEffect(() => {

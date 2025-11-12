@@ -32,7 +32,10 @@ import MissionDetails from "../DashboardComponents/RescueMember/Missions/Mission
 import ContactForm from "../Components/Home/ContactUs/ContactForm";
 import RequestHelp from "../pages/RequestHelps/RequestHelps";
 import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
-import MyRequests from "../DashboardComponents/CitizenRoutes/MyRequests";
+import MyHelpRequests from "../DashboardComponents/CitizenRoutes/MyHelpRequests";
+import PaymentInfoPage from "../DashboardComponents/CitizenRoutes/PaymentInfoPage";
+import AllPaymentInfo from "../DashboardComponents/AdminRoutes/AllPaymentInfo";
+
 
 
 export const router = createBrowserRouter([
@@ -69,6 +72,7 @@ export const router = createBrowserRouter([
         path: '/requestHelps',
         element: <RequestHelp></RequestHelp>
       },
+      
       {
         path: '/accessDenialMessage',
         element: <AccessDenialMessage></AccessDenialMessage>
@@ -126,9 +130,21 @@ export const router = createBrowserRouter([
             element: <EditIncidentData></EditIncidentData>
           },
           {
+        path: 'allPaymentsInfo',
+        element: <AllPaymentInfo></AllPaymentInfo>
+      },
+          {
+            path: "editHelpRequest/:id",
+            element: <EditIncidentData></EditIncidentData>
+          },
+          {
             path: "overviewPanel",
             element: <OverviewPanel></OverviewPanel>
           },
+          {
+        path: 'paymentInfo',
+        element: <PaymentInfoPage></PaymentInfoPage>
+      },
           {
             path: "reportIncident",
             element: <ReportIncident></ReportIncident>
@@ -139,7 +155,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "myRequests",
-            element: <MyRequests></MyRequests>
+            element: <MyHelpRequests></MyHelpRequests>
           },
           {
             path: "liveUpdates",

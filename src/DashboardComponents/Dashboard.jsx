@@ -110,8 +110,9 @@ const Dashboard = () => {
               <li><NavLink to="/dashboard/incidentManagement">Incident Management</NavLink></li>
               <li><NavLink to="/dashboard/manageUser">User Management</NavLink></li>
               <li><NavLink to="/dashboard/resourceAllocation">Resource Allocation</NavLink></li>
+              <li><NavLink to="/dashboard/allPaymentsInfo">All Payments Info</NavLink></li>
               <li><NavLink to="/dashboard/assignMissions">Assign Missions</NavLink></li>
-              <li><NavLink>Analytics & Reports</NavLink></li>
+              {/* <li><NavLink>Analytics & Reports</NavLink></li> */}
             </>
           )}
 
@@ -120,6 +121,7 @@ const Dashboard = () => {
               <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Rescue Member</h2>
               <li><NavLink to="/dashboard/assignedMissions">Assigned Missions</NavLink></li>
               <li><NavLink>Update Status</NavLink></li>
+              <li><NavLink to="/dashboard/paymentInfo">Payments Info</NavLink></li>
               <li><NavLink>Emergency Alerts</NavLink></li>
               <li><NavLink to="/dashboard/rescuerProfile">Profile</NavLink></li>
             </>
@@ -130,10 +132,12 @@ const Dashboard = () => {
               <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Citizen</h2>
               <li><NavLink to="/dashboard/reportIncident">Report an Incident</NavLink></li>
               <li><NavLink to="/dashboard/myReports">My Reports</NavLink></li>
-              <li><NavLink to="/dashboard/createBlogs">Create Blogs</NavLink></li>
+              
               <li><NavLink to="/dashboard/myRequests">My Help Requests</NavLink></li>
               <li><NavLink to="/dashboard/liveUpdates">Live Updates</NavLink></li>
+              <li><NavLink to="/dashboard/paymentInfo">Payments Info</NavLink></li>
               <li><NavLink to="/dashboard/safetyContents">Safety & Guidelines</NavLink></li>
+              
             </>
           )}
         </ul>
