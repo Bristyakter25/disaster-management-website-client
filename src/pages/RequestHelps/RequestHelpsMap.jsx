@@ -32,7 +32,7 @@ const RequestHelpsMap = () => {
 
   // Fetch help requests
   useEffect(() => {
-    fetch('http://localhost:5000/requestHelps') // Replace with your API endpoint
+    fetch('https://disaster-management-website-server.onrender.com/requestHelps') // Replace with your API endpoint
       .then(res => res.json())
       .then(data => setRequests(data))
       .catch(err => console.error('Error fetching requests:', err));

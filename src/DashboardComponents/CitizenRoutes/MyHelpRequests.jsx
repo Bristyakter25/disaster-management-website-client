@@ -9,7 +9,7 @@ const MyHelpRequests = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch("http://localhost:5000/requestHelps")
+    fetch("https://disaster-management-website-server.onrender.com/requestHelps")
       .then((res) => res.json())
       .then((data) => {
         setDisasters(data);
