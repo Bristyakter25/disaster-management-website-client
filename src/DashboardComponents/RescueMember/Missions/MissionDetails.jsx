@@ -13,7 +13,7 @@ const MissionDetails = () => {
   const [resourceDetails, setResourceDetails] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/missions/${id}`)
+    fetch(`https://disaster-management-website-server.onrender.com/missions/${id}`)
       .then((res) => res.json())
       .then((data) => setMission(data))
       .catch((err) => console.error(err));
@@ -42,7 +42,7 @@ const MissionDetails = () => {
 
   // --- Handlers ---
   const handleStatusUpdate = async (status) => {
-  await fetch(`http://localhost:5000/missions/${id}/status`, {
+  await fetch(`https://disaster-management-website-server.onrender.com/missions/${id}/status`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ status }),
@@ -62,7 +62,7 @@ const MissionDetails = () => {
   const handleResourceRequest = async () => {
     if (!resourceDetails.trim()) return;
 
-    await fetch(`http://localhost:5000/missions/${id}/resources`, {
+    await fetch(`https://disaster-management-website-server.onrender.com/missions/${id}/resources`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ details: resourceDetails }),
@@ -93,7 +93,7 @@ const MissionDetails = () => {
       return;
     }
 
-    await fetch(`http://localhost:5000/missions/${id}/postMission`, {
+    await fetch(`https://disaster-management-website-server.onrender.com/missions/${id}/postMission`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

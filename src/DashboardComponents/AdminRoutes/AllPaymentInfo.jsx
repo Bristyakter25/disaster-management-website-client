@@ -7,7 +7,7 @@ const AllPaymentInfo = () => {
      
     
       useEffect(() => {
-          fetch("http://localhost:5000/paymentsInfo")
+          fetch("https://disaster-management-website-server.onrender.com/paymentsInfo")
             .then((res) => res.json())
             .then((data) => {
               setPayments(data);

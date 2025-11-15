@@ -10,7 +10,7 @@ const PaymentInfoPage = () => {
     if (!user?.email) return; // wait until user is ready
 
     setLoading(true);
-    fetch("http://localhost:5000/paymentsInfo")
+    fetch("https://disaster-management-website-server.onrender.com/paymentsInfo")
       .then((res) => res.json())
       .then((data) => {
         // Direct match since emails are always lowercase
