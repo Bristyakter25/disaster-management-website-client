@@ -76,7 +76,7 @@ const AllPaymentInfo = () => {
                   <td className="px-3 py-2">{item.donor?.name}</td>
                   <td className="px-3 py-2">{item.donor?.email}</td>
                   <td className="px-3 py-2">{item.disaster?._id}</td>
-                  <td className="px-3 py-2">${item.amount}</td>
+                  <td className="px-3 py-2">{item.amount} tk</td>
                   <td className="px-3 py-2">{item.donor?.message || "—"}</td>
                   <td className="px-3 py-2">
                     <span

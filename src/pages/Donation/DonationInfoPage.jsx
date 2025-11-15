@@ -69,29 +69,22 @@ const DonationInfoPage = () => {
       date: new Date(),
     };
 
-    fetch(
-      "https://disaster-management-website-server.onrender.com/alertPanel/save-donation",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(donationInfo),
-      }
-    )
-      .then(() => {
+    // fetch(
+    //   "https://disaster-management-website-server.onrender.com/alertPanel/save-donation",
+    //   {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(donationInfo),
+    //   }
+    // )
+      
         Swal.fire({
           icon: "success",
           title: "Form Submitted",
           text: "You can now proceed to payment!",
         });
         setCanPay(true);
-      })
-      .catch(() => {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Failed to save donation info. Try again.",
-        });
-      });
+      
   };
 
   return (
