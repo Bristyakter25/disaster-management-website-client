@@ -3,7 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { FaHouseMedicalFlag } from "react-icons/fa6";
 import { GrHome } from "react-icons/gr";
 import { MdQueryStats } from "react-icons/md";
-import { NavLink, Outlet, Link } from "react-router-dom";
+import { NavLink, Outlet, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import ThemeToggle from "../Components/themeToggle/ThemeToggle";
 import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
@@ -11,7 +11,14 @@ import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [role, setRole] = useState("");
-  const { user } = useContext(AuthContext);
+  const { user,logOut } = useContext(AuthContext);
+   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => navigate("/login"))
+      .catch((error) => console.error("Logout error:", error));
+  };
 
   // Fetch user role
   useEffect(() => {
@@ -120,9 +127,9 @@ const Dashboard = () => {
             <>
               <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Rescue Member</h2>
               <li><NavLink to="/dashboard/assignedMissions">Assigned Missions</NavLink></li>
-              <li><NavLink>Update Status</NavLink></li>
+              {/* <li><NavLink>Update Status</NavLink></li> */}
               <li><NavLink to="/dashboard/paymentInfo">Payments Info</NavLink></li>
-              <li><NavLink>Emergency Alerts</NavLink></li>
+              {/* <li><NavLink>Emergency Alerts</NavLink></li> */}
               <li><NavLink to="/dashboard/rescuerProfile">Profile</NavLink></li>
             </>
           )}
@@ -142,6 +149,23 @@ const Dashboard = () => {
           )}
         </ul>
         <div className="divider" />
+        <button
+  onClick={handleLogout}
+  className="ml-4 flex items-center gap-2 px-4 py-2 rounded-xl 
+             text-red-600 font-semibold text-lg
+             hover:bg-red-50 dark:hover:bg-red-900/20
+             transition-all duration-200"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" 
+       fill="none" viewBox="0 0 24 24" 
+       strokeWidth="1.8" stroke="currentColor"
+       className="w-5 h-5">
+    <path strokeLinecap="round" strokeLinejoin="round" 
+          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M9 12h12m0 0l-3-3m3 3l-3 3" />
+  </svg>
+  Logout
+</button>
+
       </div>
 
       {/* Main Content */}
