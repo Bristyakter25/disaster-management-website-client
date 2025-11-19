@@ -93,11 +93,11 @@ const Dashboard = () => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
       >
-        <h1 className="text-center my-5 font-bold text-2xl dark:text-[#A294F9] text-[#4635B1]">
+        <h1 className="text-center my-3 font-bold text-2xl dark:text-[#A294F9] text-[#4635B1]">
           Dashboard
         </h1>
         <ul className="menu gap-y-3">
-          <h2 className="text-center my-5 font-bold text-xl dark:text-[#A294F9] text-[#4635B1]">
+          <h2 className="text-center my-3 font-bold text-xl dark:text-[#A294F9] text-[#4635B1]">
             Menu
           </h2>
           <li>
@@ -112,7 +112,7 @@ const Dashboard = () => {
 
           {role === "Admin" && (
             <>
-              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Admin</h2>
+              <h2 className="text-center my-3 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Admin</h2>
               <li><NavLink to="/dashboard/overviewPanel">Overview Panel</NavLink></li>
               <li><NavLink to="/dashboard/incidentManagement">Incident Management</NavLink></li>
               <li><NavLink to="/dashboard/manageUser">User Management</NavLink></li>
@@ -126,7 +126,7 @@ const Dashboard = () => {
 
           {role === "Rescue Member" && (
             <>
-              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Rescue Member</h2>
+              <h2 className="text-center my-3 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Rescue Member</h2>
               <li><NavLink to="/dashboard/assignedMissions">Assigned Missions</NavLink></li>
               {/* <li><NavLink>Update Status</NavLink></li> */}
               <li><NavLink to="/dashboard/paymentInfo">Payments Info</NavLink></li>
@@ -137,7 +137,7 @@ const Dashboard = () => {
 
           {role === "Citizen" && (
             <>
-              <h2 className="text-center my-5 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Citizen</h2>
+              <h2 className="text-center my-3 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Citizen</h2>
               <li><NavLink to="/dashboard/reportIncident">Report an Incident</NavLink></li>
               <li><NavLink to="/dashboard/myReports">My Reports</NavLink></li>
               
