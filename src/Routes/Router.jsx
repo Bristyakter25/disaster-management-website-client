@@ -35,6 +35,8 @@ import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
 import MyHelpRequests from "../DashboardComponents/CitizenRoutes/MyHelpRequests";
 import PaymentInfoPage from "../DashboardComponents/CitizenRoutes/PaymentInfoPage";
 import AllPaymentInfo from "../DashboardComponents/AdminRoutes/AllPaymentInfo";
+import ManageHelpRequests from "../DashboardComponents/AdminRoutes/ManageHelpRequests";
+import RequestDetails from "../DashboardComponents/AdminRoutes/RequestDetails";
 
 
 
@@ -120,6 +122,14 @@ export const router = createBrowserRouter([
           {
             path: "incidentManagement",
             element: <IncidentManagement></IncidentManagement>
+          },
+          {
+            path: "manageHelpRequests",
+            element: <ManageHelpRequests></ManageHelpRequests>
+          },
+          {
+            path: "manageHelpRequests/:id",
+            element: <RequestDetails></RequestDetails>
           },
           {
             path: "resourceAllocation",

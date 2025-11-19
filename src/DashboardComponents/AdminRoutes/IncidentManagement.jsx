@@ -69,6 +69,7 @@ const IncidentManagement = () => {
 
   return (
     <div className="overflow-x-auto">
+      <h2 className="text-3xl font-bold mb-5 text-center">Incident Management</h2>
       <table className="min-w-full border-collapse border border-gray-300 text-sm text-left">
         <thead className="bg-gray-100 dark:bg-black">
           <tr>
