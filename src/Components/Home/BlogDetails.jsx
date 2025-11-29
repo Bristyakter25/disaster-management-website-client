@@ -37,7 +37,7 @@ const BlogDetails = () => {
      
 
       <p className="text-gray-600  dark:text-gray-300 mb-4">
-        {blog.date} | By <span className="font-bold text-black text-lg">{blog.author}</span>
+        {blog.date} | By <span className="font-bold dark:text-white text-black text-lg">{blog.author}</span>
       </p>
       <div className="text-lg leading-relaxed text-gray-700 dark:text-gray-200">
   {blog.description?.split('\n').map((para, idx) => (
