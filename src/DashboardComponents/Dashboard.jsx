@@ -128,10 +128,14 @@ const Dashboard = () => {
             <>
               <h2 className="text-center my-3 font-bold text-xl text-[#4635B1] dark:text-[#A294F9]">Rescue Member</h2>
               <li><NavLink to="/dashboard/assignedMissions">Assigned Missions</NavLink></li>
-              {/* <li><NavLink>Update Status</NavLink></li> */}
+              <li><NavLink to="/dashboard/emergencyAlerts">Emergency Alerts</NavLink></li>
+           
               <li><NavLink to="/dashboard/paymentInfo">Payments Info</NavLink></li>
+              <li><NavLink to="/dashboard/myReports">My Reports</NavLink></li>
               {/* <li><NavLink>Emergency Alerts</NavLink></li> */}
               <li><NavLink to="/dashboard/rescuerProfile">Profile</NavLink></li>
+              
+              
             </>
           )}
 

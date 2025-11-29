@@ -42,7 +42,11 @@ const FAQ = () => {
   };
 
   return (
-    <div className="py-16 px-6 sm:px-12 lg:px-20  transition-colors duration-300">
+   
+    <div>
+      <section id="faq">
+         <div className="py-16 px-6 sm:px-12 lg:px-20  transition-colors duration-300">
+       
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -86,7 +90,11 @@ const FAQ = () => {
 
         
       </div>
+  
     </div>
+      </section>
+    </div>
+   
   );
 };
 

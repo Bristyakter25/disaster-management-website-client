@@ -168,7 +168,7 @@ const RequestHelps = () => {
             <h3 className="font-semibold dark:text-yellow-200">Pending Offline Requests</h3>
             <button
               onClick={syncOfflineRequests}
-              className="bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700"
+              className="bg-green-600  text-white px-3 py-1 rounded-md hover:bg-green-700"
             >
               Sync Now
             </button>
@@ -198,7 +198,7 @@ const RequestHelps = () => {
         <form onSubmit={handleSubmit} className="space-y-5 mt-6">
           <div>
             <label className="block text-sm font-medium mb-1">Select Disaster</label>
-            <select name="disasterId" required className="w-full border rounded-md p-2">
+            <select name="disasterId" required className="dark:bg-slate-700 bg-white text-black dark:text-white w-full border rounded-md p-2">
               <option value="">Select Disaster</option>
               {alerts.map((alert) => (
                 <option key={alert._id} value={alert._id}>
@@ -210,7 +210,7 @@ const RequestHelps = () => {
 
           <div>
             <label className="block text-sm font-medium mb-1">Type of Help Needed</label>
-            <select name="helpType" required className="w-full border rounded-md p-2">
+            <select name="helpType" required className="w-full dark:bg-slate-700 bg-white text-black dark:text-white border rounded-md p-2">
               <option value="">Select Help Type</option>
               <option value="Medical">Medical</option>
               <option value="Rescue">Rescue</option>
@@ -222,37 +222,37 @@ const RequestHelps = () => {
 
           <div>
             <label className="block text-sm font-medium mb-1">Description</label>
-            <textarea name="description" required className="w-full border rounded-md p-2" />
+            <textarea name="description" required className="w-full border dark:bg-slate-700 bg-white text-black dark:text-white rounded-md p-2" />
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">Family Members Affected</label>
-            <input type="number" name="familyMembers" className="w-full border rounded-md p-2" />
+            <input type="number" name="familyMembers" className="w-ful dark:bg-slate-700 bg-white text-black dark:text-white border rounded-md p-2" />
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">Number of Injured</label>
-            <input type="number" name="injuredCount" className="w-full border rounded-md p-2" />
+            <input type="number" name="injuredCount" className="w-full border dark:bg-slate-700 bg-white text-black dark:text-white rounded-md p-2" />
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">Elderly or Children Affected</label>
-            <input type="text" name="elderlyOrChildren" className="w-full border rounded-md p-2" />
+            <input type="text" name="elderlyOrChildren" className="w-full dark:bg-slate-700 bg-white text-black dark:text-white border rounded-md p-2" />
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">Urgent Needs</label>
-            <input type="text" name="urgentNeeds" className="w-full border rounded-md p-2" />
+            <input type="text" name="urgentNeeds" className="w-full border dark:bg-slate-700 bg-white text-black dark:text-white rounded-md p-2" />
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">Additional Notes</label>
-            <textarea name="additionalNotes" className="w-full border rounded-md p-2" />
+            <textarea name="additionalNotes" className="w-full border rounded-md dark:bg-slate-700 bg-white text-black dark:text-white p-2" />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+            className="mt-4 w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-indigo-600 dark:to-purple-700 text-white font-semibold rounded-lg shadow-md hover:from-indigo-600 hover:to-purple-600 dark:hover:from-purple-700 dark:hover:to-indigo-600 transition-all duration-300"
           >
             Submit Request
           </button>

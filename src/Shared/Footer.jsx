@@ -18,11 +18,14 @@ const Footer = () => {
     
     <Link to="/"><p >Home</p></Link>
     <Link to="/dashboard">Dashboard</Link>
+    <Link to="/donateUs">Donate</Link>
+    <Link to="/requestHelps">Help Request</Link>
   </nav>
   <nav className="text-black dark:text-white">
     <h6 className="footer-title">ABOUT Us</h6>
     <Link to="/addAlertPanels"><p>All Alertpanel </p></Link>
-     <a className="link link-hover">FAQs</a>
+    <Link to="/contactForm"><p>Contact Us </p></Link>
+     <a href="#faq" className="link link-hover">FAQs</a>
      
     </nav>
   <nav className="text-black dark:text-white">

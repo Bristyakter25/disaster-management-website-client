@@ -90,7 +90,7 @@ const ContactForm = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full bg-black dark:bg-indigo-600 text-white py-3 rounded-xl font-semibold shadow-lg hover:bg-gray-900 dark:hover:bg-indigo-500 transition-all"
+              className="mt-4 w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-indigo-600 dark:to-purple-700 text-white font-semibold rounded-lg shadow-md hover:from-indigo-600 hover:to-purple-600 dark:hover:from-purple-700 dark:hover:to-indigo-600 transition-all duration-300"
             >
               Send Message
             </motion.button>

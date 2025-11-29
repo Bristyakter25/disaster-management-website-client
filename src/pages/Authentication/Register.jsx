@@ -112,35 +112,35 @@ const Register = () => {
           <div>
             <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">Name</label>
             <input type="text" name="name" placeholder="Name" required
-              className="w-full dark:bg-gray-900 dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full dark:bg-gray-900 bg-white dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">Email</label>
             <input type="email" name="email" placeholder="Email" required
-              className="w-full dark:bg-gray-900 dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full dark:bg-gray-900 bg-white dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">Photo URL</label>
             <input type="url" name="photo" placeholder="Photo URL" required
-              className="w-full dark:bg-gray-900 dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full dark:bg-gray-900 bg-white dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">Password</label>
             <input type="password" name="password" placeholder="Password" required
-              className="w-full dark:bg-gray-900 dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full dark:bg-gray-900 bg-white dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">Role</label>
             <select name="role" required
-              className="w-full dark:bg-gray-900 dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full dark:bg-gray-900 bg-white dark:text-white px-4 py-3 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               <option value="Citizen">Citizen</option>
               <option value="Rescue Member">Rescue Member</option>

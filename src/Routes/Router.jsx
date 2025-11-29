@@ -37,6 +37,7 @@ import PaymentInfoPage from "../DashboardComponents/CitizenRoutes/PaymentInfoPag
 import AllPaymentInfo from "../DashboardComponents/AdminRoutes/AllPaymentInfo";
 import ManageHelpRequests from "../DashboardComponents/AdminRoutes/ManageHelpRequests";
 import RequestDetails from "../DashboardComponents/AdminRoutes/RequestDetails";
+import EmergencyAlerts from "../DashboardComponents/RescueMember/EmergencyAlerts";
 
 
 
@@ -130,6 +131,10 @@ export const router = createBrowserRouter([
           {
             path: "manageHelpRequests/:id",
             element: <RequestDetails></RequestDetails>
+          },
+          {
+            path: "emergencyAlerts",
+            element: <EmergencyAlerts></EmergencyAlerts>
           },
           {
             path: "resourceAllocation",

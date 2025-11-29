@@ -80,7 +80,7 @@ const Donate = () => {
               </p>
                <button
           onClick={() => navigate(`/alertPanel/donations/${disaster._id}`)}
-          className="btn hover:bg-green-900 text-white bg-green-600 p-3 my-4 w-full"
+          className="mt-4 w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-indigo-600 dark:to-purple-700 text-white font-semibold rounded-lg shadow-md hover:from-indigo-600 hover:to-purple-600 dark:hover:from-purple-700 dark:hover:to-indigo-600 transition-all duration-300"
         >
           Donate
         </button>

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import socket from "../Shared/socket";
 import { AuthContext } from "../providers/AuthProvider";
+import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
 
 const AddAlertPanels = () => {
   const [alerts, setAlerts] = useState([]);
@@ -166,7 +167,9 @@ const AddAlertPanels = () => {
         Swal.fire("Error", "Something went wrong!", "error");
       });
   };
-
+if (!user) {
+  return <AccessDenialMessage/>; 
+}
   return (
     <div className="max-w-5xl mx-auto pb-20 pt-16 px-10">
       <div className="bg-gradient-to-r from-purple-50 via-blue-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 p-8 rounded-3xl shadow-xl">
@@ -292,7 +295,7 @@ const AddAlertPanels = () => {
             </select>
           </div>
 
-          <button type="submit" className="w-full bg-blue-600 dark:text-white text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200">
+          <button type="submit" className="mt-4 w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-indigo-600 dark:to-purple-700 text-white font-semibold rounded-lg shadow-md hover:from-indigo-600 hover:to-purple-600 dark:hover:from-purple-700 dark:hover:to-indigo-600 transition-all duration-300">
             Add Alert
           </button>
         </form>
