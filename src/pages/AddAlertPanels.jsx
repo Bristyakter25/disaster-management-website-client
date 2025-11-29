@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import socket from "../Shared/socket";
 import { AuthContext } from "../providers/AuthProvider";
+import AccessDenialMessage from "../Shared/SecuredMessage/AccessDenialMessage";
 
 const AddAlertPanels = () => {
   const [alerts, setAlerts] = useState([]);
@@ -166,7 +167,9 @@ const AddAlertPanels = () => {
         Swal.fire("Error", "Something went wrong!", "error");
       });
   };
-
+if (!user) {
+  return <AccessDenialMessage/>; 
+}
   return (
     <div className="max-w-5xl mx-auto pb-20 pt-16 px-10">
       <div className="bg-gradient-to-r from-purple-50 via-blue-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 p-8 rounded-3xl shadow-xl">
