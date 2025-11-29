@@ -25,6 +25,7 @@ const Footer = () => {
     <h6 className="footer-title">ABOUT Us</h6>
     <Link to="/addAlertPanels"><p>All Alertpanel </p></Link>
     <Link to="/contactForm"><p>Contact Us </p></Link>
+     <Link to="/dashboard/rescuerProfile"><p>Be a Rescue Member </p></Link>
      <a href="#faq" className="link link-hover">FAQs</a>
      
     </nav>
