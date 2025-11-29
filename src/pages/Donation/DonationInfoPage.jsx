@@ -201,7 +201,7 @@ const DonationInfoPage = () => {
                 placeholder="Custom"
                 value={customAmount}
                 onChange={(e) => setCustomAmount(e.target.value)}
-                className="w-24 px-3 py-2 border rounded-lg dark:bg-gray-900 dark:text-white border-gray-300 dark:border-gray-700"
+                className="w-24 px-3 py-2 border rounded-lg dark:bg-gray-900 bg-white dark:text-white border-gray-300 dark:border-gray-700"
               />
             </div>
           </div>

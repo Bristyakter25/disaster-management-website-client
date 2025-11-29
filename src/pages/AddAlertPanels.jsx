@@ -292,7 +292,7 @@ const AddAlertPanels = () => {
             </select>
           </div>
 
-          <button type="submit" className="w-full bg-blue-600 dark:text-white text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200">
+          <button type="submit" className="mt-4 w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-indigo-600 dark:to-purple-700 text-white font-semibold rounded-lg shadow-md hover:from-indigo-600 hover:to-purple-600 dark:hover:from-purple-700 dark:hover:to-indigo-600 transition-all duration-300">
             Add Alert
           </button>
         </form>
