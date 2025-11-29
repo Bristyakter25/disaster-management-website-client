@@ -120,13 +120,13 @@ const CurrentDisasterZones = () => {
             filteredData.slice(0, 8).map((item, idx) => (
               <div
                 key={idx}
-                className={`border-l-4 p-3 rounded-md shadow-sm bg-gray-50 hover:bg-white transition
+                className={`border-l-4 p-3 rounded-md shadow-sm bg-gray-50 hover:bg-white dark:bg-black transition
                   ${item.severity === 'Severe' ? 'border-red-500' : item.severity === 'Moderate' ? 'border-orange-400' : 'border-blue-400'}`}
               >
-                <h4 className="text-sm font-semibold text-gray-800">{item.type}</h4>
-                <p className="text-xs text-gray-500">{format(new Date(item.timestamp), 'PPPpp')}</p>
-                <p className="text-sm text-gray-600">{item.location}</p>
-                {item.headline && <p className="text-xs italic text-gray-500 mt-1">{item.headline}</p>}
+                <h4 className="text-sm font-semibold dark:text-white text-gray-800">{item.type}</h4>
+                <p className="text-xs dark:text-white text-gray-500">{format(new Date(item.timestamp), 'PPPpp')}</p>
+                <p className="text-sm dark:text-white text-gray-600">{item.location}</p>
+                {item.headline && <p className="text-xs dark:text-white italic text-gray-500 mt-1">{item.headline}</p>}
               </div>
             ))
           )}
