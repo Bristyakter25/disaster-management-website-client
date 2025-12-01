@@ -4,6 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import RequestHelpsMap from "./RequestHelpsMap";
 import AccessDenialMessage from "../../Shared/SecuredMessage/AccessDenialMessage";
 import socket from "../../Shared/socket";
+import { FiUsers, FiAlertTriangle, FiClipboard, FiHome, FiHeart } from "react-icons/fi";
 
 const RequestHelps = () => {
   const { user } = useContext(AuthContext);
@@ -12,13 +13,11 @@ const RequestHelps = () => {
 
   const SERVER_URL = "https://disaster-management-website-server.onrender.com/requestHelps";
 
-  // 🔹 Load offline requests at startup
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("offlineRequests")) || [];
     setOfflineRequests(saved);
   }, []);
 
-  // 🔹 Save request locally when offline
   const saveOfflineRequest = (request) => {
     const existing = JSON.parse(localStorage.getItem("offlineRequests")) || [];
     const updated = [...existing, request];
@@ -26,17 +25,15 @@ const RequestHelps = () => {
     setOfflineRequests(updated);
   };
 
-  // 🔹 Delete all pending offline requests
   const clearOfflineRequests = () => {
     localStorage.removeItem("offlineRequests");
     setOfflineRequests([]);
     Swal.fire("Deleted", "All pending offline requests have been removed.", "info");
   };
 
-  // 🔹 Sync offline requests
   const syncOfflineRequests = async () => {
     const offlineRequestsLocal = JSON.parse(localStorage.getItem("offlineRequests")) || [];
-    if (offlineRequestsLocal.length === 0) return;
+    if (!offlineRequestsLocal.length) return;
 
     let remaining = [];
 
@@ -54,19 +51,17 @@ const RequestHelps = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(req),
         });
-
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         socket.emit("newRequestHelp", data);
       } catch (err) {
-        console.error("Failed to sync request:", err);
         remaining.push(req);
       }
     }
 
     Swal.close();
 
-    if (remaining.length === 0) {
+    if (!remaining.length) {
       localStorage.removeItem("offlineRequests");
       setOfflineRequests([]);
       Swal.fire("✅ Synced", "All offline requests synced successfully!", "success");
@@ -81,25 +76,19 @@ const RequestHelps = () => {
     }
   };
 
-  // 🔹 Listen for network reconnect
   useEffect(() => {
-    const handleOnline = () => {
-      console.log("Network reconnected — syncing offline requests...");
-      syncOfflineRequests();
-    };
+    const handleOnline = () => syncOfflineRequests();
     window.addEventListener("online", handleOnline);
     return () => window.removeEventListener("online", handleOnline);
   }, []);
 
-  // 🔹 Fetch disaster alerts
   useEffect(() => {
     fetch("https://disaster-management-website-server.onrender.com/alertPanel")
       .then((res) => res.json())
       .then((data) => setAlerts(data))
-      .catch((err) => console.error("Error loading alerts:", err));
+      .catch((err) => console.error(err));
   }, []);
 
-  // 🔹 Submit new request
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -120,10 +109,7 @@ const RequestHelps = () => {
       additionalNotes: form.additionalNotes.value,
       status: navigator.onLine ? "Active" : "Pending",
       networkStatus: navigator.onLine ? "Online" : "Offline",
-      submittedBy: {
-        name: user?.displayName || "Anonymous",
-        email: user?.email,
-      },
+      submittedBy: { name: user?.displayName || "Anonymous", email: user?.email },
       timestamp: new Date().toISOString(),
     };
 
@@ -149,35 +135,34 @@ const RequestHelps = () => {
         Swal.fire("Success", "Help request submitted successfully!", "success");
         form.reset();
       })
-      .catch((err) => {
-        console.error("Submit error:", err);
-        Swal.fire("Error", "Something went wrong while submitting!", "error");
-      });
+      .catch(() => Swal.fire("Error", "Something went wrong!", "error"));
   };
 
   if (!user) return <AccessDenialMessage />;
 
   return (
-    <div className="max-w-5xl mx-auto pb-20 pt-16 px-10">
+    <div className="max-w-6xl mx-auto pb-20 pt-10 px-6">
       <RequestHelpsMap />
 
-      {/* Pending Offline Requests */}
+      {/* Offline Requests */}
       {offlineRequests.length > 0 && (
-        <div className="mb-6 p-5 bg-yellow-100 dark:bg-yellow-900 rounded-xl shadow-md border border-yellow-400">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold dark:text-yellow-200">Pending Offline Requests</h3>
-            <button
-              onClick={syncOfflineRequests}
-              className="bg-green-600  text-white px-3 py-1 rounded-md hover:bg-green-700"
-            >
-              Sync Now
-            </button>
-            <button
-              onClick={clearOfflineRequests}
-              className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700"
-            >
-              Clear All
-            </button>
+        <div className="mb-6 p-5 bg-yellow-50 dark:bg-yellow-900 rounded-xl shadow-md border border-yellow-400">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+            <h3 className="font-semibold dark:text-yellow-200 text-lg">Pending Offline Requests</h3>
+            <div className="flex gap-2 mt-2 md:mt-0">
+              <button
+                onClick={syncOfflineRequests}
+                className="bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700 transition"
+              >
+                Sync Now
+              </button>
+              <button
+                onClick={clearOfflineRequests}
+                className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700 transition"
+              >
+                Clear All
+              </button>
+            </div>
           </div>
           <ul className="list-disc pl-5 space-y-1 text-sm dark:text-yellow-100">
             {offlineRequests.map((req, idx) => (
@@ -190,15 +175,20 @@ const RequestHelps = () => {
       )}
 
       {/* Help Request Form */}
-      <div className="bg-gradient-to-r my-10 from-purple-50 via-blue-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 p-8 rounded-3xl shadow-xl">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-center text-gray-900 dark:text-white">
+      <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-12 mt-10">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-8 text-center text-gray-900 dark:text-white">
           Request Disaster Help
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-5 mt-6">
-          <div>
-            <label className="block text-sm font-medium mb-1">Select Disaster</label>
-            <select name="disasterId" required className="dark:bg-slate-700 bg-white text-black dark:text-white w-full border rounded-md p-2">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Disaster Selection */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium dark:text-gray-200">Select Disaster</label>
+            <select
+              name="disasterId"
+              required
+              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
               <option value="">Select Disaster</option>
               {alerts.map((alert) => (
                 <option key={alert._id} value={alert._id}>
@@ -208,9 +198,14 @@ const RequestHelps = () => {
             </select>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Type of Help Needed</label>
-            <select name="helpType" required className="w-full dark:bg-slate-700 bg-white text-black dark:text-white border rounded-md p-2">
+          {/* Help Type */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium dark:text-gray-200">Type of Help Needed</label>
+            <select
+              name="helpType"
+              required
+              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
               <option value="">Select Help Type</option>
               <option value="Medical">Medical</option>
               <option value="Rescue">Rescue</option>
@@ -220,39 +215,68 @@ const RequestHelps = () => {
             </select>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
-            <textarea name="description" required className="w-full border dark:bg-slate-700 bg-white text-black dark:text-white rounded-md p-2" />
+          {/* Description */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium dark:text-gray-200">Description</label>
+            <textarea
+              name="description"
+              required
+              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Family Members Affected</label>
-            <input type="number" name="familyMembers" className="w-ful dark:bg-slate-700 bg-white text-black dark:text-white border rounded-md p-2" />
+          {/* Family & Injured */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-1">
+              <label className="block text-sm font-medium dark:text-gray-200">Family Members Affected</label>
+              <input
+                type="number"
+                name="familyMembers"
+                className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div className="space-y-1">
+              <label className="block text-sm font-medium dark:text-gray-200">Number of Injured</label>
+              <input
+                type="number"
+                name="injuredCount"
+                className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Number of Injured</label>
-            <input type="number" name="injuredCount" className="w-full border dark:bg-slate-700 bg-white text-black dark:text-white rounded-md p-2" />
+          {/* Elderly / Children */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium dark:text-gray-200">Elderly or Children Affected</label>
+            <input
+              type="text"
+              name="elderlyOrChildren"
+              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Elderly or Children Affected</label>
-            <input type="text" name="elderlyOrChildren" className="w-full dark:bg-slate-700 bg-white text-black dark:text-white border rounded-md p-2" />
+          {/* Urgent Needs */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium dark:text-gray-200">Urgent Needs</label>
+            <input
+              type="text"
+              name="urgentNeeds"
+              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Urgent Needs</label>
-            <input type="text" name="urgentNeeds" className="w-full border dark:bg-slate-700 bg-white text-black dark:text-white rounded-md p-2" />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium mb-1">Additional Notes</label>
-            <textarea name="additionalNotes" className="w-full border rounded-md dark:bg-slate-700 bg-white text-black dark:text-white p-2" />
+          {/* Additional Notes */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium dark:text-gray-200">Additional Notes</label>
+            <textarea
+              name="additionalNotes"
+              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
 
           <button
             type="submit"
-            className="mt-4 w-full px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-indigo-600 dark:to-purple-700 text-white font-semibold rounded-lg shadow-md hover:from-indigo-600 hover:to-purple-600 dark:hover:from-purple-700 dark:hover:to-indigo-600 transition-all duration-300"
+            className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-indigo-600 dark:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:scale-105 transform transition-all duration-300"
           >
             Submit Request
           </button>

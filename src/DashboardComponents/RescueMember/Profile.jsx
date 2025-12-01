@@ -30,7 +30,7 @@ const Profile = () => {
     const fetchData = async () => {
       if (user && user.email) {
         try {
-            const res = await fetch(`https://disaster-management-website-server.onrender.com/rescuerProfile/${user.email}`);
+          const res = await fetch(`https://disaster-management-website-server.onrender.com/rescuerProfile/${user.email}`);
           const data = await res.json();
 
           if (data && data.email === user.email) {
@@ -40,9 +40,8 @@ const Profile = () => {
               location: data.location || "",
               summary: data.summary || ""
             });
-            setIsSubmitted(true); // existing data found, block resubmit
+            setIsSubmitted(true);
           } else {
-            // No existing data, allow new entry
             setIsSubmitted(false);
           }
         } catch (err) {
@@ -52,7 +51,6 @@ const Profile = () => {
         }
       }
     };
-
     fetchData();
   }, [user]);
 
@@ -66,15 +64,12 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (isSubmitted) return;
 
     try {
       const response = await fetch("https://disaster-management-website-server.onrender.com/rescuerProfile", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, email: user.email }),
       });
 
@@ -93,25 +88,23 @@ const Profile = () => {
     }
   };
 
-  if (!user || loading) {
-    return <div>Loading...</div>;
-  }
+  if (!user || loading) return <div className="text-gray-700 dark:text-gray-200">Loading...</div>;
 
   return (
-    <div className="mt-10">
-      <h2 className="text-2xl text-center font-semibold text-black capitalize dark:text-white">
+    <div className="mt-10 dark:bg-gray-900 min-h-screen p-4">
+      <h2 className="text-2xl py-5 text-center font-semibold capitalize dark:text-white">
         Rescue Member Profile
       </h2>
       <section className="lg:w-[950px] w-[350px] p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
         {isSubmitted && (
-          <p className="text-center text-green-600 font-medium mb-4">
+          <p className="text-center text-green-600 dark:text-green-400 font-medium mb-4">
             Profile already submitted.
           </p>
         )}
         <form onSubmit={handleSubmit}>
           {/* PERSONAL INFORMATION */}
           <div className="border-b-2 pb-10">
-            <h2 className="text-xl font-semibold text-black capitalize dark:text-white">Personal Information</h2>
+            <h2 className="text-xl font-semibold capitalize text-black dark:text-white">Personal Information</h2>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <InputField id="fullName" label="Full Name" value={user.displayName} readOnly />
               <InputField id="email" label="Email Address" type="email" value={user.email} readOnly />
@@ -127,7 +120,7 @@ const Profile = () => {
                   onChange={handleChange}
                   required
                   disabled={isSubmitted}
-                  className="block w-full px-4 py-2 mt-2 border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
+                  className="block w-full px-4 py-2 mt-2 border rounded-md bg-white dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
                 >
                   <option>Available</option>
                   <option>On Mission</option>
@@ -139,8 +132,8 @@ const Profile = () => {
 
           {/* EXPERIENCE AND SKILLS */}
           <div className="border-b-2 pb-10">
-            <h2 className="text-xl font-semibold text-black capitalize dark:text-white">Experience and Skills</h2>
-            <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <h2 className="text-xl font-semibold capitalize text-black dark:text-white">Experience and Skills</h2>
+            <div className="grid  grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <InputField id="specialty" label="Specialty / Skills" value={formData.specialty} onChange={handleChange} required disabled={isSubmitted} />
               <InputField id="company" label="Company" value={formData.company} onChange={handleChange} required disabled={isSubmitted} />
               <InputField id="expLocation" label="Location" value={formData.expLocation} onChange={handleChange} required disabled={isSubmitted} />
@@ -153,11 +146,11 @@ const Profile = () => {
 
           {/* EDUCATION */}
           <div className="border-b-2 pb-10">
-            <h2 className="text-xl mt-8 font-semibold text-black capitalize dark:text-white">Education</h2>
+            <h2 className="text-xl mt-8 font-semibold capitalize text-black dark:text-white">Education</h2>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <InputField id="degree" label="Degree" value={formData.degree} onChange={handleChange} required disabled={isSubmitted} />
               <InputField id="university" label="College/University" value={formData.university} onChange={handleChange} required disabled={isSubmitted} />
-              <InputField id="eduStartDate" label="Start Date" type="date" value={formData.eduStartDate} onChange={handleChange} required disabled={isSubmitted} />
+              <InputField  id="eduStartDate" label="Start Date" type="date" value={formData.eduStartDate} onChange={handleChange} required disabled={isSubmitted} />
               <InputField id="eduEndDate" label="End Date" type="date" value={formData.eduEndDate} onChange={handleChange} required disabled={isSubmitted} />
             </div>
           </div>
@@ -166,7 +159,7 @@ const Profile = () => {
           <div className="flex justify-end mt-6">
             <button
               type="submit"
-              className="px-8 py-2.5 w-full text-white bg-gray-700 rounded-md hover:bg-gray-600"
+              className="px-8 py-2.5 w-full text-white bg-gray-700 rounded-md hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600"
               disabled={isSubmitted}
             >
               {isSubmitted ? "Already Saved" : "Save"}
@@ -189,9 +182,18 @@ const InputField = ({ id, label, type = "text", value, onChange, readOnly = fals
       readOnly={readOnly}
       required={required}
       disabled={disabled}
-      className="block w-full px-4 py-2 mt-2 border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
+      className="block bg-stone-300 w-full px-4 py-2 mt-2 border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
     />
   </div>
 );
 
 export default Profile;
+
+
+
+  //  <InputField id="expStartDate" label="Start Date" type="date" value={formData.expStartDate} onChange={handleChange} required disabled={isSubmitted} />
+  //             <InputField id="expEndDate" label="End Date" type="date" value={formData.expEndDate} onChange={handleChange} required disabled={isSubmitted} />
+
+
+  //               <InputField id="eduStartDate" label="Start Date" type="date" value={formData.eduStartDate} onChange={handleChange} required disabled={isSubmitted} />
+  //             <InputField id="eduEndDate" label="End Date" type="date" value={formData.eduEndDate} onChange={handleChange} required disabled={isSubmitted} />
