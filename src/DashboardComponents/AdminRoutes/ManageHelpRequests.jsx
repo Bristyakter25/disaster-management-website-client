@@ -11,7 +11,7 @@ const ManageHelpRequests = () => {
 
   // Fetch requests
   useEffect(() => {
-    fetch("http://localhost:5000/requestHelps")
+    fetch("https://disaster-management-website-server.onrender.com/requestHelps")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -30,7 +30,7 @@ const ManageHelpRequests = () => {
   // Update request status
   const updateStatus = async (id, newStatus) => {
     try {
-      await fetch(`http://localhost:5000/requestHelps/${id}`, {
+      await fetch(`https://disaster-management-website-server.onrender.com/requestHelps/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
