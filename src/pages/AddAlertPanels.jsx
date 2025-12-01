@@ -227,7 +227,7 @@ if (!user) {
                 type={type}
                 name={name}
                 required
-                className="w-full bg-white dark:bg-black border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full bg-gray-200 dark:bg-black border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           ))}
@@ -238,7 +238,7 @@ if (!user) {
             <select
               name="severity"
               required
-              className="w-full border dark:bg-black bg-white border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border dark:bg-black bg-gray-200 border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">-- Select Severity --</option>
               <option value="Low">Low</option>
@@ -259,12 +259,12 @@ if (!user) {
 
             <div>
               <label className="block text-sm font-medium dark:text-white mb-1">Donation Goal (BDT)</label>
-              <input type="number" name="donationGoal" className="w-full border dark:bg-black bg-white rounded-md px-3 py-2" />
+              <input type="number" name="donationGoal" className="w-full border dark:bg-black bg-gray-200 rounded-md px-3 py-2" />
             </div>
 
             <div className="mt-3">
               <label className="block text-sm font-medium dark:text-white mb-1">Donation Category</label>
-              <select name="donationCategory" className="w-full border dark:bg-black bg-white rounded-md px-3 py-2">
+              <select name="donationCategory" className="w-full border dark:bg-black bg-gray-200 rounded-md px-3 py-2">
                 <option value="general">General Relief</option>
                 <option value="food">Food & Water</option>
                 <option value="shelter">Shelter</option>
@@ -276,18 +276,18 @@ if (!user) {
           {/* 🔹 Details & Description */}
           <div>
             <label className="block mt-5 text-sm font-medium dark:text-white mb-1">Details</label>
-            <textarea name="details" required rows={3} className="w-full border dark:bg-black bg-white border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            <textarea name="details" required rows={3} className="w-full border dark:bg-black bg-gray-200 border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
           </div>
 
           <div>
             <label className="block text-sm font-medium dark:text-white mb-1">Description</label>
-            <textarea name="description" required rows={2} className="w-full border dark:bg-black bg-white border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+            <textarea name="description" required rows={2} className="w-full border dark:bg-black bg-gray-200 border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
           </div>
 
           {/* 🔹 Status */}
           <div>
             <label className="block text-sm font-medium dark:text-white mb-1">Status</label>
-            <select name="status" required className="w-full border dark:bg-black bg-white border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <select name="status" required className="w-full border dark:bg-black bg-gray-200 border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option value="">-- Select Status --</option>
               <option value="Active">Active</option>
               <option value="Under Review">Under Review</option>
