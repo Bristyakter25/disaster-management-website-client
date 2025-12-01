@@ -9,7 +9,7 @@ const AddAlertPanels = () => {
   const [offlineAlerts, setOfflineAlerts] = useState([]);
   const { user } = useContext(AuthContext);
 
-  const SERVER_URL = "http://localhost:5000/alertPanel";
+  const SERVER_URL = "https://disaster-management-website-server.onrender.com/alertPanel";
 
   // 🔹 Load offline alerts from localStorage
   useEffect(() => {

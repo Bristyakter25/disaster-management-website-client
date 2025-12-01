@@ -6,7 +6,7 @@ const EmergencyAlerts = () => {
   const [error, setError] = useState(null);
 
   const fetchAlerts = () => {
-    fetch("http://localhost:5000/alertPanel/emergency")
+    fetch("https://disaster-management-website-server.onrender.com/alertPanel/emergency")
       .then(res => res.json())
       .then(data => {
         setAlerts(data);
@@ -25,7 +25,7 @@ const EmergencyAlerts = () => {
 
   const handleAcknowledge = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/alertPanel/${id}/acknowledge`, {
+      const res = await fetch(`https://disaster-management-website-server.onrender.com/alertPanel/${id}/acknowledge`, {
         method: "PATCH",
       });
 
