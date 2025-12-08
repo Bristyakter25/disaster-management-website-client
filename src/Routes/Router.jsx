@@ -38,6 +38,7 @@ import AllPaymentInfo from "../DashboardComponents/AdminRoutes/AllPaymentInfo";
 import ManageHelpRequests from "../DashboardComponents/AdminRoutes/ManageHelpRequests";
 import RequestDetails from "../DashboardComponents/AdminRoutes/RequestDetails";
 import EmergencyAlerts from "../DashboardComponents/RescueMember/EmergencyAlerts";
+import AboutUsPage from "../pages/AboutUsPage";
 
 
 
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: '/alertPanel/:id',
         element: <AllAlertPanelDetails></AllAlertPanelDetails>
+      },
+      {
+        path: '/aboutUs',
+        element: <AboutUsPage></AboutUsPage>
       },
       {
         path: '/alertPanel/donations/:id',

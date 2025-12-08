@@ -8,6 +8,7 @@ import FAQ from './FAQ';
 import LatestHeadlines from './LatestHeadlines';
 import MarqueeAlert from './MarqueeAlert';
 import { useEffect } from 'react';
+import AboutUs from './AboutUs';
 
 const Home = () => {
   useEffect(() => {
@@ -50,6 +51,9 @@ const Home = () => {
       {/* FAQ Section */}
       <div data-aos="fade-up">
         <FAQ />
+      </div>
+      <div data-aos="fade-up">
+        <AboutUs></AboutUs>
       </div>
 
       {/* Contact Form */}

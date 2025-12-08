@@ -74,9 +74,9 @@ const MyReports = () => {
                   className="w-full h-60  group-hover:brightness-90 transition duration-300"
                 />
               </div>
-              <div className="py-5 px-3 space-y-3">
+              <div className="py-5 px-3 space-y-3 ">
               
-                  <h3 className="text-xl h-[100px] font-bold text-red-600 dark:text-red-400">
+                  <h3 className="text-xl mb-5 font-bold text-red-600 dark:text-red-400">
                   🚨 {item.headline}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -96,7 +96,7 @@ const MyReports = () => {
     e.stopPropagation(); // prevent parent card click
     handleEdit(item._id);
   }}
-  className="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition"
+  className="px-10 mr-5 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition"
 >
   Edit
 </button>
@@ -106,7 +106,7 @@ const MyReports = () => {
     e.stopPropagation(); // prevent parent click
     handleDelete(item._id);
   }}
-  className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600 transition"
+  className="px-10 py-1 rounded bg-red-500 text-white hover:bg-red-600 transition"
 >
   Delete
 </button>

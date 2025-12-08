@@ -37,6 +37,7 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isDonationPage = location.pathname === "/donateUs";
+  const isAboutUsPage = location.pathname === "/aboutUs";
 
   // dark mode setup
   const [darkMode, setDarkMode] = useState(() => {
@@ -216,7 +217,7 @@ const Navbar = () => {
         ${
           scrolled
             ? "bg-white/30 dark:bg-gray-900/50 backdrop-blur-md shadow-md text-black dark:text-white"
-            : isHome || isDonationPage
+            : isHome || isDonationPage || isAboutUsPage
             ? "bg-transparent text-white"
             : "bg-transparent text-black dark:text-white"
         }`}
