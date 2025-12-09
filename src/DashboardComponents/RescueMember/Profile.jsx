@@ -5,23 +5,25 @@ const Profile = () => {
   const { user } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
-    phone: "",
-    location: "",
-    summary: "",
-    shift: "",
-    availability: "Available",
-    specialty: "",
-    company: "",
-    expLocation: "",
-    role: "",
-    expStartDate: "",
-    expEndDate: "",
-    responsibilities: "",
-    degree: "",
-    university: "",
-    eduStartDate: "",
-    eduEndDate: ""
-  });
+  fullName: user?.displayName || "",
+  phone: "",
+  location: "",
+  summary: "",
+  shift: "",
+  availability: "Available",
+  specialty: "",
+  company: "",
+  expLocation: "",
+  role: "",
+  expStartDate: "",
+  expEndDate: "",
+  responsibilities: "",
+  degree: "",
+  university: "",
+  eduStartDate: "",
+  eduEndDate: ""
+});
+
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -34,14 +36,16 @@ const Profile = () => {
           const data = await res.json();
 
           if (data && data.email === user.email) {
-            setFormData({
-              ...data,
-              phone: data.phone || "",
-              location: data.location || "",
-              summary: data.summary || ""
-            });
-            setIsSubmitted(true);
-          } else {
+  setFormData({
+    ...data,
+    fullName: data.fullName || user.displayName,
+    phone: data.phone || "",
+    location: data.location || "",
+    summary: data.summary || ""
+  });
+  setIsSubmitted(true);
+}
+ else {
             setIsSubmitted(false);
           }
         } catch (err) {

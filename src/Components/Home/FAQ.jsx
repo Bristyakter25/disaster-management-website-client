@@ -67,7 +67,7 @@ const FAQ = () => {
             >
               <button
                 onClick={() => toggleItem(item.id)}
-                className="w-full flex justify-between items-center p-5 text-left text-gray-900 dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="w-full flex justify-between items-center p-5 text-left text-gray-900 dark:text-white font-medium hover:bg-sky-200 dark:hover:bg-gray-800 transition-colors"
               >
                 <span>{item.question}</span>
                 <span className="flex-shrink-0 w-8 h-8 border border-gray-400 dark:border-gray-500 rounded-full flex items-center justify-center">
