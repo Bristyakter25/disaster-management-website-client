@@ -48,13 +48,15 @@ const Home = () => {
         <BlogPost />
       </div>
 
+       <div data-aos="fade-up">
+        <AboutUs></AboutUs>
+      </div>
+
       {/* FAQ Section */}
       <div data-aos="fade-up">
         <FAQ />
       </div>
-      <div data-aos="fade-up">
-        <AboutUs></AboutUs>
-      </div>
+     
 
       {/* Contact Form */}
       <div data-aos="fade-up">
