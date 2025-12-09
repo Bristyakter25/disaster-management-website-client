@@ -108,7 +108,7 @@ const ManageHelpRequests = () => {
             <tr>
               <th className="p-2 border dark:border-gray-700">Citizen</th>
               <th className="p-2 border dark:border-gray-700">Help Type</th>
-              <th className="p-2 border dark:border-gray-700">Severity</th>
+              
               <th className="p-2 border dark:border-gray-700">Location</th>
               <th className="p-2 border dark:border-gray-700">Status</th>
               <th className="p-2 border dark:border-gray-700">Actions</th>
@@ -119,7 +119,7 @@ const ManageHelpRequests = () => {
               <tr key={req._id} className="text-center dark:border-gray-700">
                 <td className="p-2 border dark:border-gray-700">{req.name}</td>
                 <td className="p-2 border dark:border-gray-700">{req.helpType}</td>
-                <td className="p-2 border dark:border-gray-700">{req.severity}</td>
+                
                 <td className="p-2 border dark:border-gray-700">{req.location}</td>
                 <td className="p-2 border dark:border-gray-700">
                   <select
