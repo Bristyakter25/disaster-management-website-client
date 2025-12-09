@@ -13,6 +13,15 @@ const RequestHelps = () => {
 
   const SERVER_URL = "https://disaster-management-website-server.onrender.com/requestHelps";
 
+  const [selectedAlertId, setSelectedAlertId] = useState("");
+const [prefill, setPrefill] = useState({
+  description: "",
+  urgentNeeds: "",
+  additionalNotes: "",
+  location: "",
+  coordinates: null
+});
+
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("offlineRequests")) || [];
     setOfflineRequests(saved);
@@ -175,7 +184,7 @@ const RequestHelps = () => {
       )}
 
       {/* Help Request Form */}
-      <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-12 mt-10">
+      <div className="bg-gradient-to-r mt-10 from-purple-50 via-blue-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 p-8 rounded-3xl shadow-xl">
         <h2 className="text-3xl md:text-4xl font-extrabold mb-8 text-center text-gray-900 dark:text-white">
           Request Disaster Help
         </h2>
@@ -184,18 +193,45 @@ const RequestHelps = () => {
           {/* Disaster Selection */}
           <div className="space-y-1">
             <label className="block text-sm font-medium dark:text-gray-200">Select Disaster</label>
-            <select
-              name="disasterId"
-              required
-              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select Disaster</option>
-              {alerts.map((alert) => (
-                <option key={alert._id} value={alert._id}>
-                  {alert.headline} ({alert.type})
-                </option>
-              ))}
-            </select>
+           <select
+  name="disasterId"
+  required
+  value={selectedAlertId}
+  onChange={(e) => {
+    const id = e.target.value;
+    setSelectedAlertId(id);
+
+    const alert = alerts.find((a) => a._id === id);
+
+    if (alert) {
+      setPrefill({
+        description: alert.description || "",
+        urgentNeeds: alert.requiredResources || "",
+        additionalNotes: alert.details || "",
+        location: alert.location || "",
+        coordinates: alert.coordinates || null
+      });
+    }
+  }}
+  className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white"
+>
+  <option value="">Select Disaster</option>
+  {alerts.map((alert) => (
+    <option key={alert._id} value={alert._id}>
+      {alert.headline} ({alert.type})
+    </option>
+  ))}
+</select>
+<div>
+  <label className="block text-sm font-medium dark:text-gray-200">Location</label>
+<input
+  type="text"
+  value={prefill.location}
+  readOnly
+  className="w-full border rounded-md p-3 bg-gray-100 dark:bg-gray-600 text-black dark:text-white"
+/>
+</div>
+
           </div>
 
           {/* Help Type */}
@@ -219,10 +255,13 @@ const RequestHelps = () => {
           <div className="space-y-1">
             <label className="block text-sm font-medium dark:text-gray-200">Description</label>
             <textarea
-              name="description"
-              required
-              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+  name="description"
+  required
+  value={prefill.description}
+  onChange={(e) => setPrefill({ ...prefill, description: e.target.value })}
+  className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white"
+/>
+
           </div>
 
           {/* Family & Injured */}
@@ -259,19 +298,25 @@ const RequestHelps = () => {
           <div className="space-y-1">
             <label className="block text-sm font-medium dark:text-gray-200">Urgent Needs</label>
             <input
-              type="text"
-              name="urgentNeeds"
-              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+  type="text"
+  name="urgentNeeds"
+  value={prefill.urgentNeeds}
+  onChange={(e) => setPrefill({ ...prefill, urgentNeeds: e.target.value })}
+  className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white"
+/>
+
           </div>
 
           {/* Additional Notes */}
           <div className="space-y-1">
             <label className="block text-sm font-medium dark:text-gray-200">Additional Notes</label>
             <textarea
-              name="additionalNotes"
-              className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+  name="additionalNotes"
+  value={prefill.additionalNotes}
+  onChange={(e) => setPrefill({ ...prefill, additionalNotes: e.target.value })}
+  className="w-full border rounded-md p-3 bg-gray-50 dark:bg-gray-700 dark:text-white"
+/>
+
           </div>
 
           <button
