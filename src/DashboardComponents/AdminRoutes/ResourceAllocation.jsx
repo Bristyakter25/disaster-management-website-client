@@ -29,7 +29,7 @@ const ResourceAllocation = () => {
         const [resourcesRes, requestHelpRes, alertPanelRes, rescuerRes] =
           await Promise.all([
             fetch(
-              "http://localhost:5000/resources"
+              "https://disaster-management-website-server.onrender.com/resources"
             ),
             fetch(
               "https://disaster-management-website-server.onrender.com/requestHelps"
@@ -117,7 +117,7 @@ const findResourceLocations = (resourceName, alertLocation) => {
   try {
     // Send dispatch to backend
     await fetch(
-      `http://localhost:5000/resources/${id}`,
+      `https://disaster-management-website-server.onrender.com/resources/${id}`,
       {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
